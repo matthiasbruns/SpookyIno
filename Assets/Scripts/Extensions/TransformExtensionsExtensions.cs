@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ARena
+namespace Spooky
 {
 	public static class TransformExtensionsExtensions
 	{

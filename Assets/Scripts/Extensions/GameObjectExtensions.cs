@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ARena
+namespace Spooky
 {
 	public static class GameObjectExtensions
 	{
@@ -29,15 +29,5 @@ namespace ARena
 
 			return component;
 		}
-
-		public static Optional<T> GetComponentSave<T>(this GameObject obj) where T : MonoBehaviour {
-			return new Optional<T>(obj.GetComponent<T> ());
-		}
-
-		public static Optional<T[]> GetComponentsSave<T>(this GameObject obj) where T : MonoBehaviour {
-			return new Optional<T[]>(obj.GetComponents<T> ());
-		}
-	
 	}
 }
-

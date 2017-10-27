@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ARena
+namespace Spooky
 {
 	public static class MonoBehaviourExtensions
 	{

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ARena {
+namespace Spooky {
 	
 	public static class VectorExtensions {
 	
