@@ -132,6 +132,13 @@ public class InventoryItemEditor : EditorWindow {
                 GUILayout.EndHorizontal ();
                 
                 GUILayout.Space(10);
+                
+                GUILayout.BeginHorizontal ();
+                inventoryItemList.itemList[viewIndex-1].action = EditorGUILayout.ObjectField ("Action", inventoryItemList.itemList[viewIndex-1].action, typeof (BaseAction), false) as BaseAction;
+
+                GUILayout.EndHorizontal ();
+                
+                GUILayout.Space(10);
             
             } 
             else 

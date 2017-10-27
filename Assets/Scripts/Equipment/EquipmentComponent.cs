@@ -12,6 +12,7 @@ public class EquipmentComponent : MonoBehaviour {
 	}
 
 	private InventoryComponent inventory;
+	private ActionsComponent actions;
 	private WeaponSlots weaponSlots;
 
 	void Awake(){
@@ -19,15 +20,35 @@ public class EquipmentComponent : MonoBehaviour {
 		if(inventory == null){
 			inventory = gameObject.AddComponent<InventoryComponent>();
 		}
+		actions = GetComponent<PlayerActionsComponent>();
+		if(actions == null){
+			actions = gameObject.AddComponent<PlayerActionsComponent>();
+		}
 	}
 
 	void OnEnable(){
 		inventory.OnChanged += OnInventoryChange;
+		actions.OnPrimary += OnFire1;
+		actions.OnSecondary += OnFire2;
 	}
 
 	void OnDisable(){
         inventory.OnChanged -= OnInventoryChange;
+		actions.OnPrimary -= OnFire1;
+		actions.OnSecondary -= OnFire2;
     }
+
+	void OnFire1(){
+		if(weaponSlots.rightHand != null){
+			weaponSlots.rightHand.action?.execute();
+		}
+	}
+
+	void OnFire2(){
+		if(weaponSlots.leftHand != null){
+			weaponSlots.leftHand.action?.execute();
+		}
+	}
 
 	void OnInventoryChange(List<InventorySlot> slots){
         // TODO: Inventory was changed - update equipment here 

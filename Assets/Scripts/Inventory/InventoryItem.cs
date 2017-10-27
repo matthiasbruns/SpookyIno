@@ -16,5 +16,6 @@ public class InventoryItem
     public int weaponSlotSize = 0;                                          //  Examples of additional information that could be held in InventoryItem
     public bool isStackable = false;                                            //  Examples of additional information that could be held in InventoryItem
     public bool destroyOnUse = false;                                           //  Examples of additional information that could be held in InventoryItem
-    public float encumbranceValue = 0;                                          //  Examples of additional information that could be held in InventoryItem  !!!
+    public float encumbranceValue = 0;   
+    public BaseAction action;                                     //  Examples of additional information that could be held in InventoryItem  !!!
 }
