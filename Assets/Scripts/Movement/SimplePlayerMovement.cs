@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class SimplePlayerMovement : MonoBehaviour {
+public class PlayerMovementComponent : MonoBehaviour {
 
-    public float Speed = 1f;
+    public float Speed = 10f;
 
     Rigidbody2D body;
 
