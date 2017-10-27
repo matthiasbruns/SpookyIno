@@ -13,7 +13,7 @@ public class PlayerMovementComponent : MonoBehaviour {
 
     Rigidbody2D body;
 
-	void Start() {
+    void Start() {
         body = GetComponent<Rigidbody2D>();
         if (body.drag == 0f) {
             // Physikalisch inkorrekt, Spieler hält aber (fast) sofort an, fühlt sich besser an.
@@ -42,23 +42,10 @@ public class PlayerMovementComponent : MonoBehaviour {
         // body.AddForce(new Vector2(x, y), ForceMode2D.Force);
 
         // Passe die Rotation der Hand an.
-        // TODO: Rechter Stick? Maus?
-        if (hand != null && (x != 0f || y != 0f)) {
-            if (Mathf.Abs(x) > Mathf.Abs(y)) {
-                // X "wichtiger"
-                if (x < 0f) {
-                    hand.rotation = Quaternion.Euler(180f, 90f, 0f);
-                } else if (x > 0f) {
-                    hand.rotation = Quaternion.Euler(0, 90f, 0f);
-                }
-            } else {
-                // Y "wichtiger"
-                if (y < 0f) {
-                    hand.rotation = Quaternion.Euler(90f, 90f, 0f);
-                } else if (y > 0f) {
-                    hand.rotation = Quaternion.Euler(-90, 90f, 0f);
-                }
-            }
+        if (hand != null) {
+            Vector3 mouse = Input.mousePosition;
+            mouse.z = -Camera.main.transform.position.z;
+            hand.LookAt(Camera.main.ScreenToWorldPoint(mouse));
         }
 	}
 
