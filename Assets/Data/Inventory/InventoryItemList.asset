@@ -19,6 +19,9 @@ MonoBehaviour:
     isUnique: 0
     isIndestructible: 0
     isQuestItem: 0
+    isEquipment: 1
+    isWeapon: 1
+    weaponSlotSize: 1
     isStackable: 0
     destroyOnUse: 0
     encumbranceValue: 0
@@ -28,6 +31,9 @@ MonoBehaviour:
     isUnique: 0
     isIndestructible: 0
     isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
     isStackable: 0
     destroyOnUse: 0
     encumbranceValue: 0

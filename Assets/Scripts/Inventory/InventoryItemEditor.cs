@@ -118,6 +118,14 @@ public class InventoryItemEditor : EditorWindow {
                 GUILayout.Space(10);
                 
                 GUILayout.BeginHorizontal ();
+                inventoryItemList.itemList[viewIndex-1].isEquipment = (bool)EditorGUILayout.Toggle("Equipment", inventoryItemList.itemList[viewIndex-1].isEquipment, GUILayout.ExpandWidth(false));
+                inventoryItemList.itemList[viewIndex-1].isWeapon = (bool)EditorGUILayout.Toggle("Weapon", inventoryItemList.itemList[viewIndex-1].isWeapon,  GUILayout.ExpandWidth(false));
+                inventoryItemList.itemList[viewIndex-1].weaponSlotSize = EditorGUILayout.IntField("Weapon Slots", inventoryItemList.itemList[viewIndex-1].weaponSlotSize,  GUILayout.ExpandWidth(false));
+                GUILayout.EndHorizontal ();
+                
+                GUILayout.Space(10);
+                
+                GUILayout.BeginHorizontal ();
                 inventoryItemList.itemList[viewIndex-1].isStackable = (bool)EditorGUILayout.Toggle("Stackable ", inventoryItemList.itemList[viewIndex-1].isStackable , GUILayout.ExpandWidth(false));
                 inventoryItemList.itemList[viewIndex-1].destroyOnUse = (bool)EditorGUILayout.Toggle("Destroy On Use", inventoryItemList.itemList[viewIndex-1].destroyOnUse,  GUILayout.ExpandWidth(false));
                 inventoryItemList.itemList[viewIndex-1].encumbranceValue = EditorGUILayout.FloatField("Encumberance", inventoryItemList.itemList[viewIndex-1].encumbranceValue,  GUILayout.ExpandWidth(false));
