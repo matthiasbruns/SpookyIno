@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23064888308085980}
   - component: {fileID: 50469029729225552}
   - component: {fileID: 114584077558664560}
+  - component: {fileID: 58166044735059612}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -83,7 +84,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541730682870350}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!50 &50469029729225552
 Rigidbody2D:
   serializedVersion: 4
@@ -104,6 +105,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58166044735059612
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541730682870350}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &114584077558664560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,5 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ef540c507a99c488d251e910c739c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
-  SpeedDragFactor: 0.5
+  Speed: 15
+  SpeedDragFactor: 1
