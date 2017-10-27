@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryComponent : MonoBehaviour {
+
+ 	public delegate void ChangeAction(List<InventorySlot> slots);
+    public event ChangeAction OnChanged;
+
 	public InventoryItemList database;
 
-	private List<InventorySlot> slots;
+	private List<InventorySlot> slots = new List<InventorySlot>();
 
-	void Awake(){
-		slots = new List<InventorySlot>();
+	void Start(){
 		database = GameManager.Instance.itemDatabase;
 	}
 
@@ -55,5 +58,7 @@ public class InventoryComponent : MonoBehaviour {
 			// Create new ItemSlot
 			slots.Add(new InventorySlot(item, amount));
 		}
+
+		 if(OnChanged != null) OnChanged(slots);
 	}
 }
