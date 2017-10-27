@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EquipmentComponent : MonoBehaviour {
 
-	private List<ItemComponent> weaponShieldComponents = new List<ItemComponent>();
+	[System.Serializable]
+	struct WeaponSlots {
+
+		public InventoryItem leftHand;
+		public InventoryItem rightHand;
+	}
 
 	private InventoryComponent inventory;
-	private ItemComponent leftHand;
-	private ItemComponent rightHand;
+	private WeaponSlots weaponSlots;
 
 	void Awake(){
-		weaponShieldComponents.Clear();
-		weaponShieldComponents.Add(leftHand);
-		weaponShieldComponents.Add(rightHand);
-
 		inventory = GetComponent<InventoryComponent>();
 		if(inventory == null){
 			inventory = gameObject.AddComponent<InventoryComponent>();
@@ -31,26 +31,32 @@ public class EquipmentComponent : MonoBehaviour {
 
 	void OnInventoryChange(List<InventorySlot> slots){
         // TODO: Inventory was changed - update equipment here 
-		AutoEquip(slots, leftHand);
+		AutoEquip(slots);
     }
 
-	private bool CanEquip(InventoryItem item, ItemComponent target){
+	private bool CanEquip(InventoryItem item){
 		//TODO: might be complex (check other hand, check item type weapon/shield? single, dual hand?)
 		if(!item.isEquipment) return false;
 
-		if (item.isWeapon && weaponShieldComponents.Contains(target)){
+		if (item.isWeapon && (weaponSlots.leftHand == null || weaponSlots.rightHand == null)){
 			return true;
 		}
 
 		return false;
 	}
 
-	private void AutoEquip(List<InventorySlot> slots, ItemComponent target){
-		if(leftHand != null) return;
-
+	private void AutoEquip(List<InventorySlot> slots){
 		foreach(InventorySlot slot in slots) {
 			var item = slot.item;
-			CanEquip(item, target);
+			if(CanEquip(item)){
+				if (item.isWeapon){
+					if(weaponSlots.leftHand == null) {
+						weaponSlots.leftHand = item;	
+					} else if(weaponSlots.rightHand == null) {
+						weaponSlots.rightHand = item;	
+					}
+				}				
+			}
 		}
 	}
 }

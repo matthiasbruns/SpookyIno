@@ -27,7 +27,7 @@ public class EnemyActor : MonoBehaviour {
 	IEnumerator DropItem(ItemDrop drop){
 		var item = GameManager.Instance.itemDatabase.itemList[drop.item];
 		var spawned = GameObject.Instantiate(item.itemObject);
-		spawned.AddForce(new Vector2(Random.value -0.5f, Random.value -0.5f).normalized * Random.value * 2f);
+		spawned.AddForce(new Vector2(Random.value, Random.value));
 		yield return null;
 	}
 
