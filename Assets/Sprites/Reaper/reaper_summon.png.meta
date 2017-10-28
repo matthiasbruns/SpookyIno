@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: 9cf6228cc29d02344ae0a4fe34b98397
-timeCreated: 1509224361
+guid: 9da3b51b77fd9b942921c8a2252331bd
+timeCreated: 1509224214
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ghoul_walk_right_0
-    21300002: Ghoul_walk_right_1
-    21300004: Ghoul_walk_right_2
-    21300006: Ghoul_walk_right_3
-    21300008: Ghoul_walk_right_4
-    21300010: Ghoul_walk_right_5
-    21300012: Ghoul_walk_right_6
-    21300014: Ghoul_walk_right_7
+    21300000: reaper_summon_0
+    21300002: reaper_summon_1
+    21300004: reaper_summon_2
+    21300006: reaper_summon_3
+    21300008: reaper_summon_4
+    21300010: reaper_summon_5
+    21300012: reaper_summon_6
+    21300014: reaper_summon_7
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,7 +86,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ghoul_walk_right_0
+      name: reaper_summon_0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,7 +100,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_1
+      name: reaper_summon_1
       rect:
         serializedVersion: 2
         x: 80
@@ -114,7 +114,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_2
+      name: reaper_summon_2
       rect:
         serializedVersion: 2
         x: 160
@@ -128,7 +128,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_3
+      name: reaper_summon_3
       rect:
         serializedVersion: 2
         x: 240
@@ -142,7 +142,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_4
+      name: reaper_summon_4
       rect:
         serializedVersion: 2
         x: 320
@@ -156,7 +156,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_5
+      name: reaper_summon_5
       rect:
         serializedVersion: 2
         x: 400
@@ -170,7 +170,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_6
+      name: reaper_summon_6
       rect:
         serializedVersion: 2
         x: 480
@@ -184,7 +184,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_7
+      name: reaper_summon_7
       rect:
         serializedVersion: 2
         x: 560

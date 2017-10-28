@@ -7,14 +7,14 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 	public List<ItemDrop> itemDrops = new List<ItemDrop>();	
 	private HealthComponent healthComponent;
 	private AiComponent aiComponent;
-
+    
     public Vector2 LookAngle => transform.right; // TODO: Werden Enemies auch "Hände" haben?
 
     // UNITY
     void Awake() {
 		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
 		aiComponent = gameObject.GetOrCreateComponent<EnemyAI>();
-	}
+    }
 
     void OnCollisionEnter2D(Collision2D coll) {
 		if(coll.gameObject.tag.GetHashCode() == Tags.PLAYER_HASH){

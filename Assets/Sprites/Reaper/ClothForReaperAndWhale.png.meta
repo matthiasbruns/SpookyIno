@@ -1,17 +1,14 @@
 fileFormatVersion: 2
-guid: 9cf6228cc29d02344ae0a4fe34b98397
-timeCreated: 1509224361
+guid: 35549febe0078bd4b95fdda74e8b35d4
+timeCreated: 1509224122
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Ghoul_walk_right_0
-    21300002: Ghoul_walk_right_1
-    21300004: Ghoul_walk_right_2
-    21300006: Ghoul_walk_right_3
-    21300008: Ghoul_walk_right_4
-    21300010: Ghoul_walk_right_5
-    21300012: Ghoul_walk_right_6
-    21300014: Ghoul_walk_right_7
+    21300000: ClothForReaperAndWhale_0
+    21300002: ClothForReaperAndWhale_1
+    21300004: ClothForReaperAndWhale_2
+    21300006: ClothForReaperAndWhale_3
+    21300008: ClothForReaperAndWhale_4
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -86,7 +83,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ghoul_walk_right_0
+      name: ClothForReaperAndWhale_0
       rect:
         serializedVersion: 2
         x: 0
@@ -100,7 +97,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_1
+      name: ClothForReaperAndWhale_1
       rect:
         serializedVersion: 2
         x: 80
@@ -114,7 +111,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_2
+      name: ClothForReaperAndWhale_2
       rect:
         serializedVersion: 2
         x: 160
@@ -128,7 +125,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_3
+      name: ClothForReaperAndWhale_3
       rect:
         serializedVersion: 2
         x: 240
@@ -142,52 +139,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Ghoul_walk_right_4
+      name: ClothForReaperAndWhale_4
       rect:
         serializedVersion: 2
         x: 320
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Ghoul_walk_right_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Ghoul_walk_right_6
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Ghoul_walk_right_7
-      rect:
-        serializedVersion: 2
-        x: 560
         y: 0
         width: 80
         height: 80
