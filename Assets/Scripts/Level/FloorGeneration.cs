@@ -44,24 +44,24 @@ public class FloorGeneration : MonoBehaviour {
 
         int countExit = Random.Range(3, 6); // min 2 weil 1 ([0]) bereits durch spawn belegt var i = 1 in for schleife weil index stimmen muss
 
-        instPath.Add(CreateExit(7, 7, 0));
+        instPath.Add(CreateExit(levelRef.floorPathRatio/2, levelRef.floorPathRatio / 2, 0));
 
         for (int i = 1; i < countExit; i += 1) {
             int switchExit = Random.Range(0, 4);
-            if (switchExit == 0) { xTemp = 15; hasExitE = true; }
-            if (switchExit == 1) { yTemp = 15; hasExitS = true; }
+            if (switchExit == 0) { xTemp = levelRef.floorPathRatio - 1; hasExitE = true; }
+            if (switchExit == 1) { yTemp = levelRef.floorPathRatio - 1; hasExitS = true; }
             if (switchExit == 2) { xTemp = 0; hasExitW = true; }
             if (switchExit == 3) { yTemp = 0; hasExitN = true; }
 
             if (switchExit == 0 || switchExit == 2) {
                 do {
-                    yTemp = Random.Range(0, 16);
+                    yTemp = Random.Range(0, levelRef.floorPathRatio);
                 }
 
                 while (GetPath(xTemp, yTemp) != null);
             } else {
                 do {
-                    xTemp = Random.Range(0, 16);
+                    xTemp = Random.Range(0, levelRef.floorPathRatio);
                 }
 
                 while (GetPath(xTemp, yTemp) != null);
@@ -72,51 +72,38 @@ public class FloorGeneration : MonoBehaviour {
         }
         GenPath();
 
-        StartCoroutine(levelRef.SpawnNextFloor(levelRef.spawnInterval));
+        levelRef.SpawnNextFloor();
     }
 
     void GenPath() {
 
-        for (int j = 0; j < 20; j++) {
+        for (int j = 0; j < 200; j++) {
             ClearRoom();
             int interval = instPath.Count;
             for (int i = 0; i < interval; i++) {
                 instPath[i].GenPath();
             }
 
-            interval = instGenPath.Count;
-            for (int i = 0; i < interval; i++) {
+            for (int i = 0; i < instGenPath.Count; i++) {
                 instGenPath[i].GenPath();
-            }
-
-            if ((hasExitE ? 1 : 0) + (hasExitW ? 1 : 0) + (hasExitN ? 1 : 0) + (hasExitS ? 1 : 0) < 2) {
-                //Debug.Log("sad: " + this.xPos + " " + this.yPos);
-                continue;
             }
 
             CheckLinked();
             CheckLinked();
 
             if (IsGood()) {
-                StartCoroutine(levelRef.SpawnNextFloor(levelRef.spawnInterval));
-                //Debug.Log("good: " + this.xPos + " " + this.yPos);
+                levelRef.SpawnNextFloor();
                 break;
             }
-            /*
-            if (j == 199) {
-                //StartCoroutine(levelRef.SpawnNextFloor(levelRef.spawnInterval));
-                Debug.Log("bad:" + this.xPos + " " + this.yPos);
-            }
-            */
         }
 
     }
 
     void ClearRoom() {
         link.Clear();
-
-        for (int i = 0; i < instGenPath.Count; i++) {
-            Destroy(instGenPath[i]);
+        
+        foreach (PathGeneration path in instGenPath) {
+            Destroy(path.gameObject);
         }
         instGenPath.Clear();
 
@@ -135,8 +122,8 @@ public class FloorGeneration : MonoBehaviour {
     public void ClearFloor() {
         ClearRoom();
 
-        for (int i = 0; i < instPath.Count; i++) {
-            Destroy(instPath[i]);
+        foreach (PathGeneration path in instPath) {
+            Destroy(path.gameObject);
         }
         instPath.Clear();
     }
@@ -188,17 +175,17 @@ public class FloorGeneration : MonoBehaviour {
 
             bool added = false;
 
-            for (int j = 0; j < 16; j++) {
+            for (int j = 0; j < levelRef.floorPathRatio; j++) {
                 PathGeneration path = null;
                 if (i == 0) path = GetPath(0, j);
-                if (i == 1) path = GetPath(15, j);
+                if (i == 1) path = GetPath(levelRef.floorPathRatio - 1, j);
                 if (i == 2) path = GetPath(j, 0);
-                if (i == 3) path = GetPath(j, 15);
+                if (i == 3) path = GetPath(j, levelRef.floorPathRatio - 1);
                 if (path == null) continue;
 
-                if (i == 0) { exitTempE.Add(CreateExit(15, j, nextExit)); added = true; hasExitE = true; }
+                if (i == 0) { exitTempE.Add(CreateExit(levelRef.floorPathRatio - 1, j, nextExit)); added = true; hasExitE = true; }
                 if (i == 1) { exitTempW.Add(CreateExit(0, j, nextExit)); added = true; hasExitW = true; }
-                if (i == 2) { exitTempS.Add(CreateExit(j, 15, nextExit)); added = true; hasExitS = true; }
+                if (i == 2) { exitTempS.Add(CreateExit(j, levelRef.floorPathRatio - 1, nextExit)); added = true; hasExitS = true; }
                 if (i == 3) { exitTempN.Add(CreateExit(j, 0, nextExit)); added = true; hasExitN = true; }
             }
             if (added) nextExit++;
@@ -216,12 +203,12 @@ public class FloorGeneration : MonoBehaviour {
     public PathGeneration GetPath(int xPos, int yPos) {
 
         foreach (PathGeneration R in instPath) {
-            if (R.xPos == xPos && R.yPos == yPos) {
+            if (R.transform.position.x == xPos && R.transform.position.y == yPos) {
                 return R;
             }
         }
         foreach (PathGeneration R in instGenPath) {
-            if (R.xPos == xPos && R.yPos == yPos) {
+            if (R.transform.position.x == xPos && R.transform.position.y == yPos) {
                 return R;
             }
         }
@@ -251,7 +238,7 @@ public class FloorGeneration : MonoBehaviour {
     }
 
     public void SetLinked(int i, int j, bool newInput) {
-
+        
         link[Tuple.Create(i, j)] = newInput;
         link[Tuple.Create(j, i)] = newInput;
 

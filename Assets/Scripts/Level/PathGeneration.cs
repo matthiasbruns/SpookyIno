@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PathGeneration : MonoBehaviour {
-    
-    FloorGeneration floorRef; 
+
+    FloorGeneration floorRef;
+    LevelGenerator levelRef;
     public int pathIdx;
     public int xPos { get; private set; }
     public int yPos { get; private set; }
@@ -13,6 +14,7 @@ public class PathGeneration : MonoBehaviour {
     void Awake() {
         ///Constant
         floorRef = transform.parent.GetComponent<FloorGeneration>();
+        levelRef = floorRef.transform.parent.GetComponent<LevelGenerator>();
         xPos = Mathf.RoundToInt(transform.position.x);
         yPos = Mathf.RoundToInt(transform.position.y);
 
@@ -28,7 +30,7 @@ public class PathGeneration : MonoBehaviour {
         PathGeneration exitColl;
 
         exitColl = floorRef.GetPath(xPos + 1, yPos); 
-        if (exitColl == null && xPos < 15) {
+        if (exitColl == null && xPos < levelRef.floorPathRatio - 1) {
             spawnDirection.Add("E");
         }
         exitColl = floorRef.GetPath(xPos - 1, yPos);
@@ -36,7 +38,7 @@ public class PathGeneration : MonoBehaviour {
             spawnDirection.Add("W");
         }
         exitColl = floorRef.GetPath(xPos, yPos + 1);
-        if (exitColl == null && yPos < 15) {
+        if (exitColl == null && yPos < levelRef.floorPathRatio - 1) {
             spawnDirection.Add("S");
         }
         exitColl = floorRef.GetPath(xPos, yPos - 1);
@@ -77,8 +79,8 @@ public class PathGeneration : MonoBehaviour {
             if (nextOne != null) {
                 if (nextOne.xPos == 0) floorRef.hasExitW = true;
                 if (nextOne.yPos == 0) floorRef.hasExitN = true;
-                if (nextOne.xPos == 15) floorRef.hasExitE = true;
-                if (nextOne.yPos == 15) floorRef.hasExitS = true;
+                if (nextOne.xPos == levelRef.floorPathRatio - 1) floorRef.hasExitE = true;
+                if (nextOne.yPos == levelRef.floorPathRatio - 1) floorRef.hasExitS = true;
             }
             nextOne.CheckCollision();
         }
@@ -103,7 +105,6 @@ public class PathGeneration : MonoBehaviour {
         if (exitIDOther != null) {
             floorRef.SetLinked(pathIdx, exitIDOther.pathIdx, true);
         }
-
 
     }
 }
