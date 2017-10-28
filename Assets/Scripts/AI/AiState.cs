@@ -5,7 +5,18 @@ using UnityEngine;
 
 public abstract class AiState : ScriptableObject {
 
-    public abstract IEnumerator Tick(GameObject owner);
+    private AiState nextState;
+    protected bool isTransitionAllowed = false;
+    public AiState NextState{
+        get{
+            return nextState;
+        } 
+        set{
+            nextState = value;
+        }
+     }
 
-    public abstract bool IsTransisionAllowed();
+    public abstract void Tick(GameObject owner);
+
+    public bool IsTransisionAllowed() => isTransitionAllowed;
 }

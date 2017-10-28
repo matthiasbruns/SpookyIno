@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07738e8df5f64bdcb8f83216b3d6bcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 06ef71ace953f46ad9a7d4ac7159cdc5, type: 3}
   m_Name: WanderState
   m_EditorClassIdentifier: 
   minDistance: 1e-45

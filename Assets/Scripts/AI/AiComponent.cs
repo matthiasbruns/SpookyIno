@@ -11,8 +11,10 @@ public class AiComponent : MonoBehaviour {
 		if(currentState != null){
 			currentState.Tick(gameObject);
 			if(currentState.IsTransisionAllowed()){
-				// TriggerTransition();
+				currentState = currentState.NextState;
 			}
+		} else {
+			currentState = initialState;
 		}
 	}
     protected void TriggerTransition(AiState next){

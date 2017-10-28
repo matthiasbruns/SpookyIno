@@ -3,19 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class EnemyAI : AiComponent {
+public class EnemyAI : AiComponent, HasMovementAi {
 
 	public EnemyAiConfig aiConfig;
 
-	private NavMeshAgent navMeshAgent;
+	public AILerp movementAi;
 
-	void Awake(){
-		navMeshAgent = GetComponent<NavMeshAgent>();
+    public Transform Target { 
+		get {
+			return movementAi.target; 
+		} 
+		set {
+			if(movementAi.target != value){
+				movementAi.target = value;
+			}
+			movementAi.SearchPath();
+		} 
+	}
+
+    void Awake(){
+		if(movementAi == null){
+			movementAi = GetComponent<AILerp>();
+			if(movementAi == null){
+				movementAi = GetComponentInParent<AILerp>();
+			}
+		}
+
 		if(aiConfig.idleState == null){
 			 Debug.LogError("idleState is not set");
 		}
-		if(aiConfig.wanderState == null){
+		if(aiConfig.chaseState == null){
 			 Debug.LogError("wanderState is not set");
 		}
 		if(aiConfig.attackState == null){
@@ -23,5 +40,8 @@ public class EnemyAI : AiComponent {
 		}
 
 		initialState = aiConfig.idleState;
+		aiConfig.idleState.NextState = aiConfig.chaseState;
+		aiConfig.chaseState.NextState = aiConfig.attackState;
+		aiConfig.attackState.NextState = initialState;
 	}
 }
