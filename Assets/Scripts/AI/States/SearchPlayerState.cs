@@ -8,11 +8,8 @@ public class SearchPlayerState : AiState
     public float wanderRadius = 5f;
     public float wanderMinDistance = 1f;
 	public GameObject targetPrefab;
-
     private Vector2 startPosition;
-
     private GameObject player;
-
     private HasMovementAi movementAi;
     private GameObject wanderTarget;
 
