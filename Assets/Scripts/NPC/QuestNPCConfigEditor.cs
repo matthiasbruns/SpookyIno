@@ -65,6 +65,8 @@ public class QuestNPCEditor : EditorWindow {
             config.questId = EditorGUILayout.IntField ("Quest ID", config.questId);
             config.questText = EditorGUILayout.TextField("Quest Text", config.questText as string);
             config.questSuccessText = EditorGUILayout.TextField("Quest Success Text", config.questSuccessText as string);
+            config.startCondition  = EditorGUILayout.ObjectField ("Optional Start Condition", config.startCondition , typeof (ObjectiveCondition), false) as ObjectiveCondition;
+            config.finishCondition  = EditorGUILayout.ObjectField ("Quest Finish Condition", config.finishCondition , typeof (ObjectiveCondition), false) as ObjectiveCondition;
             GUILayout.EndVertical ();
 
             if (GUI.changed) 

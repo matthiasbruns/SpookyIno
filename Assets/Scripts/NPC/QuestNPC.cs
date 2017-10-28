@@ -29,12 +29,16 @@ class QuestNPC : NPC {
         base.Use(executer);
 
         foreach(QuestOutputComponent output in outputComponents) {
-            if(!didReadQuest){
+            if(!didReadQuest && (npcConfig.startCondition == null || npcConfig.startCondition.Check(gameObject))) {
                 output.Content = npcConfig.questText;
                 didReadQuest = true;
-            } else if(!didFinishQuest){
-                // TODO check if quest can be finished
+            } else if(didReadQuest && !didFinishQuest && npcConfig.finishCondition.Check(gameObject)) {
+                output.Content = npcConfig.questSuccessText;
+                didFinishQuest = true;
+            } else if (didReadQuest && !didFinishQuest){
                 output.Content = npcConfig.questReminderTexts[Random.Range(0, npcConfig.questReminderTexts.Length)];
+            } else {
+                output.Content = npcConfig.chitChatTexts[Random.Range(0, npcConfig.chitChatTexts.Length)];
             }
             
         }

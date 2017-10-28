@@ -8,5 +8,7 @@ public class QuestNPCConfig : ScriptableObject {
     public string[] questReminderTexts;
     public string questSuccessText;
     public string[]  chitChatTexts;
+    public ObjectiveCondition startCondition;
+    public ObjectiveCondition finishCondition;
 
 }

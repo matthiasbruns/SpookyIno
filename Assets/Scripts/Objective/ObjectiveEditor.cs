@@ -88,11 +88,9 @@ public class ObjectiveEditor : EditorWindow {
                 GUILayout.EndHorizontal();
 
                 objectiveList.objectivesList[viewIndex - 1].objectiveName = EditorGUILayout.TextField("Objective Name", objectiveList.objectivesList[viewIndex - 1].objectiveName as string);
-                objectiveList.objectivesList[viewIndex - 1].boss = EditorGUILayout.ObjectField("Target Enemy", objectiveList.objectivesList[viewIndex - 1].boss, typeof(EnemyActor), false) as EnemyActor; //TODO?
                 GUILayout.Space(10);
 
                 GUILayout.BeginHorizontal();
-                objectiveList.objectivesList[viewIndex - 1].isCompleted = (bool)EditorGUILayout.Toggle("Unique", objectiveList.objectivesList[viewIndex - 1].isCompleted, GUILayout.ExpandWidth(false));
                 objectiveList.objectivesList[viewIndex - 1].objectiveItemId = EditorGUILayout.IntField("Drop Item ID", objectiveList.objectivesList[viewIndex - 1].objectiveItemId, GUILayout.ExpandWidth(false)); //TODO?
                 GUILayout.EndHorizontal();
 

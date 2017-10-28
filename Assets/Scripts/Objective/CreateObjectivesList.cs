@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEditor;
 
 public class CreateObjectivesList {
-    [MenuItem("Assets/Create/Objectives/Objective List")]
     public static ObjectiveList Create() {
         ObjectiveList asset = ScriptableObject.CreateInstance<ObjectiveList>();
 

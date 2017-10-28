@@ -10,21 +10,19 @@ public class NPC : MonoBehaviour, Interactable {
 	void Awake() {
 		outline = gameObject.GetComponent<SpriteOutline>();
 	}
-    public bool CanUse => isInteractable;
+	public bool CanUse => isInteractable;
 
-    public bool CanHighlight => isInteractable;
+	public bool CanHighlight => isInteractable;
 
-    public virtual void Highlight(GameObject executer, bool activate)
-    {
+	public virtual void Highlight(GameObject executer, bool activate) {
 		if(activate) {
 			outline.outlineSize = 2;
 		} else {
 			outline.outlineSize = 0;
 		}
-    }
+	}
 
-    public virtual void Use(GameObject executer)
-    {
+  public virtual void Use(GameObject executer){
 		Debug.Log("USE", this);
-    }
+  }
 }

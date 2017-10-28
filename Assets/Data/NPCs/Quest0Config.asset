@@ -13,9 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: 0
   questText: Lorem Ipsum?
-  questReminderTexts:
-  - Get going!
-  - What are you starting at?
+  questReminderTexts: []
   questSuccessText: Well done Mr. Freeman!
   chitChatTexts:
   - Fuck off!
+  startCondition: {fileID: 0}
+  finishCondition: {fileID: 114924124460173708, guid: 6ea01a0d0d8dd49179cb59b7c2b82d7d,
+    type: 2}

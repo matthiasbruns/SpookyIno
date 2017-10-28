@@ -59,6 +59,8 @@ GameObject:
   - component: {fileID: 114149862938311522}
   - component: {fileID: 212575664412553870}
   - component: {fileID: 95421083182328852}
+  - component: {fileID: 114225367325552842}
+  - component: {fileID: 114185880182405600}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -220,6 +222,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -233,6 +236,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -246,6 +250,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -259,6 +264,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
 --- !u!114 &114149862938311522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -271,6 +277,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
+--- !u!114 &114185880182405600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541730682870350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64cbf38281a1443c6a8d0eba407a2905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionRadius: 2.5
+  interactionLayers:
+    serializedVersion: 2
+    m_Bits: 2048
+--- !u!114 &114225367325552842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541730682870350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737c06f759d1d4f4198e2fc2a5835215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: c96479b6123a0214a9aa39cc3afd8fe4, type: 2}
+  currentObjective:
+    objectiveName: 
+    objectiveItemId: 0
+  completedObjectives: []
 --- !u!114 &114509109199143494
 MonoBehaviour:
   m_ObjectHideFlags: 1
