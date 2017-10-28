@@ -25,8 +25,7 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if((mask.value & 1<<c.gameObject.layer) == 1<<c.gameObject.layer){
-		}
+		if(ignoreLayers.HasLayer(other.gameObject.layer)) return;
 
 		List<HasHealth> hasHealths;
         other.gameObject.GetInterfaces<HasHealth>(out hasHealths);
