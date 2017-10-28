@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-class IdleState : AiState
+public class IdleState : AiState
 {
     public override IEnumerator Tick(GameObject owner){
         yield return null;

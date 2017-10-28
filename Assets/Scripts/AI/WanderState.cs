@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-class WanderState : AiState
-{
+public class WanderState : AiState {
     public float minDistance = float.Epsilon;
     private bool targetArrived = false;
     private Transform target;
