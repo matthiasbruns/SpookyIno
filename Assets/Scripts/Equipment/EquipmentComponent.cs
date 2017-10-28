@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EquipmentComponent : MonoBehaviour {
 
-	public InventoryItem secondaryHand = null;
 	public InventoryItem mainHand = null;
 
 	private InventoryComponent inventory;
@@ -40,9 +39,7 @@ public class EquipmentComponent : MonoBehaviour {
 	}
 
 	void OnFire2(){
-		if(secondaryHand != null){
-			secondaryHand.action?.execute(gameObject);
-		}
+		
 	}
 
 	void OnInventoryChange(List<InventorySlot> slots){
@@ -54,7 +51,7 @@ public class EquipmentComponent : MonoBehaviour {
 		//TODO: might be complex (check other hand, check item type weapon/shield? single, dual hand?)
 		if(!item.isEquipment) return false;
 
-		if (item.isWeapon && (CanEquipWeapon(mainHand) || CanEquipWeapon(secondaryHand))){
+		if (item.isWeapon && (CanEquipWeapon(mainHand))){
 			return true;
 		}
 
@@ -72,9 +69,7 @@ public class EquipmentComponent : MonoBehaviour {
 				if (item.isWeapon){
 					if(CanEquipWeapon(mainHand)) {
 						mainHand = item;	
-					} else if(CanEquipWeapon(secondaryHand)) {
-						secondaryHand = item;	
-					}
+					} 
 				}				
 			}
 		}
