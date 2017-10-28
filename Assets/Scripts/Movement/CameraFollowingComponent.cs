@@ -4,9 +4,6 @@ using System.Collections.Generic;
 
 public class CameraFollowingComponent : MonoBehaviour {
 
-    public GameObject CanvasHolder;
-    public float CanvasHolderFactor = -5f;
-
     public List<Transform> Following = new List<Transform>() {
         null
     };
@@ -61,10 +58,6 @@ public class CameraFollowingComponent : MonoBehaviour {
         depthMin -= DepthOffset;
         diff.z = depthMin - transform.position.z;
         transform.position = transform.position + diff * PositionSmoothing;
-
-        if (CanvasHolder != null) {
-            CanvasHolder.transform.position = diff * CanvasHolderFactor;
-        }
 
         float size = 0f;
 

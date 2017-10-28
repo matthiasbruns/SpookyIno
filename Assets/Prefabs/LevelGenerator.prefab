@@ -52,5 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasicWalls:
-  - {fileID: 4262496921257222, guid: 8be4eb189416a854981076b3f92efa3c, type: 2}
+  - {fileID: 0}
   Seed: 0
