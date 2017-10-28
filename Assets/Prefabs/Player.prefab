@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59c6e465106d43c4ac4e8ac3ee19506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hand: {fileID: 0}
 --- !u!114 &114509109199143494
 MonoBehaviour:
   m_ObjectHideFlags: 1
