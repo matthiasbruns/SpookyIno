@@ -10,9 +10,10 @@ public class AudioManager : MonoBehaviour {
     public AudioMixer masterMixer;
 
     public Sound[] sounds;
+    SoundList database;
 
     void Awake() {
-
+        database = GameManager.Instance.audioDatabase;
         if (instance == null) {
             instance = this;
         } else {
@@ -21,13 +22,22 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound s in sounds) {
+        for(int i = 0; i<database.Count(); i++) {
+            database.soundList[i].source = gameObject.AddComponent<AudioSource>();
+            database.soundList[i].source.clip = database.soundList[i].clip;
+            database.soundList[i].source.outputAudioMixerGroup = database.soundList[i].mixer;
+            database.soundList[i].source.volume = database.soundList[i].volume;
+            database.soundList[i].source.loop = database.soundList[i].loop;
+            sounds.Add(s);
+        }
+        /*foreach (Sound s in database) {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.outputAudioMixerGroup = s.mixer;
             s.source.volume = s.volume;
             s.source.loop = s.loop;
-        }
+            sounds.Add(s);
+        }*/
     }
 
     public void Start() {

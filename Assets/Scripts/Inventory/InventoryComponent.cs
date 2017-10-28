@@ -15,7 +15,7 @@ public class InventoryComponent : MonoBehaviour {
     private List<InventorySlot> slotsMaterials = new List<InventorySlot>();
     public int MaxSlotsMaterials = 15;
     Vector3 audioPosition;
-    AudioManager audioManager;
+    SoundList audioManager;
 
     void Awake(){
 		database = GameManager.Instance.itemDatabase;

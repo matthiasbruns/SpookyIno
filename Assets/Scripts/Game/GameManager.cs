@@ -27,6 +27,6 @@ public class GameManager : MonoBehaviour {
 	public ChunkTypeDataList chunkOutsideDatabase;
 	public ChunkTypeDataList chunkDungeonDatabase;
     public ObjectiveList objectiveDatabase;
-    public AudioManager audioDatabase;
+    public SoundList audioDatabase;
 
 }
