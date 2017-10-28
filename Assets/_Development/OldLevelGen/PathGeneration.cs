@@ -7,16 +7,15 @@ public class PathGeneration : MonoBehaviour {
     FloorGeneration floorRef;
     LevelGenerator levelRef;
     public int pathIdx;
-    public int xPos { get; private set; }
-    public int yPos { get; private set; }
+    public int xPos, yPos;
 
     // Use this for initialization
     void Awake() {
         ///Constant
         floorRef = transform.parent.GetComponent<FloorGeneration>();
         levelRef = floorRef.transform.parent.GetComponent<LevelGenerator>();
-        xPos = Mathf.RoundToInt(transform.position.x);
-        yPos = Mathf.RoundToInt(transform.position.y);
+        xPos = 0;
+        yPos = 0;
 
         ///State
         pathIdx = 0;
@@ -25,24 +24,22 @@ public class PathGeneration : MonoBehaviour {
     public void GenPath() {
 
         List<string> spawnDirection = new List<string>();
-        int xPos = Mathf.RoundToInt(transform.position.x);
-        int yPos = Mathf.RoundToInt(transform.position.y);
         PathGeneration exitColl;
 
-        exitColl = floorRef.GetPath(xPos + 1, yPos); 
-        if (exitColl == null && xPos < levelRef.floorPathRatio - 1) {
+        exitColl = floorRef.GetPath(xPos + 1, yPos);
+        if (exitColl == null && xPos < levelRef.floorPathRatio - 1 && xPos > 0) {
             spawnDirection.Add("E");
         }
         exitColl = floorRef.GetPath(xPos - 1, yPos);
-        if (exitColl == null && xPos > 0) {
+        if (exitColl == null && xPos > 0 && xPos < levelRef.floorPathRatio - 1) {
             spawnDirection.Add("W");
         }
-        exitColl = floorRef.GetPath(xPos, yPos + 1);
-        if (exitColl == null && yPos < levelRef.floorPathRatio - 1) {
+            exitColl = floorRef.GetPath(xPos, yPos + 1);
+        if (exitColl == null && yPos < levelRef.floorPathRatio - 1 && yPos > 0) {
             spawnDirection.Add("S");
         }
         exitColl = floorRef.GetPath(xPos, yPos - 1);
-        if (exitColl == null && yPos > 0) {
+        if (exitColl == null && yPos > 0 && yPos < levelRef.floorPathRatio - 1) {
             spawnDirection.Add("N");
         }
 
@@ -77,10 +74,10 @@ public class PathGeneration : MonoBehaviour {
             }
 
             if (nextOne != null) {
-                if (nextOne.xPos == 0) floorRef.hasExitW = true;
-                if (nextOne.yPos == 0) floorRef.hasExitN = true;
-                if (nextOne.xPos == levelRef.floorPathRatio - 1) floorRef.hasExitE = true;
-                if (nextOne.yPos == levelRef.floorPathRatio - 1) floorRef.hasExitS = true;
+                if (nextOne.transform.position.x == 0) floorRef.hasExitW = true;
+                if (nextOne.transform.position.y == 0) floorRef.hasExitN = true;
+                if (nextOne.transform.position.x == levelRef.floorPathRatio - 1) floorRef.hasExitE = true;
+                if (nextOne.transform.position.y == levelRef.floorPathRatio - 1) floorRef.hasExitS = true;
             }
             nextOne.CheckCollision();
         }
@@ -89,19 +86,19 @@ public class PathGeneration : MonoBehaviour {
     void CheckCollision() {
         PathGeneration exitIDOther;
 
-        exitIDOther = floorRef.GetPath(xPos + 1, yPos);
+        exitIDOther = floorRef.GetPath(Mathf.RoundToInt(transform.position.x) + 1, Mathf.RoundToInt(transform.position.y));
         if (exitIDOther != null) {
             floorRef.SetLinked(pathIdx, exitIDOther.pathIdx, true);
         }
-        exitIDOther = floorRef.GetPath(xPos - 1, yPos);
+        exitIDOther = floorRef.GetPath(Mathf.RoundToInt(transform.position.x) - 1, Mathf.RoundToInt(transform.position.y));
         if (exitIDOther != null) {
             floorRef.SetLinked(pathIdx, exitIDOther.pathIdx, true);
         }
-        exitIDOther = floorRef.GetPath(xPos, yPos - 1);
+        exitIDOther = floorRef.GetPath(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y) - 1);
         if (exitIDOther != null) {
             floorRef.SetLinked(pathIdx, exitIDOther.pathIdx, true);
         }
-        exitIDOther = floorRef.GetPath(xPos, yPos + 1);
+        exitIDOther = floorRef.GetPath(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y) + 1);
         if (exitIDOther != null) {
             floorRef.SetLinked(pathIdx, exitIDOther.pathIdx, true);
         }

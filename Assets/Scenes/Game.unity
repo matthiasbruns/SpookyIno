@@ -576,6 +576,8 @@ GameObject:
   - component: {fileID: 304784336}
   - component: {fileID: 304784338}
   - component: {fileID: 304784337}
+  - component: {fileID: 304784339}
+  - component: {fileID: 304784340}
   m_Layer: 5
   m_Name: IconBottom
   m_TagString: Untagged
@@ -634,6 +636,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 304784335}
+--- !u!114 &304784339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304784335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef8906e376ce5c45ada6c3a5d5f51b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Equipment: {fileID: 0}
+  Index: -1
+--- !u!114 &304784340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304784335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33da4c2b54febea4ca1631b661cdcd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slot:
+    amount: 0
+    item:
+      itemName: 
+      itemIcon: {fileID: 0}
+      itemObject: {fileID: 0}
+      isUnique: 0
+      isIndestructible: 0
+      isQuestItem: 0
+      isEquipment: 0
+      isWeapon: 0
+      weaponSlotSize: 0
+      isStackable: 0
+      destroyOnUse: 0
+      encumbranceValue: 0
+      action: {fileID: 0}
+  FallbackItem:
+    itemName: 
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
 --- !u!1 &346287057
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +785,8 @@ GameObject:
   - component: {fileID: 372547580}
   - component: {fileID: 372547582}
   - component: {fileID: 372547581}
+  - component: {fileID: 372547583}
+  - component: {fileID: 372547584}
   m_Layer: 5
   m_Name: IconRight
   m_TagString: Untagged
@@ -787,6 +845,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 372547579}
+--- !u!114 &372547583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372547579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef8906e376ce5c45ada6c3a5d5f51b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Equipment: {fileID: 0}
+  Index: -1
+--- !u!114 &372547584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372547579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33da4c2b54febea4ca1631b661cdcd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slot:
+    amount: 0
+    item:
+      itemName: 
+      itemIcon: {fileID: 0}
+      itemObject: {fileID: 0}
+      isUnique: 0
+      isIndestructible: 0
+      isQuestItem: 0
+      isEquipment: 0
+      isWeapon: 0
+      weaponSlotSize: 0
+      isStackable: 0
+      destroyOnUse: 0
+      encumbranceValue: 0
+      action: {fileID: 0}
+  FallbackItem:
+    itemName: 
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
 --- !u!1 &441164968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,6 +3026,8 @@ GameObject:
   - component: {fileID: 1556546573}
   - component: {fileID: 1556546575}
   - component: {fileID: 1556546574}
+  - component: {fileID: 1556546576}
+  - component: {fileID: 1556546577}
   m_Layer: 5
   m_Name: IconLeft
   m_TagString: Untagged
@@ -2972,6 +3086,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556546572}
+--- !u!114 &1556546576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556546572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef8906e376ce5c45ada6c3a5d5f51b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Equipment: {fileID: 0}
+  Index: -1
+--- !u!114 &1556546577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1556546572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33da4c2b54febea4ca1631b661cdcd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slot:
+    amount: 0
+    item:
+      itemName: 
+      itemIcon: {fileID: 0}
+      itemObject: {fileID: 0}
+      isUnique: 0
+      isIndestructible: 0
+      isQuestItem: 0
+      isEquipment: 0
+      isWeapon: 0
+      weaponSlotSize: 0
+      isStackable: 0
+      destroyOnUse: 0
+      encumbranceValue: 0
+      action: {fileID: 0}
+  FallbackItem:
+    itemName: 
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
 --- !u!1 &1577808892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3598,6 +3766,8 @@ GameObject:
   - component: {fileID: 1826699326}
   - component: {fileID: 1826699328}
   - component: {fileID: 1826699327}
+  - component: {fileID: 1826699329}
+  - component: {fileID: 1826699330}
   m_Layer: 5
   m_Name: IconTop
   m_TagString: Untagged
@@ -3656,6 +3826,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1826699325}
+--- !u!114 &1826699329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1826699325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef8906e376ce5c45ada6c3a5d5f51b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Equipment: {fileID: 0}
+  Index: -1
+--- !u!114 &1826699330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1826699325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33da4c2b54febea4ca1631b661cdcd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Slot:
+    amount: 0
+    item:
+      itemName: 
+      itemIcon: {fileID: 0}
+      itemObject: {fileID: 0}
+      isUnique: 0
+      isIndestructible: 0
+      isQuestItem: 0
+      isEquipment: 0
+      isWeapon: 0
+      weaponSlotSize: 0
+      isStackable: 0
+      destroyOnUse: 0
+      encumbranceValue: 0
+      action: {fileID: 0}
+  FallbackItem:
+    itemName: 
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
 --- !u!1 &1883729672
 GameObject:
   m_ObjectHideFlags: 0

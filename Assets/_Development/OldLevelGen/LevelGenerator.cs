@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-        Amount = 1999;
+        Amount = 50;
         spawnInterval = 10f;
 
         EmptyX.Add(0);
@@ -33,7 +33,7 @@ public class LevelGenerator : MonoBehaviour {
     }
 
     public void SpawnNextFloor() {
-        if (EmptyX.Count >= Amount) return;
+        if (floorList.Count >= Amount) return;
 
         int lastX = EmptyX[EmptyX.Count - 1];
         int lastY = EmptyY[EmptyY.Count - 1];
@@ -52,7 +52,7 @@ public class LevelGenerator : MonoBehaviour {
         //show_debug_message("nextOld: " + string(nextX) + " " + string(nextY));
         //show_debug_message("nextNew: " + string(EmptyX[positionI - 1]) + " " + string(EmptyY[positionI - 1]));
         FloorGeneration newObj = GetFloor(nextX, nextY);
-        if (newObj != null && newObj.GetProtected()) return; 
+        if (newObj != null) return; 
 
         /*var dir=""
         if (nextX>lastX) dir="W";
@@ -63,8 +63,6 @@ public class LevelGenerator : MonoBehaviour {
         if (newObj == null) {
             newObj = Instantiate(FloorTile, new Vector3(nextX * floorPathRatio, nextY * floorPathRatio, 1), Quaternion.identity, transform).GetComponent<FloorGeneration>();
             floorList.Add(newObj);
-            floorList[floorList.Count - 1].lastX = nextX;
-            floorList[floorList.Count - 1].lastY = nextY;
         }
         newObj.ClearFloor();
         newObj.GenExit();

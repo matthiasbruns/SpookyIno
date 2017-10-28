@@ -9,28 +9,17 @@ public class FloorGeneration : MonoBehaviour {
     //Constant
     public GameObject PathTile;
     LevelGenerator levelRef;
-    public int xPos { get; private set; }
-    public int yPos { get; private set; }
-    public int lastX, lastY;
 
     //State
     public List<PathGeneration> instPath = new List<PathGeneration>();
     public List<PathGeneration> instGenPath = new List<PathGeneration>();
     Dictionary<LinkTuple, bool> link = new Dictionary<LinkTuple, bool>();
-    public bool babyCover;
 
     public bool hasExitN, hasExitS, hasExitW, hasExitE;
 
     // Use this for initialization
     void Awake() {
         levelRef = transform.parent.GetComponent<LevelGenerator>();
-        babyCover = true;
-        StartCoroutine(StopProtect(30f));
-    }
-
-    public IEnumerator StopProtect(float time) {
-        yield return new WaitForSeconds(time);
-        babyCover = false;
     }
 
     public void StartRoom() {
@@ -167,29 +156,31 @@ public class FloorGeneration : MonoBehaviour {
         int nextExit = 0;
         for (int i = 0; i < 4; i++) {
             FloorGeneration f = null;
-            if (i == 0) f = levelRef.GetFloor(xPos + 1, yPos);
-            if (i == 1) f = levelRef.GetFloor(xPos - 1, yPos);
-            if (i == 2) f = levelRef.GetFloor(xPos, yPos + 1);
-            if (i == 3) f = levelRef.GetFloor(xPos, yPos - 1);
+            if (i == 0) f = levelRef.GetFloor(Mathf.RoundToInt(this.transform.position.x) + 1 * levelRef.floorPathRatio, Mathf.RoundToInt(this.transform.position.y));
+            if (i == 1) f = levelRef.GetFloor(Mathf.RoundToInt(this.transform.position.x) - 1 * levelRef.floorPathRatio, Mathf.RoundToInt(this.transform.position.y));
+            if (i == 2) f = levelRef.GetFloor(Mathf.RoundToInt(this.transform.position.x), Mathf.RoundToInt(this.transform.position.y) + 1 * levelRef.floorPathRatio);
+            if (i == 3) f = levelRef.GetFloor(Mathf.RoundToInt(this.transform.position.x), Mathf.RoundToInt(this.transform.position.y) - 1 * levelRef.floorPathRatio);
             if (f == null) continue;
 
             bool added = false;
 
             for (int j = 0; j < levelRef.floorPathRatio; j++) {
                 PathGeneration path = null;
-                if (i == 0) path = GetPath(0, j);
-                if (i == 1) path = GetPath(levelRef.floorPathRatio - 1, j);
-                if (i == 2) path = GetPath(j, 0);
-                if (i == 3) path = GetPath(j, levelRef.floorPathRatio - 1);
-                if (path == null) continue;
+                if (i == 0) path = f.GetPath(0, j);
+                if (i == 1) path = f.GetPath(levelRef.floorPathRatio - 1, j);
+                if (i == 2) path = f.GetPath(j, 0);
+                if (i == 3) path = f.GetPath(j, levelRef.floorPathRatio - 1);
+                if (path == null) continue; 
 
-                if (i == 0) { exitTempE.Add(CreateExit(levelRef.floorPathRatio - 1, j, nextExit)); added = true; hasExitE = true; }
-                if (i == 1) { exitTempW.Add(CreateExit(0, j, nextExit)); added = true; hasExitW = true; }
-                if (i == 2) { exitTempS.Add(CreateExit(j, levelRef.floorPathRatio - 1, nextExit)); added = true; hasExitS = true; }
-                if (i == 3) { exitTempN.Add(CreateExit(j, 0, nextExit)); added = true; hasExitN = true; }
+                if (i == 0) { exitTempE.Add(CreateExit(levelRef.floorPathRatio - 1, j, nextExit)); added = true; hasExitE = true; Debug.Log("Stress"); }
+                if (i == 1) { exitTempW.Add(CreateExit(0, j, nextExit)); added = true; hasExitW = true; Debug.Log("Stress"); }
+                if (i == 2) { exitTempS.Add(CreateExit(j, levelRef.floorPathRatio - 1, nextExit)); added = true; hasExitS = true; Debug.Log("Stress"); }
+                if (i == 3) { exitTempN.Add(CreateExit(j, 0, nextExit)); added = true; hasExitN = true; Debug.Log("Stress"); }
+                
             }
             if (added) nextExit++;
         }
+        
 
         if (hasExitN == true) ShufflePath(exitTempN);
         if (hasExitS == true) ShufflePath(exitTempS);
@@ -216,11 +207,11 @@ public class FloorGeneration : MonoBehaviour {
     }
 
     public PathGeneration CreateExit(int xPath, int yPath, int pathValue) {
-
-
-        PathGeneration path = Instantiate(PathTile, new Vector3(xPos + xPath, yPos + yPath, 0), Quaternion.identity, transform).GetComponent<PathGeneration>();
+        
+        PathGeneration path = Instantiate(PathTile, new Vector3(this.transform.position.x + xPath, this.transform.position.y + yPath, 0), Quaternion.identity, transform).GetComponent<PathGeneration>();
         //  instance_create_depth(this.x + (sprite_get_width(spr_path) * xExit), this.y + (sprite_get_height(spr_path) * yExit), -1, obj_room_exit);
-
+        path.xPos = path.xPos + xPath;
+        path.yPos = path.yPos + yPath;
         path.pathIdx = pathValue;
 
         return path;
@@ -279,6 +270,7 @@ public class FloorGeneration : MonoBehaviour {
         for (int i = 0; i < potExits; i++) {
             instPath.Add(list[i]);
         }
+        
     }
 
     public string GetRandomExitDir() {
@@ -304,15 +296,5 @@ public class FloorGeneration : MonoBehaviour {
 
         }
         return null;
-    }
-
-    public bool GetProtected() {
-        /*
-        if (player_getFloor(obj_player) == this) {
-            return true;
-        }
-        return false;
-        */
-        return babyCover;
     }
 }

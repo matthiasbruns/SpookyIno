@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryUIScreen : MonoBehaviour, IUIScreen {
@@ -12,7 +13,7 @@ public class InventoryUIScreen : MonoBehaviour, IUIScreen {
     public InventoryComponent Inventory;
     public EquipmentComponent Equipment;
 
-    public List<Image> WheelIcons = new List<Image>();
+    public List<InventoryUIItem> WheelItems = new List<InventoryUIItem>();
 
     public RectTransform ItemSlotPrefab;
 
@@ -42,9 +43,8 @@ public class InventoryUIScreen : MonoBehaviour, IUIScreen {
         if (Equipment == null)
             Equipment = FindObjectOfType<EquipmentComponent>();
 
-        if ((WheelIcons?.Count ?? 0) == 0)
-            Panel.Find("Wheel").GetComponentsInChildren(WheelIcons);
-        WheelIcons.Remove(Panel.Find("Wheel").GetComponent<Image>());
+        if ((WheelItems?.Count ?? 0) == 0)
+            Panel.Find("Wheel").GetComponentsInChildren(WheelItems);
 
         if (WeaponsContent == null)
             WeaponsContent = Panel.Find("Weapons").Find("Content").GetComponent<RectTransform>();
@@ -83,14 +83,8 @@ public class InventoryUIScreen : MonoBehaviour, IUIScreen {
     }
 
     void Update() {
-
-        for (int i = 0; i < WheelIcons.Count; i++) {
-            Image icon = WheelIcons[i];
-            InventoryItem item = Equipment.Items[i];
-            if (icon.enabled = (item != null)) {
-                icon.sprite = item.itemIcon;
-            }
-        }
+        for (int i = 0; i < WheelItems.Count; i++)
+            WheelItems[i].ForceItem = Equipment.Items[i];
 
     }
 
