@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: b1fe0d1837a84554881fce029a94b647
+timeCreated: 1509189003
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Darkening: {instanceID: 0}
+  - Panel: {instanceID: 0}
+  - Inventory: {instanceID: 0}
+  - Equipment: {instanceID: 0}
+  - ItemSlotPrefab: {fileID: 224073488773953530, guid: 319aff751f1c11249b19c38b0132675a,
+      type: 2}
+  - WeaponsContent: {instanceID: 0}
+  - MaterialsContent: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

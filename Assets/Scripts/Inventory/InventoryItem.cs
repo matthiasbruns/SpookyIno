@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]                                                           //  Our Representation of an InventoryItem
 public class InventoryItem 
 {
-    public string itemName = "New Item";                                      //  What the item will be called in the inventory
+    public string itemName = null;                                      //  What the item will be called in the inventory
     public Sprite itemIcon = null;                                           //  What the item will look like in the inventory
     public Rigidbody2D itemObject = null;                                         //  Optional slot for a PreFab to instantiate when discarding
     public bool isUnique = false;                                               //  Optional checkbox to indicate that there should only be one of these items per game
@@ -18,4 +18,25 @@ public class InventoryItem
     public bool destroyOnUse = false;                                           //  Examples of additional information that could be held in InventoryItem
     public float encumbranceValue = 0;   
     public BaseAction action;                                     //  Examples of additional information that could be held in InventoryItem  !!!
+
+    // Kill me.
+    public override bool Equals(object obj) {
+        if (obj is InventoryItem) {
+            return this == (InventoryItem) obj;
+        }
+        return base.Equals(obj);
+    }
+
+    public static bool operator ==(InventoryItem a, InventoryItem b) {
+        if (((object) a == null && string.IsNullOrEmpty(b.itemName)) ||
+            ((object) b == null && string.IsNullOrEmpty(a.itemName))) {
+            return true;
+        }
+
+        return ReferenceEquals(a, b);
+    }
+
+    public static bool operator !=(InventoryItem a, InventoryItem b) {
+        return !(a == b);
+    }
 }

@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114963439343044378}
   - component: {fileID: 114509109199143494}
   - component: {fileID: 114083692328466192}
+  - component: {fileID: 114149862938311522}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -243,7 +244,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -256,7 +257,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -269,7 +270,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
-  - itemName: New Item
+  - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
     isUnique: 0
@@ -282,6 +283,18 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+--- !u!114 &114149862938311522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541730682870350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59c6e465106d43c4ac4e8ac3ee19506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 0}
 --- !u!114 &114509109199143494
 MonoBehaviour:
   m_ObjectHideFlags: 1

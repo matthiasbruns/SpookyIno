@@ -9,9 +9,12 @@ public class InventoryComponent : MonoBehaviour {
 
 	public InventoryItemList database;
 
-	private List<InventorySlot> slots = new List<InventorySlot>();
+	private List<InventorySlot> slotsWeapons = new List<InventorySlot>();
+    public int MaxSlotsWeapons = 6;
+    private List<InventorySlot> slotsMaterials = new List<InventorySlot>();
+    public int MaxSlotsMaterials = 15;
 
-	void Start(){
+    void Awake(){
 		database = GameManager.Instance.itemDatabase;
 	}
 
@@ -26,13 +29,19 @@ public class InventoryComponent : MonoBehaviour {
 
 	// INVENTORY
 	private InventorySlot GetSlot(InventoryItem item){
-		foreach(InventorySlot slot in slots){
+		foreach(InventorySlot slot in slotsWeapons){
 			if(slot.item?.itemName == item.itemName) {
 				return slot;
 			}
 		}
 
-		return null;
+        foreach (InventorySlot slot in slotsMaterials) {
+            if (slot.item?.itemName == item.itemName) {
+                return slot;
+            }
+        }
+
+        return null;
 	}
 
 	private bool ShouldStackItem(InventorySlot slot, int amount){
@@ -50,14 +59,19 @@ public class InventoryComponent : MonoBehaviour {
 
 	public void AddItem(InventoryItem item, int amount = 1){
 		var slot = GetSlot(item);
-		// We need to check, if we have to change an existing slot
-		if(ShouldStackItem(slot, amount)){
+        var slots = item.isWeapon ? slotsWeapons : slotsMaterials;
+        var slotsMax = item.isWeapon ? MaxSlotsWeapons : MaxSlotsMaterials;
+        // We need to check, if we have to change an existing slot
+        if (ShouldStackItem(slot, amount)){
 			// Stack item
 			slot.amount += amount;
+		} else if (slots.Count < slotsMax) {
+            // Create new ItemSlot
+            slots.Add(new InventorySlot(item, amount));
 		} else {
-			// Create new ItemSlot
-			slots.Add(new InventorySlot(item, amount));
-		}
+            // Return prematurely.
+            return;
+        }
 
 		 if(OnChanged != null) OnChanged(slots);
 	}
