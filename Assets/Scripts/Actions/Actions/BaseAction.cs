@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class BaseAction : MonoBehaviour {
 
-	public abstract void execute();
+	public abstract void execute(GameObject executer);
 }

@@ -40,13 +40,13 @@ public class EquipmentComponent : MonoBehaviour {
 
 	void OnFire1(){
 		if(weaponSlots.rightHand != null){
-			weaponSlots.rightHand.action?.execute();
+			weaponSlots.rightHand.action?.execute(gameObject);
 		}
 	}
 
 	void OnFire2(){
 		if(weaponSlots.leftHand != null){
-			weaponSlots.leftHand.action?.execute();
+			weaponSlots.leftHand.action?.execute(gameObject);
 		}
 	}
 
@@ -71,10 +71,10 @@ public class EquipmentComponent : MonoBehaviour {
 			var item = slot.item;
 			if(CanEquip(item)){
 				if (item.isWeapon){
-					if(weaponSlots.leftHand == null) {
-						weaponSlots.leftHand = item;	
-					} else if(weaponSlots.rightHand == null) {
+					if(weaponSlots.rightHand == null) {
 						weaponSlots.rightHand = item;	
+					} else if(weaponSlots.leftHand == null) {
+						weaponSlots.leftHand = item;	
 					}
 				}				
 			}
