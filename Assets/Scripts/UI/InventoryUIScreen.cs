@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryUIScreen : MonoBehaviour, IUIScreen {
@@ -87,8 +88,13 @@ public class InventoryUIScreen : MonoBehaviour, IUIScreen {
         for (int i = 0; i < WheelIcons.Count; i++) {
             Image icon = WheelIcons[i];
             InventoryItem item = Equipment.Items[i];
-            if (icon.enabled = (item != null)) {
+            if (item != null) {
                 icon.sprite = item.itemIcon;
+                icon.color = Color.white;
+            } else {
+                // Can't be disabled, as it needs to stay being a raycast target.
+                icon.sprite = null;
+                icon.color = Color.clear;
             }
         }
 

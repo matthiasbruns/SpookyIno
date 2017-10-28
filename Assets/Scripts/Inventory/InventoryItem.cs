@@ -28,7 +28,8 @@ public class InventoryItem
     }
 
     public static bool operator ==(InventoryItem a, InventoryItem b) {
-        if (((object) a == null && string.IsNullOrEmpty(b.itemName)) ||
+        if (((object) a == null && (object) b == null) ||
+            ((object) a == null && string.IsNullOrEmpty(b.itemName)) ||
             ((object) b == null && string.IsNullOrEmpty(a.itemName))) {
             return true;
         }
