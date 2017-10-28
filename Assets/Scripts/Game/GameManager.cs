@@ -21,5 +21,12 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 	}
 
+    public bool InDungeon = false;
+
 	public InventoryItemList itemDatabase;
+	public ChunkTypeDataList chunkOutsideDatabase;
+	public ChunkTypeDataList chunkDungeonDatabase;
+    public ChunkTypeDataList chunkDatabase => InDungeon ? chunkDungeonDatabase : chunkOutsideDatabase;
+    public ObjectiveList objectiveDatabase;
+
 }
