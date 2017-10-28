@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyActor : MonoBehaviour {
+public class EnemyActor : MonoBehaviour, DeathHandler {
 
-	public List<ItemDrop> itemDrops = new List<ItemDrop>();
+	public List<ItemDrop> itemDrops = new List<ItemDrop>();	
+	private HealthComponent healthComponent;
 
-	void OnCollisionEnter2D(Collision2D coll) {
-		if(coll.gameObject.tag.GetHashCode() == Tags.PLAYER){
-			// Collision with player = damage
-			ApplyDamage(1000);
-		}
+	// UNITY
+	void Awake() {
+		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
 	}
 
-	public void ApplyDamage(int damage){
-		// TODO: REPLACE WITH REAL HEALTH SCRIPT		
-		foreach(ItemDrop drop in itemDrops){
-			if(drop.chance > Random.value){
-				StartCoroutine(DropItem(drop));
-			}
+    void OnCollisionEnter2D(Collision2D coll) {
+		if(coll.gameObject.tag.GetHashCode() == Tags.PLAYER){
+			// Collision with player = damage
+			healthComponent.ApplyDamage(1000);
 		}
-
-		Destroy(gameObject);
 	}
 
 	IEnumerator DropItem(ItemDrop drop){
@@ -31,4 +26,11 @@ public class EnemyActor : MonoBehaviour {
 		yield return null;
 	}
 
+    public void HandleDeath() {
+        foreach(ItemDrop drop in itemDrops){
+			if(drop.chance > Random.value){
+				StartCoroutine(DropItem(drop));
+			}
+		}
+    }
 }

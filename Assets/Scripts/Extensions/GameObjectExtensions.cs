@@ -17,8 +17,7 @@ public static class GameObjectExtensions
 		return component;
 	}
 
-	public static T GetOrCreateComponent<T>(this GameObject obj) where T : Component
-	{
+	public static T GetOrCreateComponent<T>(this GameObject obj) where T : Component {
 		T component = obj.GetComponent<T> ();
 
 		if(component == null)
