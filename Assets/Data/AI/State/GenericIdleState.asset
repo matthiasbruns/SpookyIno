@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6628d470c75114503b039b5efc769b5b, type: 3}
-  m_Name: ChasePlayerState
+  m_Script: {fileID: 11500000, guid: 1ea5f930657404d8aa10a07b5ca431f2, type: 3}
+  m_Name: GenericIdleState
   m_EditorClassIdentifier: 
-  minDistance: 1e-45
