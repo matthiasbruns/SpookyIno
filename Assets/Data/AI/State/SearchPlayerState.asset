@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22065205e529441e79985697c84bfe7d, type: 3}
   m_Name: SearchPlayerState
   m_EditorClassIdentifier: 
-  searchRadius: 100
+  searchRadius: 5
