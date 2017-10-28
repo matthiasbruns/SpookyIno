@@ -24,13 +24,8 @@ public class HealthUIComponent : MonoBehaviour {
     }
 
     void Update() {
-        int armor = Mathf.Max(40, Health.maxArmor);
-        rectTransform.SetSizeWithCurrentAnchors(
-            RectTransform.Axis.Horizontal,
-            ((RectTransform) transform.parent).sizeDelta.x * Health.maxHealth / (Health.maxHealth + armor)
-        );
         rectTransform.anchoredPosition = new Vector2(
-            ((RectTransform) transform.parent).sizeDelta.x * armor / (Health.maxHealth + armor) * Mathf.Max(0f, armor - Health.maxArmor) / 40 * 0.5f,
+            ((RectTransform) transform.parent).sizeDelta.x * (-Health.maxArmor) / 100f * 0.25f,
             0f
         );
 

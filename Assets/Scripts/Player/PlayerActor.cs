@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActor : MonoBehaviour {
+public class PlayerActor : MonoBehaviour, IActor {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public Transform hand;
+
+    public Vector2 LookAngle => hand.forward;
+
+    void Start() {
+        if (hand == null)
+            hand = transform.Find("Hand"); // Jemand war faul und hat hand nicht gesetzt...
+    }
 	
-	// Update is called once per frame
-	void Update () {
+	void Update() {
 		
 	}
+
 }

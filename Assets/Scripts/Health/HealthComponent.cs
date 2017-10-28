@@ -47,7 +47,7 @@ public class HealthComponent : MonoBehaviour, HasHealth {
 
         audioSource.Play();
 
-        if (currentHealth < 0 && !isDead)
+        if (currentHealth <= 0 && !isDead)
         {
             Death();
         }
@@ -58,6 +58,16 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         isDead = true;
         audioSource.clip = deathClip;
         audioSource.Play();
+        // Broadcast 
+        List<DeathHandler> handlers;
+        gameObject.GetInterfaces<DeathHandler>(out handlers);
+
+        if(handlers != null && handlers.Count > 0){
+            foreach(DeathHandler handler in handlers) {
+                handler.HandleDeath();
+            }
+        }
+
         Destroy(gameObject);
     }
 

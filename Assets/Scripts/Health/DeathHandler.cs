@@ -1,0 +1,3 @@
+interface DeathHandler {
+    void HandleDeath();
+}
