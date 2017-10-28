@@ -29,7 +29,6 @@ public class ChasePlayerState : AiState {
                 isTransitionAllowed = true;
                 isBackTransitionRequested = false;
             } else if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) >= maxDistance) {
-                movementAI.Target = null;
                 isTransitionAllowed = false;
                 isBackTransitionRequested = true;
             } else {
