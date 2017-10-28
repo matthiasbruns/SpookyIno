@@ -44,7 +44,7 @@ public class AiConfigEditor : EditorWindow {
             
         if (aiConfig != null) {
                 aiConfig.idleState = EditorGUILayout.ObjectField ("Idle State", aiConfig.idleState, typeof (AiState), false) as AiState;
-                aiConfig.wanderState = EditorGUILayout.ObjectField ("Wander State", aiConfig.wanderState, typeof (AiState), false) as AiState;
+                aiConfig.chaseState = EditorGUILayout.ObjectField ("Wander State", aiConfig.chaseState, typeof (AiState), false) as AiState;
                 aiConfig.attackState = EditorGUILayout.ObjectField ("Attack State", aiConfig.attackState, typeof (AiState), false) as AiState;
                 GUILayout.Space(10);
         }

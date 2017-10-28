@@ -17,7 +17,7 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 	}
 
     void OnCollisionEnter2D(Collision2D coll) {
-		if(coll.gameObject.tag.GetHashCode() == Tags.PLAYER){
+		if(coll.gameObject.tag.GetHashCode() == Tags.PLAYER_HASH){
 			// Collision with player = damage
 			healthComponent.ApplyDamage(1000);
 		}
