@@ -5,7 +5,6 @@ using UnityEngine;
 public class EquipmentComponent : MonoBehaviour {
 
 	public InventoryItem mainHand = null;
-
 	private InventoryComponent inventory;
 	private ActionsComponent actions;
 

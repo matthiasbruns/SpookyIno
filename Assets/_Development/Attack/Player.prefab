@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 61683566084499614}
   - component: {fileID: 114173704050630446}
   - component: {fileID: 114054503999411396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -167,20 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a42d4aeaa6a44d59aed004d2205885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondaryHand:
-    itemName: New Item
-    itemIcon: {fileID: 0}
-    itemObject: {fileID: 0}
-    isUnique: 0
-    isIndestructible: 0
-    isQuestItem: 0
-    isEquipment: 0
-    isWeapon: 0
-    weaponSlotSize: 0
-    isStackable: 0
-    destroyOnUse: 0
-    encumbranceValue: 0
-    action: {fileID: 0}
   mainHand:
     itemName: New Item
     itemIcon: {fileID: 0}

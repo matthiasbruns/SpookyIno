@@ -10,5 +10,6 @@ public class NailgunAction : BaseAction {
         var bullet = GameObject.Instantiate(bulletPrefab, executer.transform.position, executer.transform.rotation);
 		var rbody = bullet.GetOrCreateComponent<Rigidbody2D>();
 		rbody.velocity = bullet.transform.right * 10f;
+        bullet.GetComponent<Bullet>().ignoreTags.Add(executer.gameObject.tag);
     }
 }
