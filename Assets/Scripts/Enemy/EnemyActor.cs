@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyActor : MonoBehaviour, DeathHandler {
+public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 
 	public List<ItemDrop> itemDrops = new List<ItemDrop>();	
 	private HealthComponent healthComponent;
 
-	// UNITY
-	void Awake() {
+    public Vector2 LookAngle => transform.right; // TODO: Werden Enemies auch "Hände" haben?
+
+    // UNITY
+    void Awake() {
 		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
 	}
 
