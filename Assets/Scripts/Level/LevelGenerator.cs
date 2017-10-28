@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour {
     ///Constant
-    string objectTyp = "Level";
     public GameObject FloorTile;
 
     ///State

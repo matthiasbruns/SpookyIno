@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PathGeneration : MonoBehaviour {
-
-    string objectTyp;
+    
     FloorGeneration floorRef; 
     public int pathIdx;
     public int xPos { get; private set; }
@@ -13,7 +12,6 @@ public class PathGeneration : MonoBehaviour {
     // Use this for initialization
     void Awake() {
         ///Constant
-        objectTyp = "Way";
         floorRef = transform.parent.GetComponent<FloorGeneration>();
         xPos = Mathf.RoundToInt(transform.position.x);
         yPos = Mathf.RoundToInt(transform.position.y);

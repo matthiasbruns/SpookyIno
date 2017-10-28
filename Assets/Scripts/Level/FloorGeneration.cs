@@ -7,7 +7,6 @@ using Tuple = System.Tuple;
 public class FloorGeneration : MonoBehaviour {
 
     //Constant
-    string objectTyp = "Floor";
     public GameObject PathTile;
     LevelGenerator levelRef;
     public int xPos { get; private set; }
