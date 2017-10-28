@@ -6,10 +6,12 @@ public class EnemyActor : MonoBehaviour, DeathHandler {
 
 	public List<ItemDrop> itemDrops = new List<ItemDrop>();	
 	private HealthComponent healthComponent;
+	private AiComponent aiComponent;
 
 	// UNITY
 	void Awake() {
 		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
+		aiComponent = gameObject.GetOrCreateComponent<EnemyAI>();
 	}
 
     void OnCollisionEnter2D(Collision2D coll) {
