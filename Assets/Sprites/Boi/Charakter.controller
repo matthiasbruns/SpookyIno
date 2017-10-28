@@ -260,7 +260,7 @@ AnimatorStateTransition:
     m_ConditionEvent: LookDirectionY
     m_EventTreshold: -0.5
   - m_ConditionMode: 3
-    m_ConditionEvent: LookDirectionX
+    m_ConditionEvent: LookDirectionY
     m_EventTreshold: 0.5
   - m_ConditionMode: 4
     m_ConditionEvent: LookDirectionX
