@@ -229,6 +229,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a42d4aeaa6a44d59aed004d2205885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Items:
+  - itemName: New Item
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
+  - itemName: New Item
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
+  - itemName: New Item
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
+  - itemName: New Item
+    itemIcon: {fileID: 0}
+    itemObject: {fileID: 0}
+    isUnique: 0
+    isIndestructible: 0
+    isQuestItem: 0
+    isEquipment: 0
+    isWeapon: 0
+    weaponSlotSize: 0
+    isStackable: 0
+    destroyOnUse: 0
+    encumbranceValue: 0
+    action: {fileID: 0}
 --- !u!114 &114509109199143494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -266,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f523597ef7263a741b3eff3e4e934dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBeDamaged: 1
   currentHealth: 0
   currentArmor: 0
   startHealth: 100

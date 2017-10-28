@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class EquipmentComponent : MonoBehaviour {
 
-	public InventoryItem mainHand = null;
+	public InventoryItem[] Items = new InventoryItem[4];
+    public InventoryItem mainHand {
+        get {
+            return Items[0];
+        }
+        set {
+            Items[0] = value;
+        }
+    }
+
 	private InventoryComponent inventory;
 	private ActionsComponent actions;
 
