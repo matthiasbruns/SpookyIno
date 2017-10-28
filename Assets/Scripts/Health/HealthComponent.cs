@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthComponent : MonoBehaviour {
+public class HealthComponent : MonoBehaviour, HasHealth {
 
     AudioSource audioSource;
     bool isDead = false;
-
+    public bool canBeDamaged = true;
     public int currentHealth;
     public int currentArmor;
     public int startHealth = 100;
@@ -20,6 +20,8 @@ public class HealthComponent : MonoBehaviour {
     public AudioClip hurtClip;
     public AudioClip armorHurtClip;
     public AudioClip deathClip;
+
+    public bool CanBeDamaged => canBeDamaged;
 
     void Awake ()
     {
