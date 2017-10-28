@@ -53,6 +53,8 @@ public class AudioManager : MonoBehaviour {
 
     public AudioClip GetSoundByName(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+            return null;
         return s.clip;
     }
 }

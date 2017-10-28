@@ -59,7 +59,9 @@ public class InventoryComponent : MonoBehaviour {
 
 	public void AddItem(int itemId, int amount = 1){
 		InventoryItem item = database.itemList[itemId];
-        AudioSource.PlayClipAtPoint(audioManager.GetSoundByName(item.pickUpClip), audioPosition);
+        AudioClip clip = audioManager.GetSoundByName(item.pickUpClip);
+        if (clip != null)
+            AudioSource.PlayClipAtPoint(clip, audioPosition);
 		AddItem(item, amount);
 	}
 
