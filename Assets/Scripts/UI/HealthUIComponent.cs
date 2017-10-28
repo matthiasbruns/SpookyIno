@@ -16,7 +16,7 @@ public class HealthUIComponent : MonoBehaviour {
 
         // Whoops I did it again.
         if (Health == null)
-            Health = FindObjectOfType<HealthComponent>();
+            Health = GameObject.FindGameObjectWithTag(Tags.PLAYER).GetComponent<HealthComponent>();
         if (Panel == null)
             Panel = transform.Find("Panel").GetComponent<Image>();
         if (Text == null)

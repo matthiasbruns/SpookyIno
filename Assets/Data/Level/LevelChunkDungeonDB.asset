@@ -14,14 +14,20 @@ MonoBehaviour:
   ChunkTypeDatas:
   - Type: 1
     Value: 0.01
+    ForceExit: 15
   - Type: 2
     Value: 1
+    ForceExit: -1
   ChunkTypeExtras:
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 3
     Value: 0
+    ForceExit: -1

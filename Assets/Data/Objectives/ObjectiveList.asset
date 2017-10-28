@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: ObjectiveList
   m_EditorClassIdentifier: 
   objectivesList:
-  - objectiveName: New Objective
+  - objectiveName: Gozen
     isCompleted: 0
     boss: {fileID: 0}
     objectiveItemId: 0

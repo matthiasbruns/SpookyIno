@@ -44,6 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Items
+    uniqueID: 802867143
+    locked: 0
   - name: Actors
     uniqueID: 1960021349
     locked: 0

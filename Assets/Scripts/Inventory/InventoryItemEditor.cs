@@ -135,6 +135,7 @@ public class InventoryItemEditor : EditorWindow {
                 
                 GUILayout.BeginHorizontal ();
                 inventoryItemList.itemList[viewIndex-1].action = EditorGUILayout.ObjectField ("Action", inventoryItemList.itemList[viewIndex-1].action, typeof (BaseAction), false) as BaseAction;
+                inventoryItemList.itemList[viewIndex - 1].pickUpClip = EditorGUILayout.TextField("Pick Up Sound", inventoryItemList.itemList[viewIndex - 1].pickUpClip as string);
 
                 GUILayout.EndHorizontal ();
                 

@@ -12,16 +12,22 @@ MonoBehaviour:
   m_Name: LevelChunkOutsideDB
   m_EditorClassIdentifier: 
   ChunkTypeDatas:
-  - Type: 1
+  - Type: 4
     Value: 0.01
-  - Type: 2
+    ForceExit: -1
+  - Type: 1
     Value: 1
+    ForceExit: 15
   ChunkTypeExtras:
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 0
     Value: 0
-  - Type: 3
+    ForceExit: -1
+  - Type: 0
     Value: 0
+    ForceExit: -1

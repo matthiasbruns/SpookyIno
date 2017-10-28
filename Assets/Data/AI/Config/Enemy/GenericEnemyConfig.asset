@@ -11,6 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbcb5828f5df74332a8e2259223d3b7d, type: 3}
   m_Name: GenericEnemyConfig
   m_EditorClassIdentifier: 
-  idleState: {fileID: 11400000, guid: fb2d0261433e44e33bbf99dbbc19dfa6, type: 2}
-  chaseState: {fileID: 11400000, guid: ce12e6d03b031484cb7b5d89b37191ab, type: 2}
-  attackState: {fileID: 11400000, guid: dad89f96b0f804f18b35d5784b9b96cb, type: 2}
+  idleState: {fileID: 114404738810229740, guid: 77339a04c27ac48a582084870e085798,
+    type: 2}
+  chaseState: {fileID: 114994536434984204, guid: b64bd86a767764927aa86fb65550bf42,
+    type: 2}
+  attackState: {fileID: 114831551790631910, guid: de3167f52d9fb49a4af3665c8845bc38,
+    type: 2}

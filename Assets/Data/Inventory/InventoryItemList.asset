@@ -26,6 +26,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 114607491891396292, guid: 480882eccbfcb47aaac57946445aa6ec, type: 2}
+    pickUpClip: {fileID: 0}
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -39,3 +40,4 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: {fileID: 0}

@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public enum ChunkType {
-    Unknown,
-    Empty,
-    SimpleRoom,
-    ExtraWall,
-    DungeonEntranceOutside,
-
+public enum WallDirection {
+    North,
+    East,
+    South,
+    West,
 }

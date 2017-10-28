@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public class LevelGeneratorNeo : MonoBehaviour {
+public class OutsideGeneratorNeo : MonoBehaviour {
 
-    public static LevelGeneratorNeo Instance { get; private set; }
-    public LevelGeneratorNeo() {
+    public static OutsideGeneratorNeo Instance { get; private set; }
+    public OutsideGeneratorNeo() {
         Instance = this;
     }
 
@@ -15,9 +15,9 @@ public class LevelGeneratorNeo : MonoBehaviour {
     public const int AutoGenerateBorder = 2;
 
     public const int ExitDirectionMax = 4;
-    public static System.Array ExitDirections = System.Enum.GetValues(typeof(ExitDirection));
+    public static System.Array ExitDirections = System.Enum.GetValues(typeof(ChunkExitFlag));
 
-    public ChunkTypeDataList Database;
+    public ChunkTypeDataList Database => GameManager.Instance.chunkOutsideDatabase;
 
     public Transform[] BasicWalls = new Transform[1];
 
@@ -26,8 +26,6 @@ public class LevelGeneratorNeo : MonoBehaviour {
     private Dictionary<ulong, ChunkData> ChunkMap = new Dictionary<ulong, ChunkData>();
 
     void Awake() {
-        Database = GameManager.Instance.chunkDatabase;
-
         if (Seed == 0)
             Seed = new Random().Next();
 

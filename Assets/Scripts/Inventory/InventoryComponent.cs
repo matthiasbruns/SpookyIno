@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class InventoryComponent : MonoBehaviour {
 
  	public delegate void ChangeAction(InventoryItem item, List<InventorySlot> slots);
@@ -13,9 +14,13 @@ public class InventoryComponent : MonoBehaviour {
     public int MaxSlotsWeapons = 6;
     private List<InventorySlot> slotsMaterials = new List<InventorySlot>();
     public int MaxSlotsMaterials = 15;
+    Vector3 audioPosition;
+    AudioManager audioManager;
 
     void Awake(){
 		database = GameManager.Instance.itemDatabase;
+        audioPosition = gameObject.transform.position;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
 	}
 
 	// UNITY
@@ -54,6 +59,7 @@ public class InventoryComponent : MonoBehaviour {
 
 	public void AddItem(int itemId, int amount = 1){
 		InventoryItem item = database.itemList[itemId];
+        AudioSource.PlayClipAtPoint(audioManager.GetSoundByName(item.pickUpClip), audioPosition);
 		AddItem(item, amount);
 	}
 
