@@ -9,52 +9,53 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1565905705866168}
+  m_RootGameObject: {fileID: 1313587142967848}
   m_IsPrefabParent: 1
---- !u!1 &1565905705866168
+--- !u!1 &1313587142967848
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4100307420692282}
-  - component: {fileID: 114521552480059428}
+  - component: {fileID: 4481719005938826}
+  - component: {fileID: 114355822533782044}
   m_Layer: 0
-  m_Name: GameController
-  m_TagString: GameController
+  m_Name: AudioManager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4100307420692282
+--- !u!4 &4481719005938826
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565905705866168}
+  m_GameObject: {fileID: 1313587142967848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 355.4638, y: 269.70856, z: -5.2707577}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114521552480059428
+--- !u!114 &114355822533782044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1565905705866168}
+  m_GameObject: {fileID: 1313587142967848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1a78f1a2366b49ac909c4ed134aea8d, type: 3}
+  m_Script: {fileID: 11500000, guid: cae98f9dc00576b4ca03dc282b081814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InDungeon: 0
-  itemDatabase: {fileID: 11400000, guid: e8bf99a3045124c6b90b566dc9fd0f1e, type: 2}
-  chunkOutsideDatabase: {fileID: 0}
-  chunkDungeonDatabase: {fileID: 0}
-  objectiveDatabase: {fileID: 0}
-  audioDatabase: {fileID: 114355822533782044, guid: 885b024173ae4fc46bf94d703158da5f,
-    type: 2}
+  masterMixer: {fileID: 24100000, guid: 886c49c676f42fa46b325150b708c3e8, type: 2}
+  sounds:
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: 7faf29863c2fdf84c9ad5a08f98e06b2, type: 3}
+    mixer: {fileID: 243732455255036424, guid: 886c49c676f42fa46b325150b708c3e8, type: 2}
+    volume: 1
+    loop: 1
+    source: {fileID: 0}

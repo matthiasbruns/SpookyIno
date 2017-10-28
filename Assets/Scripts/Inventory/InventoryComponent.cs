@@ -20,7 +20,7 @@ public class InventoryComponent : MonoBehaviour {
     void Awake(){
 		database = GameManager.Instance.itemDatabase;
         audioPosition = gameObject.transform.position;
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameManager.Instance.audioDatabase;
 	}
 
 	// UNITY
