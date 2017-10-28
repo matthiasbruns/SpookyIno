@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuComponent : MonoBehaviour {
 
+    public int levelIndex;
     public Canvas mainMenuRef;
     public Canvas optionsRef;
 
@@ -14,7 +16,7 @@ public class MenuComponent : MonoBehaviour {
 
     public void StartLevel()
     {
-        Application.LoadLevel("Inventory");
+        SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
 
     public void ShowMenu()
