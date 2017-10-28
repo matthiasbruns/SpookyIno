@@ -8,16 +8,24 @@ public class AiComponent : MonoBehaviour {
     protected AiState currentState;
     
 	void Update(){
-		if(currentState != null){
+		if(currentState != null) {
 			currentState.Tick(gameObject);
-			if(currentState.IsTransisionAllowed()){
-				currentState = currentState.NextState;
+			if(currentState.IsBackTransitionRequested()) {
+				if(currentState.previousState != null) {
+					ActivateState(currentState.previousState);
+				} else {
+					Debug.LogWarning( "Requested previousState is NULL", this);
+				}
+			}else if(currentState.IsTransisionAllowed()) {
+				ActivateState(currentState.nextState);
 			}
 		} else {
-			currentState = initialState;
+			ActivateState(initialState);
 		}
 	}
-    protected void TriggerTransition(AiState next){
-        // TODO
-    }
+
+	private void ActivateState(AiState state) {
+		currentState = state;
+		state.OnEnter(gameObject);
+	}
 }

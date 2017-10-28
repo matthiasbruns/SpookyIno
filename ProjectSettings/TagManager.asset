@@ -38,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1358341429
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Actors
+    uniqueID: 1960021349
+    locked: 0
+  - name: Player
+    uniqueID: 1129384455
     locked: 0

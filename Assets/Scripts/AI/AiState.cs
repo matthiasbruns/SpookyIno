@@ -5,18 +5,19 @@ using UnityEngine;
 
 public abstract class AiState : ScriptableObject {
 
-    private AiState nextState;
+    public AiState nextState;
+    public AiState previousState;
+    protected bool isBackTransitionRequested = false;
     protected bool isTransitionAllowed = false;
-    public AiState NextState{
-        get{
-            return nextState;
-        } 
-        set{
-            nextState = value;
-        }
-     }
+
+    public virtual void OnEnter(GameObject owner){
+        isTransitionAllowed = false;
+        isBackTransitionRequested = false;
+    }
 
     public abstract void Tick(GameObject owner);
 
     public bool IsTransisionAllowed() => isTransitionAllowed;
+
+    public bool IsBackTransitionRequested() => isBackTransitionRequested;
 }
