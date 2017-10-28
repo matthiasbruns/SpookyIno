@@ -307,7 +307,6 @@ MonoBehaviour:
   currentObjective:
     objectiveName: 
     objectiveItemId: 0
-  completedObjectives: []
 --- !u!114 &114509109199143494
 MonoBehaviour:
   m_ObjectHideFlags: 1

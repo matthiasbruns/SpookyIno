@@ -32,16 +32,16 @@ class QuestNPC : NPC {
             if(!didReadQuest && (npcConfig.startCondition == null || npcConfig.startCondition.Check(gameObject))) {
                 output.Content = npcConfig.questText;
                 didReadQuest = true;
+                executer.GetComponent<ObjectivesComponent>().CurrentObjectiveId = npcConfig.questId;
             } else if(didReadQuest && !didFinishQuest && npcConfig.finishCondition.Check(gameObject)) {
                 output.Content = npcConfig.questSuccessText;
                 didFinishQuest = true;
+                executer.GetComponent<ObjectivesComponent>().FinishCurrentQuest();
             } else if (didReadQuest && !didFinishQuest){
                 output.Content = npcConfig.questReminderTexts[Random.Range(0, npcConfig.questReminderTexts.Length)];
             } else {
                 output.Content = npcConfig.chitChatTexts[Random.Range(0, npcConfig.chitChatTexts.Length)];
             }
-            
         }
     }
-
 }
