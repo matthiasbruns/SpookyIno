@@ -24,6 +24,7 @@ class QuestNPC : NPC {
             }
         }
     }
+
     public override void Use(UnityEngine.GameObject executer){
         base.Use(executer);
 

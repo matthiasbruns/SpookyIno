@@ -15,12 +15,12 @@ public class InventoryComponent : MonoBehaviour {
     private List<InventorySlot> slotsMaterials = new List<InventorySlot>();
     public int MaxSlotsMaterials = 15;
     Vector3 audioPosition;
-    AudioManager audioManager;
+    SoundList audioManager;
 
     void Awake(){
 		database = GameManager.Instance.itemDatabase;
         audioPosition = gameObject.transform.position;
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audioManager = GameManager.Instance.audioDatabase;
 	}
 
 	// UNITY
@@ -59,7 +59,9 @@ public class InventoryComponent : MonoBehaviour {
 
 	public void AddItem(int itemId, int amount = 1){
 		InventoryItem item = database.itemList[itemId];
-        AudioSource.PlayClipAtPoint(audioManager.GetSoundByName(item.pickUpClip), audioPosition);
+        AudioClip clip = audioManager.GetSoundByName(item.pickUpClip);
+        if (clip != null)
+            AudioSource.PlayClipAtPoint(clip, audioPosition);
 		AddItem(item, amount);
 	}
 
