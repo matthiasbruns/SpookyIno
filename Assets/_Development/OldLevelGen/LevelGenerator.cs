@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-        Amount = 50;
+        Amount = 2;
         spawnInterval = 10f;
 
         EmptyX.Add(0);
