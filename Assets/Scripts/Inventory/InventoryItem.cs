@@ -18,6 +18,7 @@ public class InventoryItem
     public bool destroyOnUse = false;                                           //  Examples of additional information that could be held in InventoryItem
     public float encumbranceValue = 0;   
     public BaseAction action;                                     //  Examples of additional information that could be held in InventoryItem  !!!
+    public string pickUpClip = null;
 
     // Kill me.
     public override bool Equals(object obj) {

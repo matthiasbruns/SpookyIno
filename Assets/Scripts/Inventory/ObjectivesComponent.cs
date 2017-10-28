@@ -22,7 +22,7 @@ public class ObjectivesComponent : MonoBehaviour {
         }
     }
 
-    public void AddItem(int itemId, int amount = 1, ) {
+    public void AddItem(int itemId, int amount = 1) {
         InventoryItem item = iDatabase.itemList[database.objectivesList[itemId].objectiveItemId];
         //give item to player item list
     }
