@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager instance;
     public AudioMixer masterMixer;
 
-    public Sound[] sounds;
+    //public Sound[] sounds;
     SoundList database;
 
     void Awake() {
@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        for(int i = 0; i<database.Count(); i++) {
+        /*for(int i = 0; i<database.Count(); i++) {
             database.soundList[i].source = gameObject.AddComponent<AudioSource>();
             database.soundList[i].source.clip = database.soundList[i].clip;
             database.soundList[i].source.outputAudioMixerGroup = database.soundList[i].mixer;
@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour {
             s.source.volume = s.volume;
             s.source.loop = s.loop;
             sounds.Add(s);
-        }*/
+        }
     }
 
     public void Start() {
@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour {
         if (s == null)
             return;
         s.source.Play();
+    }*/
     }
 
     public void MasterVolume(float masterVolume) {
@@ -61,10 +62,10 @@ public class AudioManager : MonoBehaviour {
         masterMixer.SetFloat("sfxVol", sfxVolume);
     }
 
-    public AudioClip GetSoundByName(string name) {
+    /*public AudioClip GetSoundByName(string name) {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
             return null;
         return s.clip;
-    }
+    }*/
 }
