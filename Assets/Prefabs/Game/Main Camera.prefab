@@ -101,7 +101,7 @@ MonoBehaviour:
   FollowingTag: Player
   PositionSmoothing: 0.3
   SizeSmoothing: 0.02
-  SizeMin: 6
+  SizeMin: 8
   SizeMax: 0
   SizeBorder: 2
   DepthMin: 10
