@@ -9,19 +9,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c78b4d0a3abd2b4b8ea7dd6a1148e52, type: 3}
-  m_Name: LevelChunkDB
+  m_Name: LevelChunkDungeonDB
   m_EditorClassIdentifier: 
   ChunkTypeDatas:
   - Type: 1
     Value: 0.01
+    ForceExit: 15
   - Type: 2
     Value: 1
+    ForceExit: -1
   ChunkTypeExtras:
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 0
     Value: 0
+    ForceExit: -1
   - Type: 3
     Value: 0
+    ForceExit: -1

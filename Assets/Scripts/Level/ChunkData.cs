@@ -14,7 +14,7 @@ public class ChunkData {
     // RNG controlled values.
     public double Value;
     public int ExitDirectionCount;
-    public ExitDirection ExitDirection;
+    public ChunkExitFlag CloseFlags;
 
     // Anything we get from the RNG values, or anything else we need.
     public ChunkTypeData Type;
@@ -31,13 +31,7 @@ public class ChunkData {
 
         // Fill RNG data.
         Value = RNG.NextDouble();
-        ExitDirectionCount = 2 + (RNG.NextDouble() < 0.1 ? 1 : 0);
-        for (int i = 0; i < ExitDirectionCount; i++) {
-            ExitDirection old = ExitDirection;
-            ExitDirection |= (ExitDirection) LevelGeneratorNeo.ExitDirections.GetValue(RNG.Next(LevelGeneratorNeo.ExitDirectionMax));
-            if (ExitDirection == old)
-                continue;
-        }
+
 
         // Get type from "value."
         foreach (ChunkTypeData type in LevelGeneratorNeo.Instance.Database.ChunkTypeDatas) {
@@ -49,38 +43,34 @@ public class ChunkData {
 
     }
 
-    public bool HasExit(ExitDirection dir) {
+    public bool IsClosed(ChunkExitFlag dir) {
         // Check exits of nearby chunks.
-        if (_IsExit(dir, ExitDirection.West) && LevelGeneratorNeo.Instance.GetChunkData(X - 1, Y)._HasExit(ExitDirection.East))
+        if (_IsDirection(dir, ChunkExitFlag.West) && LevelGeneratorNeo.Instance.GetChunkData(X - 1, Y)._IsClosed(ChunkExitFlag.East))
             return true;
-        if (_IsExit(dir, ExitDirection.East) && LevelGeneratorNeo.Instance.GetChunkData(X + 1, Y)._HasExit(ExitDirection.West))
+        if (_IsDirection(dir, ChunkExitFlag.East) && LevelGeneratorNeo.Instance.GetChunkData(X + 1, Y)._IsClosed(ChunkExitFlag.West))
             return true;
-        if (_IsExit(dir, ExitDirection.South) && LevelGeneratorNeo.Instance.GetChunkData(X, Y - 1)._HasExit(ExitDirection.North))
+        if (_IsDirection(dir, ChunkExitFlag.South) && LevelGeneratorNeo.Instance.GetChunkData(X, Y - 1)._IsClosed(ChunkExitFlag.North))
             return true;
-        if (_IsExit(dir, ExitDirection.North) && LevelGeneratorNeo.Instance.GetChunkData(X, Y + 1)._HasExit(ExitDirection.South))
+        if (_IsDirection(dir, ChunkExitFlag.North) && LevelGeneratorNeo.Instance.GetChunkData(X, Y + 1)._IsClosed(ChunkExitFlag.South))
             return true;
         // Check own exits.
-        return _HasExit(dir);
+        return _IsClosed(dir);
     }
-    private bool _HasExit(ExitDirection dir) {
-        return (ExitDirection & dir) == dir;
+    private bool _IsClosed(ChunkExitFlag dir) {
+        return (CloseFlags & dir) == dir;
     }
-    private bool _IsExit(ExitDirection a, ExitDirection b) {
+    private bool _IsDirection(ChunkExitFlag a, ChunkExitFlag b) {
         return (a & b) == b;
     }
 
     public bool IsIsolated {
         get {
-            // Check exits of nearby chunks.
-            if (LevelGeneratorNeo.Instance.GetChunkData(X - 1, Y)._HasExit(ExitDirection.East))
-                return false;
-            if (LevelGeneratorNeo.Instance.GetChunkData(X + 1, Y)._HasExit(ExitDirection.West))
-                return false;
-            if (LevelGeneratorNeo.Instance.GetChunkData(X, Y - 1)._HasExit(ExitDirection.North))
-                return false;
-            if (LevelGeneratorNeo.Instance.GetChunkData(X, Y + 1)._HasExit(ExitDirection.South))
-                return false;
-            return true;
+            // Check walls nearby chunks.
+            return
+                LevelGeneratorNeo.Instance.GetChunkData(X - 1, Y)._IsClosed(ChunkExitFlag.East) &&
+                LevelGeneratorNeo.Instance.GetChunkData(X + 1, Y)._IsClosed(ChunkExitFlag.West) &&
+                LevelGeneratorNeo.Instance.GetChunkData(X, Y - 1)._IsClosed(ChunkExitFlag.North) &&
+                LevelGeneratorNeo.Instance.GetChunkData(X, Y + 1)._IsClosed(ChunkExitFlag.South);
         }
     }
 
@@ -106,13 +96,13 @@ public class ChunkData {
                             RNG.NextDouble() >= 0.01)
                             continue;
 
-                        if (HasExit(ExitDirection.North) && (yy == 0 && xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1))
+                        if (!IsClosed(ChunkExitFlag.North) && (yy == 0 && xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1))
                             continue;
-                        if (HasExit(ExitDirection.South) && (yy == LevelGeneratorNeo.ChunkHeight - 1 && xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1))
+                        if (!IsClosed(ChunkExitFlag.South) && (yy == LevelGeneratorNeo.ChunkHeight - 1 && xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1))
                             continue;
-                        if (HasExit(ExitDirection.East) && (xx == 0 && yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1))
+                        if (!IsClosed(ChunkExitFlag.East) && (xx == 0 && yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1))
                             continue;
-                        if (HasExit(ExitDirection.West) && (xx == LevelGeneratorNeo.ChunkHeight - 1 && yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1))
+                        if (!IsClosed(ChunkExitFlag.West) && (xx == LevelGeneratorNeo.ChunkHeight - 1 && yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1))
                             continue;
 
                         Transform wallType = LevelGeneratorNeo.Instance.BasicWalls[RNG.Next(LevelGeneratorNeo.Instance.BasicWalls.Length)];
@@ -132,6 +122,31 @@ public class ChunkData {
                         Object.Instantiate(wallType, new Vector3(X * LevelGeneratorNeo.ChunkWidth + xx, Y * LevelGeneratorNeo.ChunkHeight + yy, 0), Quaternion.identity, null);
                     }
                 }
+                break;
+
+            case ChunkType.DungeonEntranceOutside:
+                for (int yy = 0; yy < LevelGeneratorNeo.ChunkHeight; yy++) {
+                    for (int xx = 0; xx < LevelGeneratorNeo.ChunkWidth; xx++) {
+                        if (yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1 &&
+                            xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1)
+                            continue;
+
+                        if (!IsClosed(ChunkExitFlag.North) && (yy == 0 && xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1))
+                            continue;
+                        if (!IsClosed(ChunkExitFlag.South) && (yy == LevelGeneratorNeo.ChunkHeight - 1 && xx != 0 && xx != LevelGeneratorNeo.ChunkWidth - 1))
+                            continue;
+                        if (!IsClosed(ChunkExitFlag.East) && (xx == 0 && yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1))
+                            continue;
+                        if (!IsClosed(ChunkExitFlag.West) && (xx == LevelGeneratorNeo.ChunkHeight - 1 && yy != 0 && yy != LevelGeneratorNeo.ChunkHeight - 1))
+                            continue;
+
+                        Transform wallType = LevelGeneratorNeo.Instance.BasicWalls[RNG.Next(LevelGeneratorNeo.Instance.BasicWalls.Length)];
+                        if (wallType == null)
+                            continue;
+                        Object.Instantiate(wallType, new Vector3(X * LevelGeneratorNeo.ChunkWidth + xx, Y * LevelGeneratorNeo.ChunkHeight + yy, 0), Quaternion.identity, null);
+                    }
+                }
+
                 break;
         }
 

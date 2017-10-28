@@ -7,16 +7,18 @@ using Random = System.Random;
 public class ChunkTypeData {
     public ChunkType Type;
     public double Value;
-    public System.Action<ChunkData> OnAssign;
+    public ChunkExitFlag ForceExit = ChunkExitFlag.NoForce;
     public ChunkTypeData() {
     }
     public ChunkTypeData(ChunkType type, double value, System.Action<ChunkData> onAssign = null) {
         Type = type;
         Value = value;
-        OnAssign = onAssign;
     }
     public void AssignTo(ChunkData data) {
+        if (Type == ChunkType.Unknown)
+            return;
         data.Type = this;
-        OnAssign?.Invoke(data);
+        if (ForceExit == ChunkExitFlag.NoForce)
+            data.CloseFlags = ForceExit;
     }
 }
