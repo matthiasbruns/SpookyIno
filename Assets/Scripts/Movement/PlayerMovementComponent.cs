@@ -23,7 +23,7 @@ public class PlayerMovementComponent : MonoBehaviour {
             hand = transform.Find("Hand"); // Jemand war faul und hat hand nicht gesetzt...
     }
 
-    void Update() {
+    void FixedUpdate() {
         float x = Input.GetAxis("Horizontal") * Speed;
         float y = Input.GetAxis("Vertical") * Speed;
 

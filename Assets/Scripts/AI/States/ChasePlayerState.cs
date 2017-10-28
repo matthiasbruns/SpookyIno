@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChasePlayerState : AiState {
     public float minDistance = 2f;
-    public float maxDistance = 5f;
+    public float maxDistance = 10f;
     private GameObject player;
     private HasMovementAi movementAI;
 

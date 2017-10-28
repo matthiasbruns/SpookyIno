@@ -36,7 +36,9 @@ public class CameraFollowingComponent : MonoBehaviour {
         }
     }
 
-    void FixedUpdate() {
+    void LateUpdate() {
+        Vector3 targetPosition = transform.position;
+
         if (string.IsNullOrEmpty(FollowingTag)) {
             following = Following;
         } else {
@@ -47,7 +49,11 @@ public class CameraFollowingComponent : MonoBehaviour {
             }
         }
 
-        Vector3 diff = Vector3.zero;
+        Vector3 target = following[0].transform.position;
+        target.z = transform.position.z;
+        targetPosition = target;
+
+        /*Vector3 diff = Vector3.zero;
         float depthMin = DepthMin;
         foreach (Transform follow in following) {
             diff += follow.position - cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
@@ -57,7 +63,7 @@ public class CameraFollowingComponent : MonoBehaviour {
         }
         depthMin -= DepthOffset;
         diff.z = depthMin - transform.position.z;
-        transform.position = transform.position + diff * PositionSmoothing;
+        targetPosition = transform.position + diff * PositionSmoothing;
 
         float size = 0f;
 
@@ -86,9 +92,10 @@ public class CameraFollowingComponent : MonoBehaviour {
 
         cam.orthographicSize += (size - cam.orthographicSize) * SizeSmoothing;
         if (!cam.orthographic) {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - cam.orthographicSize * DepthSizeFactor);
-        }
+            targetPosition = new Vector3(targetPosition.x, targetPosition.y, targetPosition.z - cam.orthographicSize * DepthSizeFactor);
+        } */
 
+        transform.position = targetPosition;
     }
 
     float GetHighest(Vector3 v) {
