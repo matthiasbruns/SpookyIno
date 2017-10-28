@@ -27,4 +27,14 @@ public static class GameObjectExtensions
 
 		return component;
 	}
+
+	public static float x(this GameObject obj) {
+		return obj.transform.position.x;
+	}
+	public static float y(this GameObject obj) {
+		return obj.transform.position.y;
+	}
+	public static float z(this GameObject obj) {
+		return obj.transform.position.z;
+	}
 }
