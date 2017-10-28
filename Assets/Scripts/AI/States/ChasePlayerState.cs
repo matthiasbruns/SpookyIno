@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChasePlayerState : AiState {
-    public float minDistance = float.Epsilon;
+    public float minDistance = 2f;
     private GameObject player;
     private List<HasMovementAi> movementAIs;
 

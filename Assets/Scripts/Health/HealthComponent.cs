@@ -53,6 +53,8 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         }
     }
 
+    public int Health => currentHealth;
+
     void Death()
     {
         isDead = true;

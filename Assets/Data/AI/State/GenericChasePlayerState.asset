@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22065205e529441e79985697c84bfe7d, type: 3}
-  m_Name: SearchPlayerState
+  m_Script: {fileID: 11500000, guid: 6628d470c75114503b039b5efc769b5b, type: 3}
+  m_Name: GenericChasePlayerState
   m_EditorClassIdentifier: 
-  searchRadius: 5
+  minDistance: 2
