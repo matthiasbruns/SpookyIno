@@ -28,12 +28,12 @@ public class WeaponWheelItemDropHandler : MonoBehaviour, IUIItemDropHandler {
 
     public void OnDrop(InventoryUIItem item, PointerEventData eventData) {
         for (int i = 0; i < Equipment.Items.Length; i++) {
-            if (Equipment.Items[i] == item.Slot.item) {
+            if (Equipment.Items[i] == item.Item) {
                 Equipment.Items[i] = null;
                 break;
             }
         }
-        Equipment.Items[Index] = item.Slot.item;
+        Equipment.Items[Index] = item.Item;
     }
 
 }

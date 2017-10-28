@@ -7,7 +7,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class InventoryUIItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
+    public InventoryItem ForceItem;
     public InventorySlot Slot;
+    public InventoryItem Item => ForceItem != null ? ForceItem : Slot?.item;
 
     private Image icon;
 
@@ -16,8 +18,13 @@ public class InventoryUIItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     }
 
     void Update() {
-        if (icon.enabled = (Slot != null && Slot.item != null)) {
-            icon.sprite = Slot.item.itemIcon;
+        if (Item != null) {
+            icon.sprite = Item.itemIcon;
+            icon.color = Color.white;
+        } else {
+            // Can't be disabled, as it needs to keep being a raycast target.
+            icon.sprite = null;
+            icon.color = Color.clear;
         }
     }
 
@@ -26,14 +33,14 @@ public class InventoryUIItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Vector3 preDragPosition;
 
     public void OnBeginDrag(PointerEventData eventData) {
-        if (Slot == null || Slot.item == null)
+        if (Item == null)
             return;
 
         dragging = true;
         preDragParent = transform.parent;
         preDragPosition = transform.localPosition;
         while (transform.parent.GetComponent<Canvas>() == null)
-            transform.parent = transform.parent.parent;
+            transform.SetParent(transform.parent.parent, true);
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -47,7 +54,7 @@ public class InventoryUIItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (!dragging)
             return;
 
-        transform.parent = preDragParent;
+        transform.SetParent(preDragParent, true);
         transform.localPosition = preDragPosition;
         dragging = false;
 
@@ -55,7 +62,7 @@ public class InventoryUIItem : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         EventSystem.current.RaycastAll(eventData, results);
         foreach (RaycastResult result in results) {
             IUIItemDropHandler handler = result.gameObject.GetComponent<IUIItemDropHandler>();
-            if (handler != null) {
+            if (handler != null && ((Component) handler).transform != transform) {
                 handler.OnDrop(this, eventData);
                 break;
             }
