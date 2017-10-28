@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AiState : ScriptableObject {
+public abstract class AiState : MonoBehaviour {
 
     public AiState nextState;
     public AiState previousState;

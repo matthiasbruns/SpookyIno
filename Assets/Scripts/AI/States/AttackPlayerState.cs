@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackPlayerState : AiState {
-    public float minDistance = 1f;
+    public float minDistance = 0.5f;
     public float maxDistance = 2f; 
     public float attackCooldown = 2.5f;
     public int hitDamage = 10;

@@ -7,9 +7,11 @@ public class EnemyAI : AiComponent, HasMovementAi {
 
 	public EnemyAiConfig aiConfig;
 
+	private AiState idleState, chaseState, attackState;
+
 	public AILerp movementAi;
 
-	public float pathUpdateDuration = 1.0f;
+	public float pathUpdateDuration = 5.0f;
 	private float pathUpdateTimer = 0f;
 
     public Transform Target { 
@@ -17,17 +19,11 @@ public class EnemyAI : AiComponent, HasMovementAi {
 			return movementAi.target; 
 		} 
 		set {
-			if(value == null){
-				movementAi.enabled = false;
-				movementAi.target = null;
-			} else {
-				if(movementAi.target != value){
-					movementAi.target = value;
-					movementAi.enabled = true;
-				}
-			}
+			movementAi.target = value;
 		} 
 	}
+
+    public bool PathCompleted => movementAi.targetReached || !movementAi.canMove;
 
     void Awake(){
 		if(movementAi == null){
@@ -48,12 +44,24 @@ public class EnemyAI : AiComponent, HasMovementAi {
 		}
 
 		// Setup graph
-		initialState = aiConfig.idleState;
-		aiConfig.idleState.nextState = aiConfig.chaseState;
-		aiConfig.chaseState.previousState = aiConfig.idleState;
-		aiConfig.chaseState.nextState = aiConfig.attackState;
-		aiConfig.attackState.previousState = aiConfig.chaseState;
-		aiConfig.attackState.nextState = initialState;
+		idleState = Instantiate(aiConfig.idleState, Vector3.zero, Quaternion.identity);
+		idleState.transform.parent = gameObject.transform;
+		idleState.transform.position = Vector3.zero;
+
+		chaseState = Instantiate(aiConfig.chaseState, Vector3.zero, Quaternion.identity);
+		chaseState.transform.parent = gameObject.transform;
+		chaseState.transform.position = Vector3.zero;
+
+		attackState = Instantiate(aiConfig.attackState, Vector3.zero, Quaternion.identity);
+		attackState.transform.parent = gameObject.transform;
+		attackState.transform.position = Vector3.zero;
+
+		initialState = idleState;
+		idleState.nextState = chaseState;
+		chaseState.previousState = idleState;
+		chaseState.nextState = attackState;
+		attackState.previousState = chaseState;
+		attackState.nextState = initialState;
 	}
 
 	void LateUpdate(){
@@ -62,7 +70,7 @@ public class EnemyAI : AiComponent, HasMovementAi {
 		if(movementAi.target != null && movementAi.enabled){
 			if(pathUpdateTimer <= 0){
 				pathUpdateTimer = pathUpdateDuration;
-				movementAi.SearchPath();
+				// movementAi.SearchPath();
 			}	
 		}
 	}
