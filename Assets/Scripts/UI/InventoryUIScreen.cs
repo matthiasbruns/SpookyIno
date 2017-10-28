@@ -17,7 +17,9 @@ public class InventoryUIScreen : MonoBehaviour, IUIScreen {
     public RectTransform ItemSlotPrefab;
 
     public RectTransform WeaponsContent;
+    private InventoryUIItem[] weapons;
     public RectTransform MaterialsContent;
+    private InventoryUIItem[] materials;
 
     public bool IsVisible {
         get {
@@ -46,22 +48,38 @@ public class InventoryUIScreen : MonoBehaviour, IUIScreen {
 
         if (WeaponsContent == null)
             WeaponsContent = Panel.Find("Weapons").Find("Content").GetComponent<RectTransform>();
-        for (int i = 0; i < Inventory.MaxSlotsWeapons; i++) {
+        weapons = new InventoryUIItem[Inventory.MaxSlotsWeapons];
+        for (int i = 0; i < weapons.Length; i++) {
             int x = i % 3;
             int y = i / 3;
             RectTransform slot = Instantiate(ItemSlotPrefab, Vector3.zero, Quaternion.identity, WeaponsContent);
             slot.anchoredPosition = new Vector2(4 + x * slot.sizeDelta.x, -4 - y * slot.sizeDelta.x);
+            weapons[i] = slot.Find("Item").GetComponent<InventoryUIItem>();
         }
 
         if (MaterialsContent == null)
             MaterialsContent = Panel.Find("Materials").Find("Scroll View").Find("Viewport").Find("Content").GetComponent<RectTransform>();
-        for (int i = 0; i < Inventory.MaxSlotsMaterials; i++) {
+        materials = new InventoryUIItem[Inventory.MaxSlotsMaterials];
+        for (int i = 0; i < materials.Length; i++) {
             int x = i % 3;
             int y = i / 3;
             RectTransform slot = Instantiate(ItemSlotPrefab, Vector3.zero, Quaternion.identity, MaterialsContent);
             slot.anchoredPosition = new Vector2(4 + x * slot.sizeDelta.x, -4 - y * slot.sizeDelta.x);
+            materials[i] = slot.Find("Item").GetComponent<InventoryUIItem>();
         }
 
+        Inventory.OnChanged += OnInventoryChanged;
+
+    }
+
+    private void OnInventoryChanged(InventoryItem item_, List<InventorySlot> slots) {
+        if (item_.isWeapon) {
+            for (int i = 0; i < weapons.Length; i++)
+                weapons[i].Slot = i < slots.Count ? slots[i] : null;
+        } else {
+            for (int i = 0; i < materials.Length; i++)
+                materials[i].Slot = i < slots.Count ? slots[i] : null;
+        }
     }
 
     void Update() {
