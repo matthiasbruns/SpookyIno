@@ -28,19 +28,20 @@ public class DungeonGeneratorNeo : MonoBehaviour {
     }
 
     public IEnumerator Generate() {
+        Retry:
         GenerateRoom(-8, -8, 16, 16);
         bool xb = RNG.Next(2) == 1;
         bool yb = RNG.Next(2) == 1;
         int x = xb ? -3 : 7;
         int y = yb ? -3 : 7;
         int w, h;
-        for (int i = RNG.Next(4, 8); i > -1; --i) {
-            w = RNG.Next(10, 25);
-            h = RNG.Next(10, 25);
+        for (int i = RNG.Next(6, 12); i > -1; --i) {
+            w = RNG.Next(8, 12);
+            h = RNG.Next(8, 12);
             GenerateRoom(
-                xb ? (x - w + RNG.Next(6, 10)) : (x - RNG.Next(6, 10)),
-                yb ? (y - h + RNG.Next(6, 10)) : (y - RNG.Next(6, 10)),
-                w + RNG.Next(6, 10), h + RNG.Next(6, 10)
+                xb ? (x - w + RNG.Next(2, 5)) : (x - RNG.Next(2, 5)),
+                yb ? (y - h + RNG.Next(2, 5)) : (y - RNG.Next(2, 5)),
+                w + RNG.Next(2, 5), h + RNG.Next(2, 5)
             );
             GenerateRoom(
                 xb ? (x - w + 4) : (x - 4),
@@ -54,12 +55,29 @@ public class DungeonGeneratorNeo : MonoBehaviour {
             y = yb ? (y - h + 3) : (y + h - 3);
         }
 
+        if (new Vector2(x, y).sqrMagnitude <= 5 * 5)
+            goto Retry;
+
+        bool corridorH = RNG.Next(2) == 1;
+
+        w = corridorH ? 60 : 4;
+        h = corridorH ? 4 : 60;
+        GenerateRoom(
+            x, y,
+            w, h
+        );
+        yield return null;
+
+        if (corridorH)
+            x += w - 8;
+        else
+            y += h - 8;
+
         w = RNG.Next(25, 30);
         h = RNG.Next(20, 25);
         GenerateRoom(
-            xb ? (x - w + 6) : (x - 6),
-            yb ? (y - h + 6) : (y - 6),
-            w + 12, h + 12
+            x - w / 2, y - h / 2,
+            w, h
         );
         // TODO: Generate boss in there.
     }
@@ -74,6 +92,8 @@ public class DungeonGeneratorNeo : MonoBehaviour {
                     xx == x || xx == x + w - 1;
                 if (TileMap.TryGetValue(xy, out tile)) {
                     if (tile == null)
+                        continue;
+                    if (wall)
                         continue;
                     Destroy(tile);
                 }
