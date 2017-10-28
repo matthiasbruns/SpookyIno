@@ -28,6 +28,10 @@ public class ArmorUIComponent : MonoBehaviour {
             RectTransform.Axis.Horizontal,
             ((RectTransform) transform.parent).sizeDelta.x * Health.maxArmor / (Health.maxHealth + Health.maxArmor)
         );
+        rectTransform.anchoredPosition = new Vector2(
+            Mathf.Lerp(((RectTransform) transform.parent).sizeDelta.x * 0.75f, ((RectTransform) transform.parent).sizeDelta.x * 0.5f, Health.maxArmor / 100f),
+            0f
+        );
 
         Panel.rectTransform.SetSizeWithCurrentAnchors(
             RectTransform.Axis.Horizontal,
