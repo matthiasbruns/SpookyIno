@@ -17,6 +17,8 @@ public class DungeonGeneratorNeo : MonoBehaviour {
 
     public GameObject[] BasicWalls = new GameObject[1];
 
+    public int Factor = 1;
+
     void Awake() {
         if (Seed == 0)
             Seed = new Random().Next();
@@ -35,13 +37,13 @@ public class DungeonGeneratorNeo : MonoBehaviour {
         int x = xb ? -3 : 7;
         int y = yb ? -3 : 7;
         int w, h;
-        for (int i = RNG.Next(6, 12); i > -1; --i) {
-            w = RNG.Next(8, 12);
-            h = RNG.Next(8, 12);
+        for (int i = Factor * RNG.Next(6, 12); i > -1; --i) {
+            w = RNG.Next(8, 12) / Factor;
+            h = RNG.Next(8, 12) / Factor;
             GenerateRoom(
-                xb ? (x - w + RNG.Next(2, 5)) : (x - RNG.Next(2, 5)),
-                yb ? (y - h + RNG.Next(2, 5)) : (y - RNG.Next(2, 5)),
-                w + RNG.Next(2, 5), h + RNG.Next(2, 5)
+                xb ? (x - w + RNG.Next(2, 5) * Factor) : (x - RNG.Next(2, 5) * Factor),
+                yb ? (y - h + RNG.Next(2, 5) * Factor) : (y - RNG.Next(2, 5) * Factor),
+                w + RNG.Next(2, 5) * Factor, h + RNG.Next(2, 5) * Factor
             );
             GenerateRoom(
                 xb ? (x - w + 4) : (x - 4),
@@ -55,7 +57,7 @@ public class DungeonGeneratorNeo : MonoBehaviour {
             y = yb ? (y - h + 3) : (y + h - 3);
         }
 
-        if (new Vector2(x, y).sqrMagnitude <= 5 * 5)
+        if (new Vector2(x, y).sqrMagnitude <= (5 * 5) * Factor)
             goto Retry;
 
         bool corridorH = RNG.Next(2) == 1;

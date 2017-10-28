@@ -11,6 +11,8 @@ public class UIScreenManager : MonoBehaviour {
         public GameObject ScreenObject;
         [System.NonSerialized]
         private IUIScreen cachedScreen;
+        public AudioClip ClipOnClose;
+        public AudioClip ClipOnOpen;
         public IUIScreen Screen {
             get {
                 if (cachedScreen != null)
@@ -24,6 +26,13 @@ public class UIScreenManager : MonoBehaviour {
 
     public UIScreenMapping CurrentScreen { get; private set; }
 
+    public AudioSource Audio;
+
+    void Awake() {
+        if (Audio == null)
+            Audio = GetComponent<AudioSource>();
+    }
+
     void Start() {
         foreach (UIScreenMapping screen in Screens)
             screen.Screen.IsVisible = false;
@@ -34,10 +43,15 @@ public class UIScreenManager : MonoBehaviour {
 
         foreach (UIScreenMapping screen in Screens) {
             if (Input.GetButtonDown(screen.InputButton)) {
-                if (CurrentScreen == screen)
+                if (CurrentScreen == screen) {
+                    if (screen.ClipOnClose != null)
+                        Audio.PlayOneShot(screen.ClipOnClose);
                     CurrentScreen = null;
-                else
+                } else {
+                    if (screen.ClipOnOpen != null)
+                        Audio.PlayOneShot(screen.ClipOnOpen);
                     CurrentScreen = screen;
+                }
             }
         }
 
