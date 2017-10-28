@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
 
 	public int hitDamage = 1;
-	public LayerMask ignoreLayers;
+	public SortedSet<string> ignoreTags = new SortedSet<string>();
 
 	void Awake(){
 		Rigidbody2D rbody;
@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if(ignoreLayers.HasLayer(other.gameObject.layer)) return;
+		if(ignoreTags.Contains(other.gameObject.tag)) return;
 
 		List<HasHealth> hasHealths;
         other.gameObject.GetInterfaces<HasHealth>(out hasHealths);

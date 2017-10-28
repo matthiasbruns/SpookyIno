@@ -8,4 +8,7 @@ public static class LayerMaskExtensions
 	public static bool HasNotLayer(this LayerMask obj, int layer) {
           return !HasLayer(obj, layer);
 	}
+	public static void SetLayer(this LayerMask obj, int layer) {
+         obj = layer;
+	}
 }

@@ -25,7 +25,7 @@ public class HealthComponent : MonoBehaviour, HasHealth {
 
     void Awake ()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = gameObject.GetOrCreateComponent<AudioSource>();
         currentHealth = startHealth;
         currentArmor = startArmor;
     }
@@ -58,14 +58,7 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         isDead = true;
         audioSource.clip = deathClip;
         audioSource.Play();
-        RestartGame();
-    }
-
-    void RestartGame()
-    {
-        currentHealth = startHealth;
-        currentArmor = startArmor;
-        isDead = false;
+        Destroy(gameObject);
     }
 
     public void IncreaseHealth(int amount)
