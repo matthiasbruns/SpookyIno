@@ -26,7 +26,7 @@ public class LevelGeneratorNeo : MonoBehaviour {
     private Dictionary<ulong, ChunkData> ChunkMap = new Dictionary<ulong, ChunkData>();
 
     void Awake() {
-        Database = GameManager.Instance.ChunkDatabase;
+        Database = GameManager.Instance.chunkDatabase;
 #if UNITY_EDITOR
         if (Database == null) {
             Database = ScriptableObject.CreateInstance<ChunkTypeDataList>();

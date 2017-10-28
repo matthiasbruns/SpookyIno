@@ -22,5 +22,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public InventoryItemList itemDatabase;
-	public ChunkTypeDataList ChunkDatabase;
+	public ChunkTypeDataList chunkDatabase;
+    public ObjectiveList objectiveDatabase;
 }
