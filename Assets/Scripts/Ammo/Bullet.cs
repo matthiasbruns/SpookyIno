@@ -4,13 +4,43 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public int hitDamage = 1;
+	public LayerMask ignoreLayers;
+
+	void Awake(){
+		Rigidbody2D rbody;
+		if((rbody = gameObject.GetComponent<Rigidbody2D>()) == null){
+			rbody = gameObject.AddComponent<Rigidbody2D>();
+			rbody.isKinematic = true;
+		}
+
+		List<Collider2D> colliders;
+		gameObject.GetInterfaces<Collider2D>(out colliders);
+		if(colliders == null || colliders.Count == 0){
+			var col = gameObject.AddComponent<CircleCollider2D>();
+			colliders = new List<Collider2D>();
+			colliders.Add(col);
+			col.isTrigger = true;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if((mask.value & 1<<c.gameObject.layer) == 1<<c.gameObject.layer){
+		}
+
+		List<HasHealth> hasHealths;
+        other.gameObject.GetInterfaces<HasHealth>(out hasHealths);
+
+		if(hasHealths == null){
+			return;
+		}
+
+		foreach(HasHealth hasHealth in hasHealths){
+			if(hasHealth.CanBeDamaged){
+				hasHealth.ApplyDamage(hitDamage);
+			}
+		}
+
+		Destroy(gameObject);
+    }
 }
