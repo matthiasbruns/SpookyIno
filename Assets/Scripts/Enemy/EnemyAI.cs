@@ -19,9 +19,11 @@ public class EnemyAI : AiComponent, HasMovementAi {
 		set {
 			if(value == null){
 				movementAi.enabled = false;
+				movementAi.target = null;
 			} else {
 				if(movementAi.target != value){
 					movementAi.target = value;
+					movementAi.enabled = true;
 				}
 			}
 		} 
@@ -45,16 +47,19 @@ public class EnemyAI : AiComponent, HasMovementAi {
 			 Debug.LogError("attackState is not set");
 		}
 
+		// Setup graph
 		initialState = aiConfig.idleState;
-		aiConfig.idleState.NextState = aiConfig.chaseState;
-		aiConfig.chaseState.NextState = aiConfig.attackState;
-		aiConfig.attackState.NextState = initialState;
+		aiConfig.idleState.nextState = aiConfig.chaseState;
+		aiConfig.chaseState.previousState = aiConfig.idleState;
+		aiConfig.chaseState.nextState = aiConfig.attackState;
+		aiConfig.attackState.previousState = aiConfig.chaseState;
+		aiConfig.attackState.nextState = initialState;
 	}
 
 	void LateUpdate(){
 		pathUpdateTimer -= Time.deltaTime;
 
-		if(movementAi.target != null){
+		if(movementAi.target != null && movementAi.enabled){
 			if(pathUpdateTimer <= 0){
 				pathUpdateTimer = pathUpdateDuration;
 				movementAi.SearchPath();
