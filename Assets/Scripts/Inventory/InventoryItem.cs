@@ -41,4 +41,9 @@ public class InventoryItem
     public static bool operator !=(InventoryItem a, InventoryItem b) {
         return !(a == b);
     }
+
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
+
 }

@@ -28,4 +28,9 @@ public class Objective {
     public static bool operator !=(Objective a, Objective b) {
         return !(a == b);
     }
+
+    public override int GetHashCode() {
+        return base.GetHashCode();
+    }
+
 }
