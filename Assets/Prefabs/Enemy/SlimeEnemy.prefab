@@ -21,6 +21,10 @@ GameObject:
   - component: {fileID: 4284503650367412}
   - component: {fileID: 114869961977445918}
   - component: {fileID: 114952801918607118}
+  - component: {fileID: 114049040833385732}
+  - component: {fileID: 114031489668453404}
+  - component: {fileID: 114465135136490744}
+  - component: {fileID: 82386188972451888}
   m_Layer: 0
   m_Name: SlimeEnemy
   m_TagString: Untagged
@@ -36,11 +40,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4007679007264792}
-  - component: {fileID: 114205029929916286}
-  - component: {fileID: 114679566652859494}
-  - component: {fileID: 114048659029658414}
-  - component: {fileID: 82874643615717862}
   - component: {fileID: 212308943859402400}
+  - component: {fileID: 58602966599201778}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -68,19 +69,34 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047022457399156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 8.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4007679007264792}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82874643615717862
-AudioSource:
+--- !u!58 &58602966599201778
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839884629200278}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!82 &82386188972451888
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047022457399156}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -130,7 +146,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -154,28 +170,13 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &114048659029658414
+    m_RotationOrder: 4
+--- !u!114 &114031489668453404
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1839884629200278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ba0f11b92f24a508584787bdd398ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialState: {fileID: 11400000, guid: fb2d0261433e44e33bbf99dbbc19dfa6, type: 2}
-  aiConfig: {fileID: 11400000, guid: ccbd09ca8c1f24b0db275ddc3e5c5932, type: 2}
-  movementAi: {fileID: 0}
-  pathUpdateDuration: 1
---- !u!114 &114205029929916286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1839884629200278}
+  m_GameObject: {fileID: 1047022457399156}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4747c5eec3864ca091c3fb8a4fab69b, type: 3}
@@ -185,12 +186,27 @@ MonoBehaviour:
   - chance: 1
     amount: 1
     item: 0
---- !u!114 &114679566652859494
+--- !u!114 &114049040833385732
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1839884629200278}
+  m_GameObject: {fileID: 1047022457399156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ba0f11b92f24a508584787bdd398ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialState: {fileID: 0}
+  aiConfig: {fileID: 11400000, guid: ccbd09ca8c1f24b0db275ddc3e5c5932, type: 2}
+  movementAi: {fileID: 0}
+  pathUpdateDuration: 5
+--- !u!114 &114465135136490744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047022457399156}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f523597ef7263a741b3eff3e4e934dff, type: 3}
@@ -291,7 +307,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1960021349
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fb71e31e66453aa4190471730d54c0cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
