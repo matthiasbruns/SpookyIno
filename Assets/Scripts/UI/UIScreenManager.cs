@@ -47,10 +47,12 @@ public class UIScreenManager : MonoBehaviour {
                     if (screen.ClipOnClose != null)
                         Audio.PlayOneShot(screen.ClipOnClose);
                     CurrentScreen = null;
+                    Time.timeScale = 1f;
                 } else {
                     if (screen.ClipOnOpen != null)
                         Audio.PlayOneShot(screen.ClipOnOpen);
                     CurrentScreen = screen;
+                    Time.timeScale = 0f;
                 }
             }
         }
