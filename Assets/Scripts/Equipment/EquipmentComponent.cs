@@ -4,16 +4,10 @@ using UnityEngine;
 
 public class EquipmentComponent : MonoBehaviour {
 
-	[System.Serializable]
-	struct WeaponSlots {
-
-		public InventoryItem leftHand;
-		public InventoryItem rightHand;
-	}
-
 	private InventoryComponent inventory;
 	private ActionsComponent actions;
-	private WeaponSlots weaponSlots;
+    private WeaponSlots weaponSlots;
+    public WeaponSlots WeaponSlots => weaponSlots;
 
 	void Awake(){
 		inventory = GetComponent<InventoryComponent>();

@@ -56,6 +56,8 @@ GameObject:
   - component: {fileID: 114584077558664560}
   - component: {fileID: 58166044735059612}
   - component: {fileID: 114963439343044378}
+  - component: {fileID: 114509109199143494}
+  - component: {fileID: 114083692328466192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -216,6 +218,29 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114083692328466192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541730682870350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a42d4aeaa6a44d59aed004d2205885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114509109199143494
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1541730682870350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 836c152040ede4f4eb34ffacdcd82dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: e8bf99a3045124c6b90b566dc9fd0f1e, type: 2}
 --- !u!114 &114584077558664560
 MonoBehaviour:
   m_ObjectHideFlags: 1
