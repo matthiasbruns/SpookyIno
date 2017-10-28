@@ -48,4 +48,8 @@ public static class VectorExtensions {
 	public static Vector3 AddYZ(this Vector3 vec3, Vector2 vec2) {
 		return new Vector3 (vec3.x, vec3.y + vec2.x, vec3.z + vec2.y);
 	}
+
+	public static Vector2 vec2(this Vector3 vec3) {
+		return new Vector2 (vec3.x, vec3.y);
+	}
 }
