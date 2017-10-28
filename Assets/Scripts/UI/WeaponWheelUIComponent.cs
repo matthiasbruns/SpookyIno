@@ -22,10 +22,9 @@ public class WeaponWheelUIComponent : MonoBehaviour {
     }
 
     void Update() {
-        WeaponSlots slots = Equipment.WeaponSlots;
         for (int i = 0; i < Icons.Count; i++) {
             Image icon = Icons[i];
-            InventoryItem item = slots.rightHand; // slots.items[i];
+            InventoryItem item = Equipment.Items[i];
             if (icon.enabled = (item != null)) {
                 icon.sprite = item.itemIcon;
             }

@@ -13,7 +13,9 @@ public abstract class ActionsComponent : MonoBehaviour {
 		if(OnPrimary != null){
 			OnPrimary();
 		}
-	}	protected void TriggerSecondary(){
+	}	
+	
+	protected void TriggerSecondary(){
 		if(OnSecondary != null){
 			OnSecondary();
 		}

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 61714970832597424}
   - component: {fileID: 23176514848489224}
   - component: {fileID: 33871546277745170}
+  - component: {fileID: 114341018361819284}
   m_Layer: 0
   m_Name: Mob
   m_TagString: Untagged
@@ -145,3 +146,27 @@ MonoBehaviour:
   - chance: 1
     amount: 1
     item: 0
+--- !u!114 &114341018361819284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1283832608515172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f523597ef7263a741b3eff3e4e934dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBeDamaged: 1
+  currentHealth: 0
+  currentArmor: 0
+  startHealth: 100
+  startArmor: 0
+  maxHealth: 100
+  maxArmor: 100
+  damaged: 0
+  gainHealthClip: {fileID: 0}
+  gainArmorClip: {fileID: 0}
+  hurtClip: {fileID: 0}
+  armorHurtClip: {fileID: 0}
+  deathClip: {fileID: 0}

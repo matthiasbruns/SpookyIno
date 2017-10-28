@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class GameObjectExtensions
@@ -37,4 +38,15 @@ public static class GameObjectExtensions
 	public static float z(this GameObject obj) {
 		return obj.transform.position.z;
 	}
+
+	public static void GetInterfaces<T>(this GameObject obj, out List<T> interfaceList) where T : class {
+		interfaceList = new List<T>();
+		var components = obj.GetComponents<MonoBehaviour>();
+
+		foreach(MonoBehaviour component in components) {
+			if (component is T) {
+                 interfaceList.Add(component as T);
+             }
+		}
+	} 
 }

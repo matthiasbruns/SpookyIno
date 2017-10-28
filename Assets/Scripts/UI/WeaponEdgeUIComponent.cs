@@ -21,10 +21,8 @@ public class WeaponEdgeUIComponent : MonoBehaviour {
     }
 
     void Update() {
-        WeaponSlots slots = Equipment.WeaponSlots;
-
-        if (Icon.enabled = (slots.rightHand != null)) {
-            Icon.sprite = slots.rightHand.itemIcon;
+        if (Icon.enabled = (Equipment.mainHand != null)) {
+            Icon.sprite = Equipment.mainHand.itemIcon;
         }
     }
 

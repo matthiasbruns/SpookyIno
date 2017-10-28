@@ -8,6 +8,7 @@ public class PlayerActionsComponent : ActionsComponent {
 		if(Input.GetButtonDown(Keys.FIRE_1)){
 			TriggerPrimary();
 		}
+		
 		if(Input.GetButtonDown(Keys.FIRE_2)){
 			TriggerSecondary();
 		}
