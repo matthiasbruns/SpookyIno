@@ -27,24 +27,6 @@ public class LevelGeneratorNeo : MonoBehaviour {
 
     void Awake() {
         Database = GameManager.Instance.chunkDatabase;
-#if UNITY_EDITOR
-        if (Database == null) {
-            Database = ScriptableObject.CreateInstance<ChunkTypeDataList>();
-            Database.ChunkTypeDatas = new List<ChunkTypeData>() {
-                new ChunkTypeData(ChunkType.Empty, 0.01, data => data.ExitDirection = ExitDirection.All),
-                new ChunkTypeData(ChunkType.SimpleRoom, 1), // Value of 1 = fallback
-            };
-            Database.ChunkTypeExtras = new ChunkTypeData[] {
-                null,
-                null,
-                null,
-                new ChunkTypeData(ChunkType.ExtraWall, 0)
-            };
-            UnityEditor.AssetDatabase.CreateAsset(Database, UnityEditor.AssetDatabase.GenerateUniqueAssetPath("Assets/Data/LevelChunkDB.asset"));
-            UnityEditor.AssetDatabase.SaveAssets();
-            UnityEditor.AssetDatabase.Refresh();
-        }
-#endif
 
         if (Seed == 0)
             Seed = new Random().Next();
