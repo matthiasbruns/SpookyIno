@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryComponent : MonoBehaviour {
 
- 	public delegate void ChangeAction(List<InventorySlot> slots);
+ 	public delegate void ChangeAction(InventoryItem item, List<InventorySlot> slots);
     public event ChangeAction OnChanged;
 
 	public InventoryItemList database;
@@ -73,6 +73,6 @@ public class InventoryComponent : MonoBehaviour {
             return;
         }
 
-		 if(OnChanged != null) OnChanged(slots);
+		 if(OnChanged != null) OnChanged(item, slots);
 	}
 }

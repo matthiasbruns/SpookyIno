@@ -50,7 +50,7 @@ public class EquipmentComponent : MonoBehaviour {
 		
 	}
 
-	void OnInventoryChange(List<InventorySlot> slots){
+	void OnInventoryChange(InventoryItem item, List<InventorySlot> slots){
         // TODO: Inventory was changed - update equipment here 
 		AutoEquip(slots);
     }
