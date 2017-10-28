@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackPlayerState : AiState {
-    public float minDistance = 2f;
+    public float minDistance = 1f;
+    public float maxDistance = 2f; 
     public float attackCooldown = 2.5f;
     public int hitDamage = 10;
     private float attackTimer = 0.0f;
@@ -11,18 +12,13 @@ public class AttackPlayerState : AiState {
     private HasHealth playerHealth;
     private List<HasMovementAi> movementAIs;
     private bool isInRange = false;
-    public override void Tick(GameObject owner)
-    {   
-        if(movementAIs == null){
-            owner.GetInterfaces<HasMovementAi>(out movementAIs);
-        }
 
-        if (player == null) {
-            UpdatePlayer();
-            if(player == null) {
-                isTransitionAllowed = true;
-            }
-        } else {
+    public override void OnEnter(GameObject owner){
+        base.OnEnter(owner);
+        UpdatePlayer();
+    }
+    public override void Tick(GameObject owner){   
+        if (player != null) {
             if(movementAIs == null || movementAIs.Count == 0) {
                 Debug.LogError("Cannot wander without HasMovementAi interface");
             } else {
@@ -33,6 +29,8 @@ public class AttackPlayerState : AiState {
 
         if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) <= minDistance) {
             isInRange = true;
+        } else if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) >= maxDistance) {
+            isBackTransitionRequested = true;
         } else {
             isInRange = false;
         }
