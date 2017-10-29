@@ -17,9 +17,9 @@ public class DungeonTransitionComponent : MonoBehaviour {
         if (!enabled || !collision.gameObject.CompareTag("Player"))
             return;
         if (GameManager.Instance.InDungeon)
-            GameSceneManager.Instance.SwitchToOverworldScene();
+            GameSceneManager.Instance.EnterOverworld();
         else
-            GameSceneManager.Instance.SwitchToDungeonScene(Seed, Boss);
+            GameSceneManager.Instance.EnterDungeon(Seed, Boss);
         enabled = false;
     }
 

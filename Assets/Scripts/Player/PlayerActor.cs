@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerActor : MonoBehaviour, IActor {
+public class PlayerActor : MonoBehaviour, IActor, DeathHandler {
 
     public Transform hand;
     public Vector2 LookAngle => hand.forward;
@@ -24,4 +25,9 @@ public class PlayerActor : MonoBehaviour, IActor {
         anim.SetFloat("Velocity", Own.velocity.magnitude);
         anim.SetFloat("Angle", angleLook);
     }
+
+    public void HandleDeath() {
+        GameSceneManager.Instance.ExitOrRetry();
+    }
+
 }

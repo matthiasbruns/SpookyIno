@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-public GameState gameState;
+    public GameState gameState;
 
 	void Awake() {
         gameState = gameObject.GetComponent<GameState>();

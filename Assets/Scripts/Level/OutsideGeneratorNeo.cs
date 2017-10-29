@@ -25,6 +25,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
     public GameObject DungeonEntrance;
     public GameObject[] Foliage = new GameObject[0];
     public GameObject[] Walls = new GameObject[0];
+    public GameObject[] Enemies = new GameObject[0];
 
     public AstarPath AStar;
 
@@ -41,12 +42,12 @@ public class OutsideGeneratorNeo : MonoBehaviour {
             Seed = new Random().Next();
 
         AStar = FindObjectOfType<AstarPath>();
-
-        FillChunk(0, 0);
-	}
+    }
 
     void Start() {
+        Update();
         StartCoroutine(AStarUpdateLoop());
+        AstarPath.active.Scan();
     }
 
     void Update() {

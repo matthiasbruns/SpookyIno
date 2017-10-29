@@ -27,7 +27,7 @@ public class GameSceneManager : MonoBehaviour {
         GameScene = SceneManager.GetActiveScene();
         SceneManager.sceneLoaded += OnSceneLoad;
         GameManager.Instance.InDungeon = false;
-        SwitchToOverworldScene();
+        EnterOverworld();
 
         if (Player == null)
             Player = FindObjectOfType<PlayerActor>();
@@ -37,22 +37,32 @@ public class GameSceneManager : MonoBehaviour {
 
     }
 
-    public void SwitchToOverworldScene() {
-        StartCoroutine(_SwitchToScene("Scenes/GameOutside", false));
+    public void EnterOverworld() {
+        StartCoroutine(_SwitchToScene("Scenes/GameOutside", false, false));
     }
-    public void SwitchToDungeonScene(int seed, DungeonTheme boss) {
+    public void EnterDungeon(int seed, DungeonTheme boss) {
         DungeonSeed = seed;
         LoadingBoss = boss;
-        StartCoroutine(_SwitchToScene("Scenes/GameDungeon", true));
+        StartCoroutine(_SwitchToScene("Scenes/GameDungeon", true, false));
+    }
+    public void ExitOrRetry() {
+        StartCoroutine(_SwitchToScene("Scenes/GameOutside", true, true));
     }
 
-    private string loading;
-    private IEnumerator _SwitchToScene(string name, bool dungeon) {
-        loading = name;
+    private IEnumerator _SwitchToScene(string name, bool dungeon, bool dead) {
+        if (dead) {
+            const float slowdownDur = 3f;
+            for (float t = 0f; t < slowdownDur; t += Time.unscaledDeltaTime) {
+                float f = t / slowdownDur;
+                Time.timeScale = 1f - f;
+                yield return null;
+            }
+            Time.timeScale = 0f;
+        }
 
-        const float dur = 0.6f;
-        for (float t = 0f; t < dur; t += Time.unscaledDeltaTime) {
-            float f = t / dur;
+        const float transitionDur = 0.6f;
+        for (float t = 0f; t < transitionDur; t += Time.unscaledDeltaTime) {
+            float f = t / transitionDur;
             SceneTransition.anchoredPosition = new Vector2(
                 0f,
                 Mathf.Lerp(2000f, -2000f, f)
@@ -65,6 +75,11 @@ public class GameSceneManager : MonoBehaviour {
 
         if (dungeon)
             PrevPlayerPos = Player.transform.position;
+
+        if (dead) {
+            HealthComponent health = Player.GetComponent<HealthComponent>();
+            health.currentHealth = health.startHealth;
+        }
 
         if (!string.IsNullOrEmpty(CurrentScene.name))
             yield return SceneManager.UnloadSceneAsync(CurrentScene);
@@ -83,8 +98,8 @@ public class GameSceneManager : MonoBehaviour {
 
         Time.timeScale = 1f;
 
-        for (float t = 0f; t < dur; t += Time.unscaledDeltaTime) {
-            float f = t / dur;
+        for (float t = 0f; t < transitionDur; t += Time.unscaledDeltaTime) {
+            float f = t / transitionDur;
             SceneTransition.anchoredPosition = new Vector2(
                 0f,
                 Mathf.Lerp(-2000f, -6000f, f)
@@ -98,7 +113,6 @@ public class GameSceneManager : MonoBehaviour {
         if (scene.name == "Game")
             return;
 
-        loading = null;
         CurrentScene = scene;
         SceneManager.SetActiveScene(scene);
     }
