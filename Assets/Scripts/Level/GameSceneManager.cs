@@ -11,7 +11,7 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     public int DungeonSeed { get; private set; }
-    public DungeonBoss LoadingBoss { get; private set; }
+    public DungeonTheme LoadingBoss { get; private set; }
 
     private Scene GameScene;
     private Scene CurrentScene;
@@ -40,7 +40,7 @@ public class GameSceneManager : MonoBehaviour {
     public void SwitchToOverworldScene() {
         StartCoroutine(_SwitchToScene("Scenes/GameOutside", false));
     }
-    public void SwitchToDungeonScene(int seed, DungeonBoss boss) {
+    public void SwitchToDungeonScene(int seed, DungeonTheme boss) {
         DungeonSeed = seed;
         LoadingBoss = boss;
         StartCoroutine(_SwitchToScene("Scenes/GameDungeon", true));
@@ -67,7 +67,7 @@ public class GameSceneManager : MonoBehaviour {
             PrevPlayerPos = Player.transform.position;
 
         if (!string.IsNullOrEmpty(CurrentScene.name))
-            yield return SceneManager.UnloadSceneAsync(CurrentScene.name);
+            yield return SceneManager.UnloadSceneAsync(CurrentScene);
         yield return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
         GameManager.Instance.InDungeon = dungeon;
 
@@ -95,6 +95,9 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
+        if (scene.name == "Game")
+            return;
+
         loading = null;
         CurrentScene = scene;
         SceneManager.SetActiveScene(scene);

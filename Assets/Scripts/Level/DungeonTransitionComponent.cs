@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class DungeonTransitionComponent : MonoBehaviour {
 
     public int Seed;
-    public DungeonBoss Boss = DungeonBoss.Scarecrow;
+    public DungeonTheme Boss = DungeonTheme.Scarecrow;
 
     void Awake() {
         if (Seed == 0)

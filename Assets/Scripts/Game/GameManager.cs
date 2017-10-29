@@ -17,11 +17,11 @@ public GameState gameState;
 
         Resources.FindObjectsOfTypeAll<Canvas>()[0].gameObject.SetActive(true);
 
-		if(instance != null){
-			Debug.LogError("GameManager instance is already present");
-			Destroy(gameObject);
-			return;
-		}
+        if (instance != null) {
+            Debug.LogError("GameManager instance is already present");
+            Destroy(gameObject);
+            return;
+        }
 
 		instance = this;
 	}
@@ -43,5 +43,6 @@ public GameState gameState;
     public InventoryItemList itemDatabase;
     public ObjectiveList objectiveDatabase;
     public SoundList audioDatabase;
+    public DungeonThemeDataList themeDatabase;
 
 }
