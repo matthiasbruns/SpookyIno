@@ -70,7 +70,7 @@ public class ChunkData {
 
         switch (Type.Type) {
             case ChunkType.Empty:
-                if (RNG.NextDouble() < 0.4)
+                if (RNG.NextDouble() < 0.25)
                     break;
                 int type = RNG.Next(3);
                 if (type == 0) {
@@ -84,7 +84,7 @@ public class ChunkData {
                         Objects.Add(Object.Instantiate(OutsideGeneratorNeo.Instance.Walls[RNG.Next(OutsideGeneratorNeo.Instance.Walls.Length)], new Vector3(xx, yy, 0), Quaternion.identity, null));
                     }
                 } else if (type == 2) {
-                    int count = RNG.Next(1, 3);
+                    int count = RNG.Next(1, 2);
                     for (int i = 0; i < count; i++) {
                         int xx = X * OutsideGeneratorNeo.ChunkWidth + RNG.Next(OutsideGeneratorNeo.ChunkWidth);
                         int yy = Y * OutsideGeneratorNeo.ChunkHeight + RNG.Next(OutsideGeneratorNeo.ChunkHeight);

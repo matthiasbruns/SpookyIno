@@ -8,5 +8,6 @@ public enum DungeonTheme {
     Slime,
     Wail,
     Ghoul,
+    Reaper,
     Unknown
 }
