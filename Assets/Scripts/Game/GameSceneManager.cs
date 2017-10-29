@@ -46,12 +46,12 @@ public class GameSceneManager : MonoBehaviour {
         StartCoroutine(_SwitchToScene("Scenes/GameDungeon", true, false));
     }
     public void ExitOrRetry() {
-        StartCoroutine(_SwitchToScene("Scenes/GameOutside", true, true));
+        StartCoroutine(_SwitchToScene("Scenes/GameOutside", false, true));
     }
 
     private IEnumerator _SwitchToScene(string name, bool dungeon, bool dead) {
         if (dead) {
-            const float slowdownDur = 3f;
+            const float slowdownDur = 0.6f;
             for (float t = 0f; t < slowdownDur; t += Time.unscaledDeltaTime) {
                 float f = t / slowdownDur;
                 Time.timeScale = 1f - f;
@@ -79,6 +79,7 @@ public class GameSceneManager : MonoBehaviour {
         if (dead) {
             HealthComponent health = Player.GetComponent<HealthComponent>();
             health.currentHealth = health.startHealth;
+            health.isDead = false;
         }
 
         if (!string.IsNullOrEmpty(CurrentScene.name))

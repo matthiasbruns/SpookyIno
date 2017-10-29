@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class HealthComponent : MonoBehaviour, HasHealth {
 
-    bool isDead = false;
+    public bool isDead = false;
     public bool canBeDamaged = true;
     public int currentHealth;
     public int currentArmor;
@@ -56,6 +56,9 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         {
             Death();
         }
+
+        if (currentHealth < 0)
+            currentHealth = 0;
     }
 
     public int Health => currentHealth;
