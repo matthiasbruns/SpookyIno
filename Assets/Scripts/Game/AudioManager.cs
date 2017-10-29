@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour {
     public static AudioManager instance;
     public AudioMixer masterMixer;
 
-    //public Sound[] sounds;
+    public Sound[] sounds;
     SoundList database;
 
     void Awake() {
@@ -22,13 +22,14 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject);
 
-        /*for(int i = 0; i<database.Count(); i++) {
+        /*for(int i = 0; i<database.soundList.Count; i++) {
             database.soundList[i].source = gameObject.AddComponent<AudioSource>();
             database.soundList[i].source.clip = database.soundList[i].clip;
             database.soundList[i].source.outputAudioMixerGroup = database.soundList[i].mixer;
             database.soundList[i].source.volume = database.soundList[i].volume;
             database.soundList[i].source.loop = database.soundList[i].loop;
-            sounds.Add(s);
+            Sound s = database.soundList[i];
+            sounds[i] = s;
         }
         /*foreach (Sound s in database) {
             s.source = gameObject.AddComponent<AudioSource>();

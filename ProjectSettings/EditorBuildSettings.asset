@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Development/LoadLevel/map1.unity
-    guid: 22cc9393356b7b24ca89ee94119259e1
+    path: Assets/Scenes/MainMenu.unity
+    guid: adce929fbf03d5249b677bcdd76331e6
   - enabled: 1
-    path: Assets/_Development/LoadLevel/map2.unity
-    guid: 1a99f66e6d0063f4cb52808611a3b7b5
+    path: Assets/Scenes/Game.unity
+    guid: b8ea71adbc8e24b479157b16f3e46a97
+  - enabled: 1
+    path: Assets/Scenes/GameOutside.unity
+    guid: ca2021c1d2951544f8ace89ac706769d
+  - enabled: 1
+    path: Assets/Scenes/GameDungeon.unity
+    guid: 8c43af7718197fd4ebc208ca16805763

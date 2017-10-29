@@ -7,22 +7,23 @@ public class PlayerActor : MonoBehaviour, IActor {
     public Transform hand;
 
     public Vector2 LookAngle => hand.forward;
-    Animator anim; 
+    Animator anim;
+    Rigidbody2D Own;
+
 
     void Awake() {
         if (hand == null)
             hand = transform.Find("Hand"); // Jemand war faul und hat hand nicht gesetzt..
-        anim = GetComponent<Animator>();
-        anim.SetFloat("LookDirectionX", LookAngle.x);
-        anim.SetFloat("LookDirectionY", LookAngle.y);
-        anim.SetFloat("Velocity", GetComponent<Rigidbody2D>().velocity.magnitude);
+        anim = gameObject.GetComponent<Animator>();
+        Own = gameObject.GetComponent<Rigidbody2D>();
     }
 	
 	void Update() {
-        anim.SetFloat("LookDirectionX", LookAngle.x);
-        anim.SetFloat("LookDirectionY", LookAngle.y);
-        anim.SetFloat("Velocity", GetComponent<Rigidbody2D>().velocity.magnitude);
+        
+        float angleLook = (float)((Mathf.Atan2(LookAngle.x, LookAngle.y) / Mathf.PI) * 180f) + 45f;
+        if (angleLook < 0) angleLook += 360f;
 
+        anim.SetFloat("Velocity", Own.velocity.magnitude);
+        anim.SetFloat("Angle", angleLook);
     }
-
 }

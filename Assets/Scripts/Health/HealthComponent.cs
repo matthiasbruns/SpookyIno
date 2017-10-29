@@ -23,11 +23,17 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     public AudioClip deathClip;
 
     public bool CanBeDamaged => canBeDamaged;
+    SoundList database;
 
     void Awake ()
     {
         currentHealth = startHealth;
         currentArmor = startArmor;
+        audioPosition = gameObject.transform.position;
+        database = GameManager.Instance.audioDatabase;
+    }
+
+    void Update() {
         audioPosition = gameObject.transform.position;
     }
 

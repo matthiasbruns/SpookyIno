@@ -208,9 +208,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba0f11b92f24a508584787bdd398ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 11400000, guid: fb2d0261433e44e33bbf99dbbc19dfa6, type: 2}
+  initialState: {fileID: 0}
   aiConfig: {fileID: 11400000, guid: ccbd09ca8c1f24b0db275ddc3e5c5932, type: 2}
   movementAi: {fileID: 0}
+  pathUpdateDuration: 5
 --- !u!114 &114205029929916286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +227,7 @@ MonoBehaviour:
   - chance: 1
     amount: 1
     item: 0
+  anim: {fileID: 0}
 --- !u!114 &114679566652859494
 MonoBehaviour:
   m_ObjectHideFlags: 1
