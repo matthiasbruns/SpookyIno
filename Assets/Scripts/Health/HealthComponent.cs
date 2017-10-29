@@ -45,11 +45,11 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         {
             currentHealth += currentArmor;
             currentArmor = 0;
-            audioSource.PlayOneShot(hurtClip);
+            PlayOneShot(hurtClip);
         }
         else
         {
-            audioSource.PlayOneShot(armorHurtClip);
+            PlayOneShot(armorHurtClip);
         }
 
         if (currentHealth <= 0 && !isDead)
@@ -63,7 +63,7 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     void Death()
     {
         isDead = true;
-        audioSource.PlayOneShot(deathClip);
+        audioSource.PlayOneShot(deathClip, 0.5f);
         // Broadcast 
         List<DeathHandler> handlers;
         gameObject.GetInterfaces<DeathHandler>(out handlers);
@@ -80,12 +80,18 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     public void IncreaseHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        audioSource.PlayOneShot(gainHealthClip);
+        PlayOneShot(gainHealthClip);
     }
 
     public void IncreaseArmor(int amount)
     {
         currentArmor = Mathf.Clamp(currentArmor + amount, 0, maxArmor);
-        audioSource.PlayOneShot(gainArmorClip);
+        PlayOneShot(gainArmorClip);
+    }
+
+    private void PlayOneShot(AudioClip clip, bool force = false){
+        if(force || !audioSource.isPlaying){
+            audioSource.PlayOneShot(clip, 0.5f);
+        }
     }
 }
