@@ -15,6 +15,7 @@ public class ReaperMeleeAttackState : AiState {
     public int hitDamage = 10;
 
     public AudioClip tauntClip;
+    public AudioClip attackClip;
 
     private GameObject player;
     private HasHealth playerHealth;
@@ -118,7 +119,11 @@ public class ReaperMeleeAttackState : AiState {
                 if(audioSource != null) {
                     audioSource.Source.PlayOneShot(tauntClip, 0.5f);
                 }
-            } 
+            } else {
+                if(audioSource != null) {
+                    audioSource.Source.PlayOneShot(attackClip, 0.5f);
+                }
+            }
             movementAI.Enabled = true;
             teleportTimer = teleportCooldown;
         }

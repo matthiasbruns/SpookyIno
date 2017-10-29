@@ -58,3 +58,5 @@ MonoBehaviour:
   shootCountTillTransision: 3
   projectile: {fileID: 114367733532976848, guid: 45d95815b2f2644489842ec670666056,
     type: 2}
+  projectileSpeed: 10
+  attackClip: {fileID: 8300000, guid: 98a841c6865be48a099c80103a8a3e30, type: 3}

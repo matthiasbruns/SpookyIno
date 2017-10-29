@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4100307420692282}
   - component: {fileID: 114521552480059428}
+  - component: {fileID: 114975265631374938}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -51,9 +52,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a78f1a2366b49ac909c4ed134aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 0}
+  audioManagerPrefab: {fileID: 114355822533782044, guid: 885b024173ae4fc46bf94d703158da5f,
+    type: 2}
   OutsideAmbientLight: {r: 0.07623269, g: 0.19669487, b: 0.2205882, a: 0}
   DungeonAmbientLight: {r: 0.11764705, g: 0.074012645, b: 0.057958473, a: 0}
   itemDatabase: {fileID: 11400000, guid: e8bf99a3045124c6b90b566dc9fd0f1e, type: 2}
   objectiveDatabase: {fileID: 11400000, guid: c96479b6123a0214a9aa39cc3afd8fe4, type: 2}
   audioDatabase: {fileID: 11400000, guid: 40ff14f278ab5a74aa1420688d44f756, type: 2}
   themeDatabase: {fileID: 11400000, guid: f7b85ef98ab95ce4ca2dbac80b8a2b69, type: 2}
+--- !u!114 &114975265631374938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565905705866168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a3e9cf8ea464cd8afadf81ea7d4733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
