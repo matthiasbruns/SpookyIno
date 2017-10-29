@@ -25,6 +25,9 @@ public class AiComponent : MonoBehaviour {
 	}
 
 	private void ActivateState(AiState state) {
+		if(currentState != null) {
+			currentState.OnExit(gameObject);
+		}
 		currentState = state;
 		state.OnEnter(gameObject);
 	}

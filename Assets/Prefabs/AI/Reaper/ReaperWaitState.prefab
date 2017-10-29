@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
-  searchRadius: 10
+  searchRadius: 100
   wanderRadius: 0
   wanderMinDistance: 0
   targetPrefab: {fileID: 1445245492516508, guid: cdeb491fe9f59461781a2097f2498982,

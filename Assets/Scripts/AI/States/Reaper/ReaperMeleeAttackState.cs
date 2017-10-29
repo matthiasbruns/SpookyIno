@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReaperAttackRangedState : AiState {
+public class ReaperMeleeAttackState : AiState {
     public float minDistance = 0.5f;
     public float maxDistance = 2f; 
     public float attackCooldown = 2.5f;
@@ -10,29 +10,47 @@ public class ReaperAttackRangedState : AiState {
     private float attackTimer = 0.0f;
     private GameObject player;
     private HasHealth playerHealth;
-    private List<HasMovementAi> movementAIs;
+    private HasMovementAi movementAI;
     private bool isInRange = false;
+    private HasAnimator animator;
 
     public override void OnEnter(GameObject owner){
         base.OnEnter(owner);
-        UpdatePlayer();
-    }
-    public override void Tick(GameObject owner){   
-        if (player != null) {
-            if(movementAIs == null || movementAIs.Count == 0) {
-                Debug.LogError("Cannot wander without HasMovementAi interface");
-            } else {
-                HasMovementAi movement = movementAIs[0];
-                movement.Target = player.transform;
-            }
+
+        animator = owner.GetComponent<HasAnimator>();
+        if(animator != null) {
+            animator.Animator.SetBool(AnimatorFields.STATE_MELEE_ATTACK, true);
         }
 
-        if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) <= minDistance) {
-            isInRange = true;
-        } else if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) >= maxDistance) {
-            isBackTransitionRequested = true;
+        UpdatePlayer();
+
+        List<HasMovementAi> movementAIs;
+        owner.GetInterfaces<HasMovementAi>(out movementAIs);
+
+        if(movementAIs == null || movementAIs.Count == 0) {
+            Debug.LogError("Cannot wander without HasMovementAi interface");
         } else {
-            isInRange = false;
+            movementAI = movementAIs[0];
+            movementAI.Target = player.transform;
+        }
+    }
+
+    public override void OnExit(GameObject owner){
+        base.OnExit(owner);
+        if(animator != null) {
+            animator.Animator.SetBool(AnimatorFields.STATE_MELEE_ATTACK, false);
+        }
+    }
+
+    public override void Tick(GameObject owner){   
+        if (player != null) {
+            if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) <= minDistance) {
+                isInRange = true;
+            } else if (Vector2.Distance(owner.transform.position.vec2(), player.transform.position.vec2()) >= maxDistance) {
+                isBackTransitionRequested = true;
+            } else {
+                isInRange = false;
+            }
         }
 
         if (isInRange){
@@ -46,7 +64,6 @@ public class ReaperAttackRangedState : AiState {
         player.GetInterfaces<HasHealth>(out healths);
         playerHealth = healths[0];
     }
-
     private void Attack() {
         attackTimer -= Time.deltaTime;
         if(attackTimer <= 0){

@@ -13,6 +13,7 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
     public Animator anim;
     private AILerp lerp;
     public Vector2 LookAngle => Vector2.right;
+    public Animator Animator => anim;
 
     // UNITY
     void Awake() {

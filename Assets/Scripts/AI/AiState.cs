@@ -15,6 +15,8 @@ public abstract class AiState : MonoBehaviour {
         isBackTransitionRequested = false;
     }
 
+    public virtual void OnExit(GameObject owner){}
+
     public abstract void Tick(GameObject owner);
 
     public bool IsTransisionAllowed() => isTransitionAllowed;
