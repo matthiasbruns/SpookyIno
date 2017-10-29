@@ -52,8 +52,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Database: {fileID: 0}
-  Seed: 0
-  Ground: {fileID: 1768011463575946, guid: efc78e754da92d24198256651b772e9a, type: 2}
+  Ground:
+  - {fileID: 1768011463575946, guid: efc78e754da92d24198256651b772e9a, type: 2}
+  - {fileID: 1564481256076498, guid: 38435519012a93545bd144380a8adb01, type: 2}
   DungeonEntrance: {fileID: 1018536012269822, guid: 9b4f0ce70b4ac314e8038d476e43aa4f,
     type: 2}
   Foliage:

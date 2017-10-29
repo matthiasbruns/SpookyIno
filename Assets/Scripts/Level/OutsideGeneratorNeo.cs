@@ -20,7 +20,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
 
     private Dictionary<ulong, ChunkData> ChunkMap = new Dictionary<ulong, ChunkData>();
 
-    public GameObject Ground;
+    public GameObject[] Ground = new GameObject[0];
     public GameObject DungeonEntrance;
     public GameObject[] Foliage = new GameObject[0];
 

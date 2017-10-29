@@ -51,7 +51,7 @@ public class ChunkData {
         // Fill ground randomly.
         for (int yy = 0; yy < OutsideGeneratorNeo.ChunkHeight; yy += 2) {
             for (int xx = 0; xx < OutsideGeneratorNeo.ChunkWidth; xx += 2) {
-                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Ground, new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 0.99f), Quaternion.identity, null));
+                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Ground[RNG.Next(OutsideGeneratorNeo.Instance.Ground.Length)], new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 0.99f), Quaternion.identity, null));
 
                 if (RNG.NextDouble() < 0.8)
                     continue;
