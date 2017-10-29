@@ -9,15 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7249dcc2ab7af4de1807666ccfebb09b, type: 3}
-  m_Name: Quest0Config
+  m_Name: Quest1Config
   m_EditorClassIdentifier: 
-  questId: 0
-  questText: Lorem Ipsum?
-  questReminderTexts: []
+  questId: 1
+  questText: You again? Get a weapon!
+  questReminderTexts:
+  - Get a weapon already!
+  - You know that thing which fires?
   questSuccessText: Well done Mr. Freeman!
   chitChatTexts:
-  - Fuck off!
+  - :)
   startCondition: {fileID: 0}
-  finishCondition: {fileID: 114924124460173708, guid: 6ea01a0d0d8dd49179cb59b7c2b82d7d,
+  finishCondition: {fileID: 114749994472495636, guid: 0c9d93230d9c84df59a53b4dceab91be,
     type: 2}
-  nextConfig: {fileID: 11400000, guid: e76ddf37a673d4b419447149b2c3a129, type: 2}
+  nextConfig: {fileID: 0}

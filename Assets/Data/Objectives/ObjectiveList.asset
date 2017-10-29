@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: ObjectiveList
   m_EditorClassIdentifier: 
   objectivesList:
-  - objectiveName: Gozen
+  - objectiveName: Intro
     objectiveItemId: 0
+  - objectiveName: Gozen
+    objectiveItemId: 1
