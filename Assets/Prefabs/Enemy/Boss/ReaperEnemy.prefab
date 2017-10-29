@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114031489668453404}
   - component: {fileID: 114465135136490744}
   - component: {fileID: 82386188972451888}
+  - component: {fileID: 114916428416413922}
   m_Layer: 0
   m_Name: ReaperEnemy
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047022457399156}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.25, y: 0, z: 0}
+  m_LocalPosition: {x: 8.25, y: -8.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4007679007264792}
@@ -181,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 1839884629200278}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab2cb1c7ff074564cb81258b339b9991, type: 2}
+  m_Controller: {fileID: 9100000, guid: 32491e63f1ef24746980ab0120ff6c2a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -216,9 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba0f11b92f24a508584787bdd398ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 0}
-  aiConfig: {fileID: 11400000, guid: 4faabc7999a6c4040b8808b39a2cbfef, type: 2}
-  movementAi: {fileID: 0}
+  aiConfig: {fileID: 11400000, guid: b689b057d02064d4fa715276e814aaaa, type: 2}
   pathUpdateDuration: 5
 --- !u!114 &114465135136490744
 MonoBehaviour:
@@ -272,6 +271,18 @@ MonoBehaviour:
     tagsChange: -1
     tagsSet: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &114916428416413922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1047022457399156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c662965c3394f889a614aab2415f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameFlag: Reaper Killed
 --- !u!114 &114952801918607118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,7 +300,7 @@ MonoBehaviour:
   canSearch: 1
   canMove: 1
   speed: 3
-  enableRotation: 1
+  enableRotation: 0
   rotationIn2D: 1
   rotationSpeed: 10
   interpolatePathSwitches: 1
@@ -328,12 +339,12 @@ SpriteRenderer:
   m_SortingLayerID: 1960021349
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb71e31e66453aa4190471730d54c0cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15dd9fde8c04049dbbf395d9293991a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
