@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4666543660148780}
-  - component: {fileID: 114613357752032160}
+  - component: {fileID: 114172465837618320}
   m_Layer: 0
-  m_Name: ReaperAttackState
+  m_Name: ReaperMeleeAttackState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114613357752032160
+--- !u!114 &114172465837618320
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,10 +48,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1077689224936412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f595dd4524a95450b95dcd130f58121a, type: 3}
+  m_Script: {fileID: 11500000, guid: b2e3c4dba65454f8298135a2d949ef9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
-  states:
-  - {fileID: 114620423015771762, guid: fe6777f0e51a140468a6c995e0cd04ff, type: 2}
+  minDistance: 0.5
+  maxDistance: 2
+  attackCooldown: 2.5
+  hitDamage: 10

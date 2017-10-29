@@ -6,8 +6,12 @@ public class PlayerActor : MonoBehaviour, IActor {
 
     public Transform hand;
     public Vector2 LookAngle => hand.forward;
+
+    public Animator Animator => anim;
+
     Animator anim;
     Rigidbody2D Own;
+    
 
     void Awake() {
         if (hand == null)

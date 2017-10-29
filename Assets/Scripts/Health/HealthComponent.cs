@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class HealthComponent : MonoBehaviour, HasHealth {
 
-    Vector3 audioPosition;
     bool isDead = false;
     public bool canBeDamaged = true;
     public int currentHealth;
@@ -22,6 +21,8 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     public AudioClip armorHurtClip;
     public AudioClip deathClip;
 
+    private AudioSource audioSource;
+
     public bool CanBeDamaged => canBeDamaged;
     SoundList database;
 
@@ -29,12 +30,11 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     {
         currentHealth = startHealth;
         currentArmor = startArmor;
-        audioPosition = gameObject.transform.position;
         database = GameManager.Instance.audioDatabase;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
-        audioPosition = gameObject.transform.position;
     }
 
     public void ApplyDamage(int amount)
@@ -45,11 +45,11 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         {
             currentHealth += currentArmor;
             currentArmor = 0;
-            AudioSource.PlayClipAtPoint(hurtClip, audioPosition);
+            audioSource.PlayOneShot(hurtClip);
         }
         else
         {
-            AudioSource.PlayClipAtPoint(armorHurtClip, audioPosition);
+            audioSource.PlayOneShot(armorHurtClip);
         }
 
         if (currentHealth <= 0 && !isDead)
@@ -63,7 +63,7 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     void Death()
     {
         isDead = true;
-        AudioSource.PlayClipAtPoint(deathClip, audioPosition);
+        audioSource.PlayOneShot(deathClip);
         // Broadcast 
         List<DeathHandler> handlers;
         gameObject.GetInterfaces<DeathHandler>(out handlers);
@@ -80,12 +80,12 @@ public class HealthComponent : MonoBehaviour, HasHealth {
     public void IncreaseHealth(int amount)
     {
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        AudioSource.PlayClipAtPoint(gainHealthClip, audioPosition);
+        audioSource.PlayOneShot(gainHealthClip);
     }
 
     public void IncreaseArmor(int amount)
     {
         currentArmor = Mathf.Clamp(currentArmor + amount, 0, maxArmor);
-        AudioSource.PlayClipAtPoint(gainArmorClip, audioPosition);
+        audioSource.PlayOneShot(gainArmorClip);
     }
 }

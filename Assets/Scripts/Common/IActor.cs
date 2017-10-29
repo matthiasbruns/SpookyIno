@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IActor {
+public interface IActor : HasAnimator {
 
     Vector2 LookAngle { get; }
 
