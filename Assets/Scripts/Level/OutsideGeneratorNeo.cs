@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
@@ -25,6 +26,8 @@ public class OutsideGeneratorNeo : MonoBehaviour {
     public GameObject[] Foliage = new GameObject[0];
     public GameObject[] Walls = new GameObject[0];
 
+    public AstarPath AStar;
+
     void Awake() {
         if (Database == null) {
             Database = ScriptableObject.CreateInstance<ChunkTypeDataList>();
@@ -37,10 +40,16 @@ public class OutsideGeneratorNeo : MonoBehaviour {
         if (Seed == 0)
             Seed = new Random().Next();
 
+        AStar = FindObjectOfType<AstarPath>();
+
         FillChunk(0, 0);
 	}
-	
-	void Update() {
+
+    void Start() {
+        StartCoroutine(AStarUpdateLoop());
+    }
+
+    void Update() {
         Camera cam = Camera.main;
         Vector3 camCenter = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, -cam.transform.position.z));
         int x = Mathf.RoundToInt(camCenter.x / ChunkWidth);
@@ -54,6 +63,26 @@ public class OutsideGeneratorNeo : MonoBehaviour {
         }
 
 	}
+
+    IEnumerator AStarUpdateLoop() {
+        Camera cam = Camera.main;
+        while (this != null && gameObject.activeSelf) {
+            yield return new WaitForSeconds(2f);
+
+            Vector3 center = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, -cam.transform.position.z));
+            center = new Vector3(
+                Mathf.Round(center.x),
+                Mathf.Round(center.y),
+                0f
+            );
+            ((GridGraph) AStar.graphs[0]).center = center;
+
+            foreach (Progress progress in AstarPath.active.ScanAsync()) {
+                Debug.Log($"Scanning... {progress.description} - {(progress.progress * 100).ToString("0")}%");
+                yield return null;
+            }
+        }
+    }
 
     public Random GetRandom(int x, int y) {
         return new Random(Seed ^ (x * y) + y * y + Seed ^ x + x - y);

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4848435176942012}
   - component: {fileID: 212713157461428040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 23695352141676938}
   - component: {fileID: 61971630753247166}
   - component: {fileID: 114622689668575120}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WallBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4629718508752736}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: wall_cave
   m_TagString: Untagged
   m_Icon: {fileID: 0}

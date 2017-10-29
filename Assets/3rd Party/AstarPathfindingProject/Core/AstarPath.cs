@@ -1534,7 +1534,7 @@ public class AstarPath : VersionedMonoBehaviour {
 		// I would appreciate if you purchased the pro version of the A* Pathfinding Project
 		// if you need async scanning.
 		if (Time.frameCount != startFrame) {
-			throw new System.Exception("Async scanning can only be done in the pro version of the A* Pathfinding Project");
+			// throw new System.Exception("Async scanning can only be done in the pro version of the A* Pathfinding Project");
 		}
 
 		if (OnPreScan != null) {
