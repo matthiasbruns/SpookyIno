@@ -7,13 +7,21 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 	public List<ItemDrop> itemDrops = new List<ItemDrop>();	
 	private HealthComponent healthComponent;
 	private AiComponent aiComponent;
-    
-    public Vector2 LookAngle => transform.right; // TODO: Werden Enemies auch "Hände" haben?
+
+    private float lookAngle = 0f;
+    private float distanceToTarget = 0f;
     public Animator anim;
     private AILerp lerp;
+    public Vector2 LookAngle => Vector2.right;
 
     // UNITY
     void Awake() {
+        if (anim == null) {
+            anim = GetComponent<Animator>();
+            if(anim == null){
+                anim = GetComponentInChildren<Animator>();
+            }
+        }
 		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
 		aiComponent = gameObject.GetOrCreateComponent<EnemyAI>();
         lerp = gameObject.GetComponent<AILerp>();
@@ -41,16 +49,21 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 		}
     }
     void Update() {
-        Vector2 toVector2 = new Vector2(lerp.target.transform.position.x, lerp.target.transform.position.y);
-        Vector2 fromVector2 = new Vector2(this.transform.position.x, this.transform.position.y);
+        if(lerp.target != null) {
+            Vector2 toVector2 = new Vector2(lerp.target.transform.position.x, lerp.target.transform.position.y);
+            Vector2 fromVector2 = new Vector2(this.transform.position.x, this.transform.position.y);
 
-        float ang = Vector2.Angle(fromVector2, toVector2) + 45f;
-        Vector3 cross = Vector3.Cross(fromVector2, toVector2);
+            lookAngle = Vector2.Angle(fromVector2, toVector2) + 45f;
+            Vector3 cross = Vector3.Cross(fromVector2, toVector2);
 
-        if (cross.z > 0)
-            ang = 360 - ang;
+            if (cross.z > 0){
+                lookAngle = 360 - lookAngle;    
+            }
 
-        anim.SetFloat("LookDirection", ang);
-        anim.SetFloat("Distants", Mathf.Abs(toVector2.magnitude - fromVector2.magnitude));
+            distanceToTarget = Mathf.Abs(toVector2.magnitude - fromVector2.magnitude);
+        }
+
+        anim.SetFloat("LookDirection", lookAngle);
+        anim.SetFloat("Distance", distanceToTarget);
     }
 }

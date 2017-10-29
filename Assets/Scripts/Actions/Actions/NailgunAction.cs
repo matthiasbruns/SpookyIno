@@ -5,6 +5,13 @@ using UnityEngine;
 public class NailgunAction : BaseAction {
 
 	public GameObject bulletPrefab;
+    public AudioClip shootClip;
+
+    public AudioSource audioSource;
+    
+    void Awake() {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     public override void execute(GameObject executer) {
         if (Time.timeScale == 0f)
@@ -14,5 +21,7 @@ public class NailgunAction : BaseAction {
 		var rbody = bullet.GetOrCreateComponent<Rigidbody2D>();
 		rbody.velocity = actor.LookAngle * 10f;
         bullet.GetComponent<Bullet>().ignoreTags.Add(executer.gameObject.tag);
+
+        audioSource.PlayOneShot(shootClip, 0.5f);
     }
 }
