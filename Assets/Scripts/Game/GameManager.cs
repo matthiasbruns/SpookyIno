@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void Awake(){
+	void Awake() {
+        Resources.FindObjectsOfTypeAll<Canvas>()[0].gameObject.SetActive(true);
+
 		if(instance != null){
 			Debug.LogError("GameManager instance is already present");
 			Destroy(gameObject);
@@ -21,11 +23,21 @@ public class GameManager : MonoBehaviour {
 		instance = this;
 	}
 
-    public bool InDungeon = false;
+    private bool _InDungeon;
+    public bool InDungeon {
+        get {
+            return _InDungeon;
+        }
+        set {
+            _InDungeon = value;
+            RenderSettings.ambientLight = value ? DungeonAmbientLight : OutsideAmbientLight;
+        }
+    }
 
-	public InventoryItemList itemDatabase;
-	public ChunkTypeDataList chunkOutsideDatabase;
-	public ChunkTypeDataList chunkDungeonDatabase;
+    public Color OutsideAmbientLight;
+    public Color DungeonAmbientLight;
+
+    public InventoryItemList itemDatabase;
     public ObjectiveList objectiveDatabase;
     public AudioManager audioDatabase;
 

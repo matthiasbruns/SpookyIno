@@ -6,8 +6,5 @@ using Random = System.Random;
 public enum ChunkType {
     Unknown,
     Empty,
-    SimpleRoom,
-    ExtraWall,
-    DungeonEntranceOutside,
-
+    DungeonEntrance,
 }

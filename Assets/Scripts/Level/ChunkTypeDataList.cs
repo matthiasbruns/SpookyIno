@@ -5,5 +5,4 @@ using Random = System.Random;
 
 public class ChunkTypeDataList : ScriptableObject {
     public List<ChunkTypeData> ChunkTypeDatas;
-    public ChunkTypeData[] ChunkTypeExtras;
 }

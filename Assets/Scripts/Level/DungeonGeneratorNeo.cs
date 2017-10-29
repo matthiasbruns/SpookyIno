@@ -19,10 +19,13 @@ public class DungeonGeneratorNeo : MonoBehaviour {
 
     public int Factor = 1;
 
+    public DungeonBoss Boss;
+
     void Awake() {
         if (Seed == 0)
             Seed = new Random().Next();
         RNG = new Random(Seed);
+        Boss = GameSceneManager.Instance.LoadingBoss;
     }
 
     void Start() {

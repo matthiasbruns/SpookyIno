@@ -14,18 +14,25 @@ public class OutsideGeneratorNeo : MonoBehaviour {
     public const int ChunkHeight = 10;
     public const int AutoGenerateBorder = 2;
 
-    public const int ExitDirectionMax = 4;
-    public static System.Array ExitDirections = System.Enum.GetValues(typeof(ChunkExitFlag));
-
-    public ChunkTypeDataList Database => GameManager.Instance.chunkOutsideDatabase;
-
-    public Transform[] BasicWalls = new Transform[1];
+    public ChunkTypeDataList Database;
 
     public int Seed;
 
     private Dictionary<ulong, ChunkData> ChunkMap = new Dictionary<ulong, ChunkData>();
 
+    public GameObject Ground;
+    public GameObject DungeonEntrance;
+    public GameObject[] Foliage = new GameObject[0];
+
     void Awake() {
+        if (Database == null) {
+            Database = ScriptableObject.CreateInstance<ChunkTypeDataList>();
+            Database.ChunkTypeDatas = new List<ChunkTypeData>() {
+                new ChunkTypeData(ChunkType.DungeonEntrance, 0.1f),
+                new ChunkTypeData(ChunkType.Empty, 1f)
+            };
+        }
+
         if (Seed == 0)
             Seed = new Random().Next();
 

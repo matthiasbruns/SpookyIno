@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4578810977581192}
-  - component: {fileID: 114270849331969176}
+  - component: {fileID: 114208350440446196}
   m_Layer: 0
   m_Name: OutsideGenerator
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114270849331969176
+--- !u!114 &114208350440446196
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,9 +48,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1850835096957590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b047bb4ed2cec7942a16c1a52f2b0035, type: 3}
+  m_Script: {fileID: 11500000, guid: 73c00a4e0b4810f489a544e3003bcf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Database: {fileID: 0}
   Seed: 0
-  BasicWalls:
-  - {fileID: 1052700670478542, guid: 8be4eb189416a854981076b3f92efa3c, type: 2}
+  Ground: {fileID: 1768011463575946, guid: efc78e754da92d24198256651b772e9a, type: 2}
+  DungeonEntrance: {fileID: 1018536012269822, guid: 9b4f0ce70b4ac314e8038d476e43aa4f,
+    type: 2}
+  Foliage:
+  - {fileID: 1725119162353882, guid: 3f00ab65135593646bc6270e8f2732c3, type: 2}
+  - {fileID: 1784248566570528, guid: 069f21184baf0c148937e8593a7c5548, type: 2}
+  - {fileID: 1646956248436758, guid: d2520303e75089b48af0e8058689b9b7, type: 2}
+  - {fileID: 1378070070393294, guid: 27e846b83ed7da449a9ebefe744041b5, type: 2}

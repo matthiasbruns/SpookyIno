@@ -169,7 +169,7 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 5
   m_Range: 20
   m_SpotAngle: 120
   m_CookieSize: 10
@@ -220,6 +220,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -233,6 +234,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -246,6 +248,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
   - itemName: 
     itemIcon: {fileID: 0}
     itemObject: {fileID: 0}
@@ -259,6 +262,7 @@ MonoBehaviour:
     destroyOnUse: 0
     encumbranceValue: 0
     action: {fileID: 0}
+    pickUpClip: 
 --- !u!114 &114149862938311522
 MonoBehaviour:
   m_ObjectHideFlags: 1
