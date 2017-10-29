@@ -111,7 +111,7 @@ public class DungeonGeneratorNeo : MonoBehaviour {
         GameObject wallType = BasicWalls[RNG.Next(BasicWalls.Length)];
         if (wallType == null)
             return null;
-        return Instantiate(wallType, new Vector3(x, y, 0), Quaternion.identity, null);
+        return Instantiate(wallType, new Vector3(x, y, 0f), Quaternion.identity, null);
     }
 
     public static ulong GetXY(int x, int y) {

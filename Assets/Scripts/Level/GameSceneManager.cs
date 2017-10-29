@@ -17,6 +17,9 @@ public class GameSceneManager : MonoBehaviour {
 
     public RectTransform SceneTransition;
 
+    private PlayerActor Player;
+    private Vector3 PrevPlayerPos;
+
     void Awake() {
         if (SceneTransition == null)
             SceneTransition = GameObject.Find("SceneTransition").GetComponent<RectTransform>();
@@ -24,6 +27,9 @@ public class GameSceneManager : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneLoad;
         GameManager.Instance.InDungeon = false;
         SwitchToOverworldScene();
+
+        if (Player == null)
+            Player = FindObjectOfType<PlayerActor>();
     }
 
     void Update() {
@@ -51,11 +57,20 @@ public class GameSceneManager : MonoBehaviour {
             );
             yield return null;
         }
+        SceneTransition.anchoredPosition = new Vector2(0f, -2000f);
+
+        if (dungeon)
+            PrevPlayerPos = Player.transform.position;
 
         if (!string.IsNullOrEmpty(CurrentScene.name))
             yield return SceneManager.UnloadSceneAsync(CurrentScene.name);
         yield return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
         GameManager.Instance.InDungeon = dungeon;
+
+        if (!dungeon)
+            Player.transform.position = PrevPlayerPos + new Vector3(0f, -4f, 0f);
+        else
+            Player.transform.position = new Vector3(0f, 0f, 0f);
 
         for (float t = 0f; t < dur; t += Time.unscaledDeltaTime) {
             float f = t / dur;
@@ -65,11 +80,10 @@ public class GameSceneManager : MonoBehaviour {
             );
             yield return null;
         }
+        SceneTransition.anchoredPosition = new Vector2(0f, -6000f);
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
-        if (scene.name != loading)
-            return;
         loading = null;
         CurrentScene = scene;
         SceneManager.SetActiveScene(scene);
