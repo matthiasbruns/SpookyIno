@@ -1706,6 +1706,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 82518687753247082, guid: 8c84b52fa04fd4d11903a06cf8bbc993,
+        type: 2}
+      propertyPath: spreadCustomCurve.m_RotationOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c84b52fa04fd4d11903a06cf8bbc993, type: 2}
   m_IsPrefabParent: 0
