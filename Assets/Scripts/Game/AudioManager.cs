@@ -58,7 +58,7 @@ public class AudioManager : MonoBehaviour {
     public void SfxVolume(float sfxVolume) {
         masterMixer.SetFloat("sfxVol", sfxVolume);
     }
-
+    
     public void PlayMenuSound() {
         musicSource.clip = menuClip;
         musicSource.loop = true;

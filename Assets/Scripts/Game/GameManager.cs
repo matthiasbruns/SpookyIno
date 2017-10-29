@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	}
 
     public GameState gameState;
+    public AudioManager audioManagerPrefab;
 
 	void Awake() {
         gameState = gameObject.GetComponent<GameState>();
@@ -24,6 +25,10 @@ public class GameManager : MonoBehaviour {
         }
 
 		instance = this;
+
+        if (FindObjectOfType<AudioManager>() == null) {
+            Instantiate(audioManagerPrefab, Vector2.zero, Quaternion.identity);
+        }
 	}
 
     private bool _InDungeon;
