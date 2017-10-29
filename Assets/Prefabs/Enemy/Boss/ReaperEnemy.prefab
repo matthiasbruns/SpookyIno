@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114465135136490744}
   - component: {fileID: 82386188972451888}
   - component: {fileID: 114916428416413922}
+  - component: {fileID: 58710205691467964}
   m_Layer: 0
   m_Name: ReaperEnemy
   m_TagString: Enemy
@@ -59,7 +60,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4007679007264792}
   - component: {fileID: 212308943859402400}
-  - component: {fileID: 58602966599201778}
   - component: {fileID: 95679679895837906}
   m_Layer: 0
   m_Name: NPC
@@ -109,12 +109,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58602966599201778
+--- !u!58 &58710205691467964
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1839884629200278}
+  m_GameObject: {fileID: 1047022457399156}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -123,7 +123,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!82 &82386188972451888
 AudioSource:
   m_ObjectHideFlags: 1
@@ -288,7 +288,7 @@ MonoBehaviour:
   damaged: 0
   gainHealthClip: {fileID: 0}
   gainArmorClip: {fileID: 0}
-  hurtClip: {fileID: 0}
+  hurtClip: {fileID: 8300000, guid: 26a4d4aad9b9780438588063287da2df, type: 3}
   armorHurtClip: {fileID: 0}
   deathClip: {fileID: 0}
 --- !u!114 &114869961977445918

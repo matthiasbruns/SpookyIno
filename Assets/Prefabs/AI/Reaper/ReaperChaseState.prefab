@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
-  minDistance: 2
+  minDistance: 10
   maxDistance: 100

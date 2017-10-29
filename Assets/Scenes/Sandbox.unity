@@ -438,13 +438,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114465135136490744, guid: d3bd2195060de45b0b0ff620494d46cf,
-        type: 2}
-      propertyPath: hurtClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 26a4d4aad9b9780438588063287da2df, type: 3}
-    m_RemovedComponents:
-    - {fileID: 58602966599201778, guid: d3bd2195060de45b0b0ff620494d46cf, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3bd2195060de45b0b0ff620494d46cf, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &329068463 stripped
@@ -1308,26 +1302,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1692123136 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1047022457399156, guid: d3bd2195060de45b0b0ff620494d46cf,
-    type: 2}
-  m_PrefabInternal: {fileID: 329068462}
---- !u!58 &1692123137
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1692123136}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!1 &1719855347
 GameObject:
   m_ObjectHideFlags: 0

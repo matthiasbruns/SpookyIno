@@ -53,7 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
-  minDistance: 0.5
-  maxDistance: 2
-  attackCooldown: 2.5
+  maxOffset: 1
+  minAttackDistance: 2
+  teleportCooldown: 2.5
+  attackCooldown: 1
+  attackCount: 2
   hitDamage: 10
+  tauntClip: {fileID: 8300000, guid: 33af4497acfa3de4e99f8833f012f7de, type: 3}
