@@ -10,5 +10,6 @@ public class QuestNPCConfig : ScriptableObject {
     public string[]  chitChatTexts;
     public ObjectiveCondition startCondition;
     public ObjectiveCondition finishCondition;
+    public QuestNPCConfig nextConfig;
 
 }
