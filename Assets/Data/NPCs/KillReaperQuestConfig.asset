@@ -11,16 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7249dcc2ab7af4de1807666ccfebb09b, type: 3}
   m_Name: KillReaperQuestConfig
   m_EditorClassIdentifier: 
-  questId: 2
-  questText: "\u201EYou\u2019ve slain all minions of Evil. There is only one who remains.
+  questId: 0
+  questText: "You\u2019ve slain all minions of Evil. There is only one who remains.
     As you step closer, you can faintly hear a hollow lough in the distance. You can
-    feel that a slumbering power has been awoken. But you have to push on!\u201C "
+    feel that a slumbering power has been awoken. But you have to push on!"
   questReminderTexts:
-  - Get a weapon already!
-  - You know that thing which fires?
-  questSuccessText: Well done Mr. Freeman!
+  - Save us all and kill the Reaper.
+  questSuccessText: You've killed the Reaper. Well done!
   chitChatTexts:
   - :)
   startCondition: {fileID: 0}
-  finishCondition: {fileID: 0}
+  finishCondition: {fileID: 114481686372216664, guid: 0b0be47176888480492e523743b4f65e,
+    type: 2}
   nextConfig: {fileID: 0}

@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Name: ObjectiveList
   m_EditorClassIdentifier: 
   objectivesList:
-  - objectiveName: Intro
-    objectiveItemId: 0
-  - objectiveName: Gozen
-    objectiveItemId: 1
   - objectiveName: Kill Reaper
-    objectiveItemId: 2
+    objectiveItemId: 0
