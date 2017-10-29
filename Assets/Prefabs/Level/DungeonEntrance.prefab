@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seed: 0
-  Boss: 0
+  Boss: 4
 --- !u!212 &212620743709625624
 SpriteRenderer:
   m_ObjectHideFlags: 1

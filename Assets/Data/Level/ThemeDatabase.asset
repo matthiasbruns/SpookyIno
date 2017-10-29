@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Name: ThemeDatabase
   m_EditorClassIdentifier: 
   DungeonThemeDatas:
-  - Theme: 0
+  - Theme: 4
     Ground:
-    - {fileID: 1768011463575946, guid: efc78e754da92d24198256651b772e9a, type: 2}
-    - {fileID: 1564481256076498, guid: 38435519012a93545bd144380a8adb01, type: 2}
+    - {fileID: 1270957217972608, guid: 597cabe7878706b4c9cd7ef7b01378bb, type: 2}
     Foliage:
     - {fileID: 1725119162353882, guid: 3f00ab65135593646bc6270e8f2732c3, type: 2}
     - {fileID: 1784248566570528, guid: 069f21184baf0c148937e8593a7c5548, type: 2}
@@ -23,21 +22,8 @@ MonoBehaviour:
     - {fileID: 1378070070393294, guid: 27e846b83ed7da449a9ebefe744041b5, type: 2}
     Walls:
     - {fileID: 1617128708132236, guid: 4e8186889ea3abd48b6597f61018005c, type: 2}
-    GenerateWall: 0
+    GenerateWall: 1
     GeneratePastWall: 1
-    Minions: []
-    Boss: {fileID: 0}
-  - Theme: 0
-    Ground:
-    - {fileID: 1506942684003978, guid: eed46cf356376684c8afae4d48b5fed4, type: 2}
-    Foliage:
-    - {fileID: 1725119162353882, guid: 3f00ab65135593646bc6270e8f2732c3, type: 2}
-    - {fileID: 1784248566570528, guid: 069f21184baf0c148937e8593a7c5548, type: 2}
-    - {fileID: 1646956248436758, guid: d2520303e75089b48af0e8058689b9b7, type: 2}
-    - {fileID: 1378070070393294, guid: 27e846b83ed7da449a9ebefe744041b5, type: 2}
-    Walls:
-    - {fileID: 1835248717886152, guid: 175d4badb8240f2478db87e0cc5a615d, type: 2}
-    GenerateWall: 0
-    GeneratePastWall: 2
-    Minions: []
-    Boss: {fileID: 0}
+    Minions:
+    - {fileID: 1047022457399156, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}
+    Boss: {fileID: 1047022457399156, guid: d3bd2195060de45b0b0ff620494d46cf, type: 2}

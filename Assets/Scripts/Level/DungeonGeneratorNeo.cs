@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Pathfinding;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
@@ -27,12 +28,18 @@ public class DungeonGeneratorNeo : MonoBehaviour {
     private int MaxX;
     private int MaxY;
 
+    public AstarPath AStar;
+
     void Awake() {
         if (Seed == 0)
             Seed = GameSceneManager.Instance.DungeonSeed;
         RNG = new Random(Seed);
         List<DungeonThemeData> datas = GameManager.Instance.themeDatabase[GameSceneManager.Instance.LoadingBoss];
         Theme = datas[RNG.Next(datas.Count)];
+
+        if (AStar == null)
+            AStar = FindObjectOfType<AstarPath>();
+        AStar.logPathResults = PathLog.OnlyErrors;
     }
 
     void Start() {
@@ -43,7 +50,7 @@ public class DungeonGeneratorNeo : MonoBehaviour {
         Done = false;
 
         Retry:
-        GenerateRoom(-4, -4, 8, 8);
+        GenerateRoom(-4, -4, 8, 8, 0);
         bool xb = RNG.Next(2) == 1;
         bool yb = RNG.Next(2) == 1;
         int x = xb ? -2 : 4;
@@ -55,12 +62,14 @@ public class DungeonGeneratorNeo : MonoBehaviour {
             GenerateRoom(
                 xb ? (x - w + RNG.Next(2, 5) * Factor) : (x - RNG.Next(2, 5) * Factor),
                 yb ? (y - h + RNG.Next(2, 5) * Factor) : (y - RNG.Next(2, 5) * Factor),
-                w + RNG.Next(2, 5) * Factor, h + RNG.Next(2, 5) * Factor
+                w + RNG.Next(2, 5) * Factor, h + RNG.Next(2, 5) * Factor,
+                RNG.Next(3, (w * h) / 4)
             );
             GenerateRoom(
                 xb ? (x - w + 4) : (x - 4),
                 yb ? (y - h + 4) : (y - 4),
-                w + 8, h + 8
+                w + 8, h + 8,
+                0
             );
             if (i % 3 == 0)
                 yield return null;
@@ -79,7 +88,8 @@ public class DungeonGeneratorNeo : MonoBehaviour {
         h = corridorH ? 4 : 30;
         GenerateRoom(
             x, y,
-            w, h
+            w, h,
+            0
         );
         yield return null;
 
@@ -92,9 +102,11 @@ public class DungeonGeneratorNeo : MonoBehaviour {
         h = RNG.Next(Mathf.Min(19, 20 - w + 12), 20);
         GenerateRoom(
             x - w / 2, y - h / 2,
-            w, h
+            w, h,
+            0
         );
-        // TODO: Generate boss in there.
+
+        CreateBoss(x, y);
 
         yield return null;
         const int pastWallBorder = 8;
@@ -124,10 +136,25 @@ public class DungeonGeneratorNeo : MonoBehaviour {
                 break;
         }
 
+        GridGraph graph = (GridGraph) AStar.graphs[0];
+        graph.center = new Vector3(
+            Mathf.Round(MinX * 2 + (MaxX - MinX)),
+            Mathf.Round(MinY * 2 + (MaxY - MinY)),
+            0f
+        );
+        graph.SetDimensions(
+            2 * (MaxX - MinX) + 8,
+            2 * (MaxY - MinY) + 8,
+            graph.nodeSize
+        );
+
+        foreach (Progress progress in AStar.ScanAsync())
+            yield return null;
+
         Done = true;
     }
 
-    public void GenerateRoom(int x, int y, int w, int h) {
+    public void GenerateRoom(int x, int y, int w, int h, int minions) {
         if (x < MinX)
             MinX = x;
         if (y < MinY)
@@ -164,6 +191,13 @@ public class DungeonGeneratorNeo : MonoBehaviour {
                 TileMap[xy] = !wall ? null : CreateWall(xx, yy);
             }
         }
+
+        for (int i = 0; i < minions; i++) {
+            int xx = RNG.Next(x + 2, x + w - 2);
+            int yy = RNG.Next(y + 2, y + h - 2);
+            CreateMinion(x, y);
+        }
+
     }
 
     public void CreateGround(int x, int y) {
@@ -180,6 +214,10 @@ public class DungeonGeneratorNeo : MonoBehaviour {
 
     public GameObject CreateMinion(int x, int y) {
         return Instantiate(Theme.Minions[RNG.Next(Theme.Minions.Length)], new Vector3(x * 2f, y * 2f, 0f), Quaternion.identity, null);
+    }
+
+    public GameObject CreateBoss(int x, int y) {
+        return Instantiate(Theme.Boss, new Vector3(x * 2f, y * 2f, 0f), Quaternion.identity, null);
     }
 
     public static ulong GetXY(int x, int y) {
