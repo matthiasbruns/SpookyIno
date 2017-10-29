@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114869961977445918}
   - component: {fileID: 114952801918607118}
   m_Layer: 0
-  m_Name: GenericEnemy
+  m_Name: ZombieEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114679566652859494}
   - component: {fileID: 114048659029658414}
   - component: {fileID: 82874643615717862}
+  - component: {fileID: 95376407989985568}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -90,7 +91,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: f65b8e764c5b780489d1c1ec17eb0d51, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -197,6 +198,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95376407989985568
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1839884629200278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b560fdde07a9e184fbb3001ab208251c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114048659029658414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,7 +245,7 @@ MonoBehaviour:
   - chance: 1
     amount: 1
     item: 0
-  anim: {fileID: 0}
+  anim: {fileID: 95376407989985568}
 --- !u!114 &114679566652859494
 MonoBehaviour:
   m_ObjectHideFlags: 1

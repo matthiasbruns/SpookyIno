@@ -44,7 +44,7 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
         Vector2 toVector2 = new Vector2(lerp.target.transform.position.x, lerp.target.transform.position.y);
         Vector2 fromVector2 = new Vector2(this.transform.position.x, this.transform.position.y);
 
-        float ang = Vector2.Angle(fromVector2, toVector2);
+        float ang = Vector2.Angle(fromVector2, toVector2) + 45f;
         Vector3 cross = Vector3.Cross(fromVector2, toVector2);
 
         if (cross.z > 0)
