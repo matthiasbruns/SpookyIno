@@ -83,4 +83,8 @@ public class InventoryComponent : MonoBehaviour {
 
 		 if(OnChanged != null) OnChanged(item, slots);
 	}
+
+	public bool HasWeapons(){
+		return slotsWeapons.Count > 0;
+	}
 }
