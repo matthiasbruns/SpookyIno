@@ -32,6 +32,11 @@ public class AudioManager : MonoBehaviour {
     int walkIndex = 0;
     bool isStopped = false;
 
+    public static AudioManager Instance {
+        get {
+            return instance;
+        }
+    }
 
     void Awake() {
         database = GameManager.Instance.audioDatabase;
