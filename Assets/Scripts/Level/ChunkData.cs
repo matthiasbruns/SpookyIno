@@ -69,7 +69,12 @@ public class ChunkData {
                     -1 < Y && Y < 1)
                     // Don't spawn if too close to world origin.
                     break;
-                Objects.Add(Object.Instantiate(OutsideGeneratorNeo.Instance.DungeonEntrance, new Vector3((X + 0.5f) * OutsideGeneratorNeo.ChunkWidth, (Y + 0.5f) * OutsideGeneratorNeo.ChunkHeight, 0), Quaternion.identity, null));
+                GameObject entrance;
+                Objects.Add(entrance = Object.Instantiate(OutsideGeneratorNeo.Instance.DungeonEntrance, new Vector3((X + 0.5f) * OutsideGeneratorNeo.ChunkWidth, (Y + 0.5f) * OutsideGeneratorNeo.ChunkHeight, 0), Quaternion.identity, null));
+
+                DungeonTransitionComponent transition = entrance.transform.GetComponentInChildren<DungeonTransitionComponent>();
+                transition.Seed = RNG.Next();
+
                 break;
         }
 

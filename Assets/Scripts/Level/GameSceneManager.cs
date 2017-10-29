@@ -10,6 +10,7 @@ public class GameSceneManager : MonoBehaviour {
         Instance = this;
     }
 
+    public int DungeonSeed { get; private set; }
     public DungeonBoss LoadingBoss { get; private set; }
 
     private Scene GameScene;
@@ -39,7 +40,8 @@ public class GameSceneManager : MonoBehaviour {
     public void SwitchToOverworldScene() {
         StartCoroutine(_SwitchToScene("Scenes/GameOutside", false));
     }
-    public void SwitchToDungeonScene(DungeonBoss boss) {
+    public void SwitchToDungeonScene(int seed, DungeonBoss boss) {
+        DungeonSeed = seed;
         LoadingBoss = boss;
         StartCoroutine(_SwitchToScene("Scenes/GameDungeon", true));
     }
@@ -59,6 +61,8 @@ public class GameSceneManager : MonoBehaviour {
         }
         SceneTransition.anchoredPosition = new Vector2(0f, -2000f);
 
+        Time.timeScale = 0f;
+
         if (dungeon)
             PrevPlayerPos = Player.transform.position;
 
@@ -67,10 +71,17 @@ public class GameSceneManager : MonoBehaviour {
         yield return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
         GameManager.Instance.InDungeon = dungeon;
 
+        if (dungeon) {
+            while (DungeonGeneratorNeo.Instance == null || !DungeonGeneratorNeo.Instance.Done)
+                yield return null;
+        }
+
         if (!dungeon)
             Player.transform.position = PrevPlayerPos + new Vector3(0f, -4f, 0f);
         else
             Player.transform.position = new Vector3(0f, 0f, 0f);
+
+        Time.timeScale = 1f;
 
         for (float t = 0f; t < dur; t += Time.unscaledDeltaTime) {
             float f = t / dur;

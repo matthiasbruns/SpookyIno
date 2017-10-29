@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056345502685408}
   - component: {fileID: 212566308417805864}
-  - component: {fileID: 114681428714725252}
+  - component: {fileID: 114562406631863052}
   m_Layer: 0
   m_Name: Ground_detail_twik1
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114681428714725252
+--- !u!114 &114562406631863052
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378070070393294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65efddcec29b5ba43bfea609772f3e69, type: 3}
+  m_Script: {fileID: 11500000, guid: 7613741c65f5116409817fac330a97ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShadowCastingMode: 0
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8fc4d0f4d876c4943a64befe4e8cd3d9, type: 2}
+  - {fileID: 2100000, guid: cacea17773dd94f4dbe45c585c9716a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
