@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114031489668453404}
   - component: {fileID: 114465135136490744}
   - component: {fileID: 82386188972451888}
+  - component: {fileID: 58427145368123114}
   m_Layer: 0
   m_Name: SlimeEnemy
   m_TagString: Enemy
@@ -41,7 +42,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4007679007264792}
   - component: {fileID: 212308943859402400}
-  - component: {fileID: 58602966599201778}
   - component: {fileID: 95679679895837906}
   m_Layer: 0
   m_Name: NPC
@@ -69,20 +69,20 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047022457399156}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.25, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.25, y: 4.89, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4007679007264792}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58602966599201778
+--- !u!58 &58427145368123114
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1839884629200278}
+  m_GameObject: {fileID: 1047022457399156}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f523597ef7263a741b3eff3e4e934dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   canBeDamaged: 1
   currentHealth: 100
   currentArmor: 0
