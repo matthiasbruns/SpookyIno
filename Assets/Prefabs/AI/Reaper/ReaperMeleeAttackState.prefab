@@ -57,6 +57,7 @@ MonoBehaviour:
   minAttackDistance: 2
   teleportCooldown: 2.5
   attackCooldown: 1
-  attackCount: 2
+  teleportCount: 3
   hitDamage: 10
   tauntClip: {fileID: 8300000, guid: 33af4497acfa3de4e99f8833f012f7de, type: 3}
+  attackClip: {fileID: 8300000, guid: 98a841c6865be48a099c80103a8a3e30, type: 3}

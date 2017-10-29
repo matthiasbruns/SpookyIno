@@ -10,14 +10,21 @@ public class ReaperRangedAttackState : AiState {
     private int shootCounter = 0;
     public Bullet projectile;
     public float projectileSpeed = 10.0f;
+
+    public AudioClip attackClip;
+
     private float attackTimer = 0.0f;
     private GameObject player;
     private HasHealth playerHealth;
     private HasMovementAi movementAI;
     private HasAnimator animator;
+
+    private HasAudioSource audioSource;
+
     public override void OnEnter(GameObject owner){
         base.OnEnter(owner);
 
+        audioSource = owner.GetComponent<HasAudioSource>();
         animator = owner.GetComponent<HasAnimator>();
         if(animator != null) {
             animator.Animator.SetBool(AnimatorFields.STATE_RANGE_ATTACK, true);
@@ -55,7 +62,7 @@ public class ReaperRangedAttackState : AiState {
         player.GetInterfaces<HasHealth>(out healths);
         playerHealth = healths[0];
     }
-    
+
     private void Attack(GameObject owner) {
         attackTimer -= Time.deltaTime;
         if(attackTimer <= 0){
@@ -72,6 +79,7 @@ public class ReaperRangedAttackState : AiState {
             var bullet = GameObject.Instantiate(projectile, owner.transform.position, Quaternion.identity);
             bullet.ignoreTags.Add(Tags.ENEMY);
             bullet.GetComponent<Rigidbody2D>().velocity = direction;
+            audioSource.Source.PlayOneShot(attackClip, 0.5f);
 
             if(shootCounter-- <= 0){
                 isTransitionAllowed = true;

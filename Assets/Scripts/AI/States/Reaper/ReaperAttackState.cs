@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ReaperAttackState : CompositeAiState {
 
+
+    
     private HasAnimator animator;
 
     public override void OnEnter(GameObject owner) {
         base.OnEnter(owner);
+        AudioManager.instance.PlayReaperSound();
     }
 
     public override void OnExit(GameObject owner) {
