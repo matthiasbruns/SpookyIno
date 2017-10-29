@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: cae98f9dc00576b4ca03dc282b081814
-timeCreated: 1509218568
+timeCreated: 1509277755
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
   - masterMixer: {fileID: 24100000, guid: 886c49c676f42fa46b325150b708c3e8, type: 2}
-  executionOrder: 0
+  executionOrder: -50
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

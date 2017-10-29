@@ -7,6 +7,6 @@ public enum DungeonTheme {
     Scarecrow,
     Slime,
     Wail,
-    Ghoul
-
+    Ghoul,
+    Unknown
 }

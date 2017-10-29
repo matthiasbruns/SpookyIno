@@ -47,12 +47,13 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 		yield return null;
 	}
 
-    public void HandleDeath() {
+    public bool HandleDeath() {
         foreach(ItemDrop drop in itemDrops){
 			if(drop.chance > Random.value){
 				StartCoroutine(DropItem(drop));
 			}
 		}
+        return true;
     }
     void Update() {
         if(lerp.target != null) {

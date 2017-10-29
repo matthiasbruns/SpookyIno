@@ -25,6 +25,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
     public GameObject DungeonEntrance;
     public GameObject[] Foliage = new GameObject[0];
     public GameObject[] Walls = new GameObject[0];
+    public GameObject[] Enemies = new GameObject[0];
 
     public AstarPath AStar;
 
@@ -41,12 +42,13 @@ public class OutsideGeneratorNeo : MonoBehaviour {
             Seed = new Random().Next();
 
         AStar = FindObjectOfType<AstarPath>();
-
-        FillChunk(0, 0);
-	}
+        AStar.logPathResults = PathLog.OnlyErrors;
+    }
 
     void Start() {
+        Update();
         StartCoroutine(AStarUpdateLoop());
+        AstarPath.active.Scan();
     }
 
     void Update() {
@@ -77,10 +79,8 @@ public class OutsideGeneratorNeo : MonoBehaviour {
             );
             ((GridGraph) AStar.graphs[0]).center = center;
 
-            foreach (Progress progress in AstarPath.active.ScanAsync()) {
-                Debug.Log($"Scanning... {progress.description} - {(progress.progress * 100).ToString("0")}%");
+            foreach (Progress progress in AstarPath.active.ScanAsync())
                 yield return null;
-            }
         }
     }
 

@@ -1,3 +1,3 @@
 interface DeathHandler {
-    void HandleDeath();
+    bool HandleDeath();
 }

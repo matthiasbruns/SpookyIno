@@ -64,3 +64,6 @@ MonoBehaviour:
   - {fileID: 1378070070393294, guid: 27e846b83ed7da449a9ebefe744041b5, type: 2}
   Walls:
   - {fileID: 1617128708132236, guid: 4e8186889ea3abd48b6597f61018005c, type: 2}
+  Enemies:
+  - {fileID: 1047022457399156, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}
+  AStar: {fileID: 0}

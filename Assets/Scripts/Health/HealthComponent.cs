@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class HealthComponent : MonoBehaviour, HasHealth {
 
-    bool isDead = false;
+    public bool isDead = false;
     public bool canBeDamaged = true;
     public int currentHealth;
     public int currentArmor;
@@ -56,6 +56,9 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         {
             Death();
         }
+
+        if (currentHealth < 0)
+            currentHealth = 0;
     }
 
     public int Health => currentHealth;
@@ -67,14 +70,16 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         // Broadcast 
         List<DeathHandler> handlers;
         gameObject.GetInterfaces<DeathHandler>(out handlers);
+        bool destroyOnDeath = true;
 
         if(handlers != null && handlers.Count > 0){
             foreach(DeathHandler handler in handlers) {
-                handler.HandleDeath();
+                destroyOnDeath &= handler.HandleDeath();
             }
         }
 
-        Destroy(gameObject);
+        if (destroyOnDeath)
+            Destroy(gameObject);
     }
 
     public void IncreaseHealth(int amount)
