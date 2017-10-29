@@ -42,7 +42,7 @@ public class EquipmentComponent : MonoBehaviour {
 
 	void OnFire1(){
 		if(mainHand != null){
-			mainHand.action?.execute(gameObject);
+			mainHand.execute(gameObject);
 		}
 	}
 

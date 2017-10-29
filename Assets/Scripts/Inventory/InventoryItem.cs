@@ -46,4 +46,17 @@ public class InventoryItem
         return base.GetHashCode();
     }
 
+    private BaseAction executableAction;
+
+    public void execute(GameObject executer) {
+        if(executableAction == null){
+            if(action != null) {
+                executableAction = GameObject.Instantiate(action, Vector3.zero, Quaternion.identity);
+                executableAction.transform.parent = executer.transform;
+            }
+        }
+        if(executableAction != null) {
+            executableAction.execute(executer);
+        }
+    }
 }

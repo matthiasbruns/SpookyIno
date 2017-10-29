@@ -142,6 +142,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &45459564 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1177114585894912, guid: 2382be2414648a74b9a61b21321fa689,
+    type: 2}
+  m_PrefabInternal: {fileID: 2098919543}
+--- !u!81 &45459565
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 45459564}
+  m_Enabled: 1
 --- !u!1 &163320635
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,12 +585,12 @@ Prefab:
     - target: {fileID: 224140373510252732, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 447
+      value: 419.5
       objectReference: {fileID: 0}
     - target: {fileID: 224140373510252732, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 179.5
+      value: 171
       objectReference: {fileID: 0}
     - target: {fileID: 224140373510252732, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
@@ -683,7 +695,7 @@ Prefab:
     - target: {fileID: 224441569820253264, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 28.121216
+      value: 28.121212
       objectReference: {fileID: 0}
     - target: {fileID: 224583181393424396, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
@@ -805,7 +817,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114565683662238948, guid: 9336e5ce0f04b4de1b438ea8938c1ada, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9336e5ce0f04b4de1b438ea8938c1ada, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &974786729
@@ -1299,6 +1312,7 @@ Prefab:
       propertyPath: orthographic
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 81340707770347788, guid: 2382be2414648a74b9a61b21321fa689, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2382be2414648a74b9a61b21321fa689, type: 2}
   m_IsPrefabParent: 0

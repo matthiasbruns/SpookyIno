@@ -8,9 +8,10 @@ public class NailgunAction : BaseAction {
     public AudioClip shootClip;
 
     public AudioSource audioSource;
-    
-    void Awake() {
-        audioSource = gameObject.GetComponent<AudioSource>();
+
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.enabled = true;
     }
 
     public override void execute(GameObject executer) {
