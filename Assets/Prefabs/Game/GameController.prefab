@@ -56,5 +56,4 @@ MonoBehaviour:
   chunkOutsideDatabase: {fileID: 0}
   chunkDungeonDatabase: {fileID: 0}
   objectiveDatabase: {fileID: 0}
-  audioDatabase: {fileID: 114355822533782044, guid: 885b024173ae4fc46bf94d703158da5f,
-    type: 2}
+  audioDatabase: {fileID: 0}

@@ -43,6 +43,9 @@ public class EquipmentComponent : MonoBehaviour {
 	void OnFire1(){
 		if(mainHand != null){
 			mainHand.action?.execute(gameObject);
+            AudioSource source = GetComponent<AudioSource>();
+            source.clip = GameManager.Instance.audioDatabase.soundList[20].clip;//TODO just hardcoded, maybe extend itemLibrary by ShotSoundName Value or something
+            source.PlayOneShot(source.clip, 0.5f);
 		}
 	}
 
