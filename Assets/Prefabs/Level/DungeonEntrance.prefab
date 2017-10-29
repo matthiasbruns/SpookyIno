@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4810107656756646}
   - component: {fileID: 212620743709625624}
-  - component: {fileID: 114584912024541890}
+  - component: {fileID: 114188421698119724}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -126,6 +126,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114188421698119724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1856073711226602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20b343eadb32a4ee7b93756100e81e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShadowCastingMode: 0
+  ReceiveShadows: 1
 --- !u!114 &114199859851017610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,20 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7dbe14b67fb049438ddbdb8992829d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Seed: 0
   Boss: 0
---- !u!114 &114584912024541890
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1856073711226602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7613741c65f5116409817fac330a97ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShadowCastingMode: 0
-  ReceiveShadows: 1
 --- !u!212 &212620743709625624
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -165,7 +166,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cacea17773dd94f4dbe45c585c9716a6, type: 2}
+  - {fileID: 2100000, guid: 3ed225033928c48ea9852547ac7a2bf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

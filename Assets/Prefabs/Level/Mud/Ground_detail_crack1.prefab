@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4248904273674958}
   - component: {fileID: 212335744400296202}
-  - component: {fileID: 114125637495904300}
+  - component: {fileID: 114427055279448370}
   m_Layer: 0
   m_Name: Ground_detail_crack1
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114125637495904300
+--- !u!114 &114427055279448370
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1725119162353882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7613741c65f5116409817fac330a97ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b343eadb32a4ee7b93756100e81e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShadowCastingMode: 0
@@ -68,7 +68,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: cacea17773dd94f4dbe45c585c9716a6, type: 2}
+  - {fileID: 2100000, guid: 3ed225033928c48ea9852547ac7a2bf5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
