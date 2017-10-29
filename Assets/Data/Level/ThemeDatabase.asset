@@ -22,6 +22,9 @@ MonoBehaviour:
     - {fileID: 1378070070393294, guid: 27e846b83ed7da449a9ebefe744041b5, type: 2}
     Walls:
     - {fileID: 1617128708132236, guid: 4e8186889ea3abd48b6597f61018005c, type: 2}
+    - {fileID: 1763884579358608, guid: 19f86021a1a5f664cb9896fb5568025a, type: 2}
+    - {fileID: 1335785875360900, guid: dfc68a6be173e2e46959047f0fa614d4, type: 2}
+    - {fileID: 1617128708132236, guid: 4e8186889ea3abd48b6597f61018005c, type: 2}
     GenerateWall: 1
     GeneratePastWall: 1
     Minions:

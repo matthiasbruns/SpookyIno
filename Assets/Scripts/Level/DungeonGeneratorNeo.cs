@@ -130,7 +130,7 @@ public class DungeonGeneratorNeo : MonoBehaviour {
                         ulong xy = GetXY(xx, yy);
                         if (TileMap.ContainsKey(xy))
                             continue;
-                        TileMap[xy] = CreateWall(xx, yy);
+                        TileMap[xy] = CreateWall(xx, yy, -1, -1, -1, -1);
                     }
                 }
                 break;
@@ -188,7 +188,7 @@ public class DungeonGeneratorNeo : MonoBehaviour {
                         continue;
                     Destroy(tile);
                 }
-                TileMap[xy] = !wall ? null : CreateWall(xx, yy);
+                TileMap[xy] = !wall ? null : CreateWall(xx, yy, x, y, w, h);
             }
         }
 
@@ -208,7 +208,27 @@ public class DungeonGeneratorNeo : MonoBehaviour {
         Instantiate(Theme.Foliage[RNG.Next(Theme.Foliage.Length)], new Vector3(x * 2f, y * 2f, 1f), Quaternion.identity, null);
     }
 
-    public GameObject CreateWall(int x, int y) {
+    public GameObject CreateWall(int x, int y, int cx, int cy, int cw, int ch) {
+        GameObject wall;
+        switch (cx == -1 && cy == -1 && cw == -1 && ch == -1 ? DungeonThemeData.WallBehavior.Random : Theme.GenerateWall) {
+            case DungeonThemeData.WallBehavior.Random:
+                wall = Theme.Walls[RNG.Next(Theme.Walls.Length)];
+                break;
+
+            case DungeonThemeData.WallBehavior.NorthEastSouthWest:
+                if (y == cy) {
+                    wall = Theme.Walls[2];
+                } else if (y == cy + ch - 1) {
+                    wall = Theme.Walls[0];
+                } else if (x == cx) {
+                    wall = Theme.Walls[3];
+                } else if (x == cx + cw - 1) {
+                    wall = Theme.Walls[1];
+                } else {
+                    wall = Theme.Walls[0];
+                }
+                break;
+        }
         return Instantiate(Theme.Walls[RNG.Next(Theme.Walls.Length)], new Vector3(x * 2f, y * 2f, 0f), Quaternion.identity, null);
     }
 
