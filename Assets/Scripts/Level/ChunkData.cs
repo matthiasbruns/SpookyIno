@@ -51,24 +51,37 @@ public class ChunkData {
         // Fill ground randomly.
         for (int yy = 0; yy < OutsideGeneratorNeo.ChunkHeight; yy += 2) {
             for (int xx = 0; xx < OutsideGeneratorNeo.ChunkWidth; xx += 2) {
-                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Ground[RNG.Next(OutsideGeneratorNeo.Instance.Ground.Length)], new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 0.99f), Quaternion.identity, null));
+                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Ground[RNG.Next(OutsideGeneratorNeo.Instance.Ground.Length)], new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 1f), Quaternion.identity, null));
 
                 if (RNG.NextDouble() < 0.8)
                     continue;
-                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Foliage[RNG.Next(OutsideGeneratorNeo.Instance.Foliage.Length)], new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 0.99f), Quaternion.identity, null));
+                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Foliage[RNG.Next(OutsideGeneratorNeo.Instance.Foliage.Length)], new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 1f), Quaternion.identity, null));
             }
         }
 
-        if (Type.Type == ChunkType.Empty || Type.Type == ChunkType.Unknown)
+        if (Type.Type == ChunkType.Unknown)
             // Empty or unknown - ignore this.
             return;
 
+        // Don't spawn if too close to world origin.
+        if (-1 < X && X < 1 &&
+            -1 < Y && Y < 1)
+            return;
+
         switch (Type.Type) {
-            case ChunkType.DungeonEntrance:
-                if (-1 < X && X < 1 &&
-                    -1 < Y && Y < 1)
-                    // Don't spawn if too close to world origin.
+            case ChunkType.Empty:
+                if (RNG.NextDouble() < 0.4)
                     break;
+                int count = RNG.Next(1, 3);
+                for (int i = 0; i < count; i++) {
+                    int xx = X * OutsideGeneratorNeo.ChunkWidth + RNG.Next(OutsideGeneratorNeo.ChunkWidth);
+                    int yy = Y * OutsideGeneratorNeo.ChunkHeight + RNG.Next(OutsideGeneratorNeo.ChunkHeight);
+                    Objects.Add(Object.Instantiate(OutsideGeneratorNeo.Instance.Walls[RNG.Next(OutsideGeneratorNeo.Instance.Walls.Length)], new Vector3(xx, yy, 0), Quaternion.identity, null));
+                }
+
+                break;
+
+            case ChunkType.DungeonEntrance:
                 GameObject entrance;
                 Objects.Add(entrance = Object.Instantiate(OutsideGeneratorNeo.Instance.DungeonEntrance, new Vector3((X + 0.5f) * OutsideGeneratorNeo.ChunkWidth, (Y + 0.5f) * OutsideGeneratorNeo.ChunkHeight, 0), Quaternion.identity, null));
 

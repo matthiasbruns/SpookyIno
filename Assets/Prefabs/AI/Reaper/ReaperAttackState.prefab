@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4666543660148780}
-  - component: {fileID: 114831551790631910}
+  - component: {fileID: 114613357752032160}
   m_Layer: 0
   m_Name: ReaperAttackState
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114831551790631910
+--- !u!114 &114613357752032160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,12 +48,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1077689224936412}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a52327fe5a1be4cb5b45ffab7eaf53f0, type: 3}
+  m_Script: {fileID: 11500000, guid: f595dd4524a95450b95dcd130f58121a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextState: {fileID: 0}
   previousState: {fileID: 0}
-  minDistance: 0.5
-  maxDistance: 2
-  attackCooldown: 2.5
-  hitDamage: 10
+  states:
+  - {fileID: 114620423015771762, guid: fe6777f0e51a140468a6c995e0cd04ff, type: 2}
