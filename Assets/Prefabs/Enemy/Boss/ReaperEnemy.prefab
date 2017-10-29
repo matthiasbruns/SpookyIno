@@ -278,13 +278,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f523597ef7263a741b3eff3e4e934dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   canBeDamaged: 1
-  currentHealth: 100
+  currentHealth: 500
   currentArmor: 0
-  startHealth: 100
+  startHealth: 500
   startArmor: 0
-  maxHealth: 100
-  maxArmor: 100
+  maxHealth: 500
+  maxArmor: 0
   damaged: 0
   gainHealthClip: {fileID: 0}
   gainArmorClip: {fileID: 0}
