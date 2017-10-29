@@ -67,14 +67,16 @@ public class HealthComponent : MonoBehaviour, HasHealth {
         // Broadcast 
         List<DeathHandler> handlers;
         gameObject.GetInterfaces<DeathHandler>(out handlers);
+        bool destroyOnDeath = true;
 
         if(handlers != null && handlers.Count > 0){
             foreach(DeathHandler handler in handlers) {
-                handler.HandleDeath();
+                destroyOnDeath &= handler.HandleDeath();
             }
         }
 
-        Destroy(gameObject);
+        if (destroyOnDeath)
+            Destroy(gameObject);
     }
 
     public void IncreaseHealth(int amount)

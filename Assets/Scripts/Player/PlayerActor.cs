@@ -30,8 +30,10 @@ public class PlayerActor : MonoBehaviour, IActor, DeathHandler {
         anim.SetFloat("Angle", angleLook);
     }
 
-    public void HandleDeath() {
+    public bool HandleDeath() {
         GameSceneManager.Instance.ExitOrRetry();
+        // Keep alive.
+        return false;
     }
 
 }

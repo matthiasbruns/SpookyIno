@@ -6,7 +6,8 @@ public class Boss : MonoBehaviour, DeathHandler
 {
 	public string gameFlag;
 
-    public void HandleDeath() {
+    public bool HandleDeath() {
         GameManager.Instance.gameState.AddFlag(gameFlag);
+        return true;
     }
 }

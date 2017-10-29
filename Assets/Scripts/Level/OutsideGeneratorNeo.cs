@@ -42,6 +42,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
             Seed = new Random().Next();
 
         AStar = FindObjectOfType<AstarPath>();
+        AStar.logPathResults = PathLog.OnlyErrors;
     }
 
     void Start() {
@@ -78,10 +79,8 @@ public class OutsideGeneratorNeo : MonoBehaviour {
             );
             ((GridGraph) AStar.graphs[0]).center = center;
 
-            foreach (Progress progress in AstarPath.active.ScanAsync()) {
-                Debug.Log($"Scanning... {progress.description} - {(progress.progress * 100).ToString("0")}%");
+            foreach (Progress progress in AstarPath.active.ScanAsync())
                 yield return null;
-            }
         }
     }
 
