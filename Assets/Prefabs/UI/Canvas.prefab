@@ -939,7 +939,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224441569820253264}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5151515
+  m_Size: 0.51515144
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1581,10 +1581,12 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "\u201EYou\u2019ve slain all minions of Evil. There is only one who remains.\nAs
+    you step closer, you can faintly hear a hollow lough in the distance. You can
+    feel that a slumbering power has been awoken.\nBut you have to push on!\u201C"
 --- !u!114 &114433672631493280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1598,7 +1600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayDuration: 5
   displayTimer: 0
-  content: 
   panel: {fileID: 224583181393424396}
 --- !u!114 &114453911603157566
 MonoBehaviour:
@@ -2566,7 +2567,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 550, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224140373510252732
 RectTransform:

@@ -9,7 +9,7 @@ public class EnemyAI : AiComponent, HasMovementAi {
 
 	private AiState idleState, chaseState, attackState;
 
-	public AILerp movementAi;
+	private AILerp movementAi;
 
 	public float pathUpdateDuration = 5.0f;
 	private float pathUpdateTimer = 0f;

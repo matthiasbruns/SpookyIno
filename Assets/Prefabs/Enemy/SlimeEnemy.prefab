@@ -70,8 +70,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1047022457399156}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.25, y: 4.89, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.25, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4007679007264792}
@@ -217,9 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba0f11b92f24a508584787bdd398ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 0}
   aiConfig: {fileID: 11400000, guid: ccbd09ca8c1f24b0db275ddc3e5c5932, type: 2}
-  movementAi: {fileID: 0}
   pathUpdateDuration: 5
 --- !u!114 &114465135136490744
 MonoBehaviour:
@@ -256,9 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba0f11b92f24a508584787bdd398ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: {fileID: 0}
   aiConfig: {fileID: 0}
-  movementAi: {fileID: 0}
   pathUpdateDuration: 1
 --- !u!114 &114869961977445918
 MonoBehaviour:
@@ -305,7 +301,7 @@ MonoBehaviour:
   canSearch: 1
   canMove: 1
   speed: 3
-  enableRotation: 1
+  enableRotation: 0
   rotationIn2D: 1
   rotationSpeed: 10
   interpolatePathSwitches: 1

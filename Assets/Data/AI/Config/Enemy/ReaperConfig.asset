@@ -15,5 +15,5 @@ MonoBehaviour:
     type: 2}
   chaseState: {fileID: 114994536434984204, guid: b64bd86a767764927aa86fb65550bf42,
     type: 2}
-  attackState: {fileID: 114831551790631910, guid: f7cefddeb4ea44ae3bee7db60ed3baba,
+  attackState: {fileID: 114831551790631910, guid: de3167f52d9fb49a4af3665c8845bc38,
     type: 2}

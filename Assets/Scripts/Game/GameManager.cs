@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-
 	private static GameManager instance;
 	public static GameManager Instance {
 		get{
@@ -11,7 +10,11 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+public GameState gameState;
+
 	void Awake() {
+        gameState = gameObject.GetComponent<GameState>();
+
         Resources.FindObjectsOfTypeAll<Canvas>()[0].gameObject.SetActive(true);
 
 		if(instance != null){

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AiComponent : MonoBehaviour {
 	
-	public AiState initialState;
+	protected AiState initialState;
     protected AiState currentState;
     
 	void Update(){

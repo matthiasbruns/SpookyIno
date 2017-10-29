@@ -16,3 +16,5 @@ MonoBehaviour:
     objectiveItemId: 0
   - objectiveName: Gozen
     objectiveItemId: 1
+  - objectiveName: Kill Reaper
+    objectiveItemId: 2
