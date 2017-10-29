@@ -10,10 +10,15 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
     
     public Vector2 LookAngle => transform.right; // TODO: Werden Enemies auch "Hände" haben?
 
+    //AILerp lerp;
+    //Animator anim;
+
     // UNITY
     void Awake() {
 		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
 		aiComponent = gameObject.GetOrCreateComponent<EnemyAI>();
+        //lerp = GetComponent<AILerp>();
+        //anim = GetComponent<Animator>();
     }
 
     void OnCollisionEnter2D(Collision2D coll) {
@@ -37,4 +42,18 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
 			}
 		}
     }
+    /*
+    void Update() {
+        Vector2 toVector2 = new Vector2(lerp.target.transform.position.x, lerp.target.transform.position.y);
+        Vector2 fromVector2 = new Vector2(this.transform.position.x, this.transform.position.y);
+
+        float ang = Vector2.Angle(fromVector2, toVector2);
+        Vector3 cross = Vector3.Cross(fromVector2, toVector2);
+
+        if (cross.z > 0)
+            ang = 360 - ang;
+
+        anim.SetFloat("LookDirection", ang);
+        anim.SetFloat("Distants", toVector2.magnitude - fromVector2.magnitude);
+    }*/
 }
