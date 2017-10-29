@@ -21,9 +21,11 @@ public class DungeonGeneratorNeo : MonoBehaviour {
 
     public DungeonBoss Boss;
 
+    public bool Done { get; private set; }
+
     void Awake() {
         if (Seed == 0)
-            Seed = new Random().Next();
+            Seed = GameSceneManager.Instance.DungeonSeed;
         RNG = new Random(Seed);
         Boss = GameSceneManager.Instance.LoadingBoss;
     }
@@ -33,6 +35,8 @@ public class DungeonGeneratorNeo : MonoBehaviour {
     }
 
     public IEnumerator Generate() {
+        Done = false;
+
         Retry:
         GenerateRoom(-8, -8, 16, 16);
         bool xb = RNG.Next(2) == 1;
@@ -85,6 +89,8 @@ public class DungeonGeneratorNeo : MonoBehaviour {
             w, h
         );
         // TODO: Generate boss in there.
+
+        Done = true;
     }
 
     public void GenerateRoom(int x, int y, int w, int h) {

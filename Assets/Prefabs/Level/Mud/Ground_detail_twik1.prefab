@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4056345502685408}
   - component: {fileID: 212566308417805864}
-  - component: {fileID: 114982015641568610}
+  - component: {fileID: 114562406631863052}
   m_Layer: 0
   m_Name: Ground_detail_twik1
   m_TagString: Untagged
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114982015641568610
+--- !u!114 &114562406631863052
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7613741c65f5116409817fac330a97ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShadowCastingMode: 0
+  ReceiveShadows: 1
 --- !u!212 &212566308417805864
 SpriteRenderer:
   m_ObjectHideFlags: 1
