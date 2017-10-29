@@ -1080,7 +1080,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a25be70dee975254285c75631820eeb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d59f248865614f2cb600745d2ac06dd, type: 3}
   m_Type: 2
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3681,6 +3681,26 @@ Prefab:
     - target: {fileID: 4638654090710266, guid: 2382be2414648a74b9a61b21321fa689, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 20132655821143516, guid: 2382be2414648a74b9a61b21321fa689,
+        type: 2}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20132655821143516, guid: 2382be2414648a74b9a61b21321fa689,
+        type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20132655821143516, guid: 2382be2414648a74b9a61b21321fa689,
+        type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20132655821143516, guid: 2382be2414648a74b9a61b21321fa689,
+        type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2382be2414648a74b9a61b21321fa689, type: 2}

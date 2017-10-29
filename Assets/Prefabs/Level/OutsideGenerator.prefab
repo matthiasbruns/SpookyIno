@@ -62,3 +62,5 @@ MonoBehaviour:
   - {fileID: 1784248566570528, guid: 069f21184baf0c148937e8593a7c5548, type: 2}
   - {fileID: 1646956248436758, guid: d2520303e75089b48af0e8058689b9b7, type: 2}
   - {fileID: 1378070070393294, guid: 27e846b83ed7da449a9ebefe744041b5, type: 2}
+  Walls:
+  - {fileID: 1617128708132236, guid: 4e8186889ea3abd48b6597f61018005c, type: 2}

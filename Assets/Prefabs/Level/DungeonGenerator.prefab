@@ -52,6 +52,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seed: 0
-  BasicWalls:
-  - {fileID: 1052700670478542, guid: 8be4eb189416a854981076b3f92efa3c, type: 2}
-  Factor: 3
+  CreatedGrounds: 
+  Factor: 1
+  Theme:
+    Theme: 0
+    Ground: []
+    Foliage: []
+    Walls: []
+    Minions: []
+    Boss: {fileID: 0}

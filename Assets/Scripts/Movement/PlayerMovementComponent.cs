@@ -40,13 +40,15 @@ public class PlayerMovementComponent : MonoBehaviour {
             );
         // Physikalisch korrekter.
         // body.AddForce(new Vector2(x, y), ForceMode2D.Force);
+	}
 
+    void Update() {
         // Passe die Rotation der Hand an.
         if (hand != null) {
             Vector3 mouse = Input.mousePosition;
             mouse.z = -Camera.main.transform.position.z;
             hand.LookAt(Camera.main.ScreenToWorldPoint(mouse));
         }
-	}
+    }
 
 }

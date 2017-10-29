@@ -14,11 +14,11 @@ public class GameManager : MonoBehaviour {
 	void Awake() {
         Resources.FindObjectsOfTypeAll<Canvas>()[0].gameObject.SetActive(true);
 
-		if(instance != null){
-			Debug.LogError("GameManager instance is already present");
-			Destroy(gameObject);
-			return;
-		}
+        if (instance != null) {
+            Debug.LogError("GameManager instance is already present");
+            Destroy(gameObject);
+            return;
+        }
 
 		instance = this;
 	}
@@ -40,5 +40,6 @@ public class GameManager : MonoBehaviour {
     public InventoryItemList itemDatabase;
     public ObjectiveList objectiveDatabase;
     public SoundList audioDatabase;
+    public DungeonThemeDataList themeDatabase;
 
 }

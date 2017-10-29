@@ -23,6 +23,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
     public GameObject[] Ground = new GameObject[0];
     public GameObject DungeonEntrance;
     public GameObject[] Foliage = new GameObject[0];
+    public GameObject[] Walls = new GameObject[0];
 
     void Awake() {
         if (Database == null) {
@@ -55,7 +56,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
 	}
 
     public Random GetRandom(int x, int y) {
-        return new Random(Seed ^ (x * y) + y * y - x + Seed ^ x + x - y * y);
+        return new Random(Seed ^ (x * y) + y * y + Seed ^ x + x - y);
     }
 
     public ChunkData GetChunkData(int x, int y) {
