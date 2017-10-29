@@ -25,6 +25,15 @@ public class EnemyAI : AiComponent, HasMovementAi {
 
     public bool PathCompleted => movementAi.targetReached || !movementAi.canMove;
 
+    public bool Enabled { 
+		get {
+			return movementAi.enabled;
+		} 
+		set {
+			movementAi.enabled = value;
+		}
+	}
+
     void Awake(){
 		if(movementAi == null){
 			movementAi = GetComponent<AILerp>();

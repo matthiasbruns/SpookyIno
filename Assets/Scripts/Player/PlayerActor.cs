@@ -10,8 +10,11 @@ public class PlayerActor : MonoBehaviour, IActor, DeathHandler {
 
     public Animator Animator => anim;
 
+    public AudioSource Source => audioSource;
+
     Animator anim;
     Rigidbody2D Own;
+    private AudioSource audioSource;
     
 
     void Awake() {
@@ -19,6 +22,7 @@ public class PlayerActor : MonoBehaviour, IActor, DeathHandler {
             hand = transform.Find("Hand"); // Jemand war faul und hat hand nicht gesetzt..
         anim = gameObject.GetComponent<Animator>();
         Own = gameObject.GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 	
 	void Update() {

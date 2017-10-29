@@ -20,7 +20,7 @@ public class ReaperRangedAttackState : AiState {
 
         animator = owner.GetComponent<HasAnimator>();
         if(animator != null) {
-            animator.Animator.SetBool(AnimatorFields.STATE_MELEE_ATTACK, true);
+            animator.Animator.SetBool(AnimatorFields.STATE_RANGE_ATTACK, true);
         }
 
         UpdatePlayer();
@@ -41,7 +41,7 @@ public class ReaperRangedAttackState : AiState {
     public override void OnExit(GameObject owner){
         base.OnExit(owner);
         if(animator != null) {
-            animator.Animator.SetBool(AnimatorFields.STATE_MELEE_ATTACK, false);
+            animator.Animator.SetBool(AnimatorFields.STATE_RANGE_ATTACK, false);
         }
     }
 
@@ -55,6 +55,7 @@ public class ReaperRangedAttackState : AiState {
         player.GetInterfaces<HasHealth>(out healths);
         playerHealth = healths[0];
     }
+    
     private void Attack(GameObject owner) {
         attackTimer -= Time.deltaTime;
         if(attackTimer <= 0){

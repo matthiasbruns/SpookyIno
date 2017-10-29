@@ -33,7 +33,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
         if (Database == null) {
             Database = ScriptableObject.CreateInstance<ChunkTypeDataList>();
             Database.ChunkTypeDatas = new List<ChunkTypeData>() {
-                new ChunkTypeData(ChunkType.DungeonEntrance, 0.1f),
+                new ChunkTypeData(ChunkType.DungeonEntrance, 0.05f),
                 new ChunkTypeData(ChunkType.Empty, 1f)
             };
         }
@@ -41,14 +41,15 @@ public class OutsideGeneratorNeo : MonoBehaviour {
         if (Seed == 0)
             Seed = new Random().Next();
 
-        AStar = FindObjectOfType<AstarPath>();
+        if (AStar == null)
+            AStar = FindObjectOfType<AstarPath>();
         AStar.logPathResults = PathLog.OnlyErrors;
     }
 
     void Start() {
         Update();
         StartCoroutine(AStarUpdateLoop());
-        AstarPath.active.Scan();
+        AStar.Scan();
     }
 
     void Update() {
@@ -79,7 +80,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
             );
             ((GridGraph) AStar.graphs[0]).center = center;
 
-            foreach (Progress progress in AstarPath.active.ScanAsync())
+            foreach (Progress progress in AStar.ScanAsync())
                 yield return null;
         }
     }

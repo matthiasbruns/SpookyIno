@@ -438,13 +438,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114465135136490744, guid: d3bd2195060de45b0b0ff620494d46cf,
-        type: 2}
-      propertyPath: hurtClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 26a4d4aad9b9780438588063287da2df, type: 3}
-    m_RemovedComponents:
-    - {fileID: 58602966599201778, guid: d3bd2195060de45b0b0ff620494d46cf, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3bd2195060de45b0b0ff620494d46cf, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &329068463 stripped
@@ -643,12 +637,12 @@ Prefab:
     - target: {fileID: 224140373510252732, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 342
+      value: 390
       objectReference: {fileID: 0}
     - target: {fileID: 224140373510252732, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 186
+      value: 156.5
       objectReference: {fileID: 0}
     - target: {fileID: 224140373510252732, guid: ecf978c3d65ae4e7fa591d77df13c53d,
         type: 2}
@@ -781,6 +775,54 @@ Prefab:
       propertyPath: m_Type
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114426961688841588, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114185802274034082, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114794020816888230, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114330210527893832, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114905612631033498, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114774933817750012, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114075503088412988, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
+    - target: {fileID: 114376105832192188, guid: ecf978c3d65ae4e7fa591d77df13c53d,
+        type: 2}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ac03f62098e294a0e98f0bd62b3f2346,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecf978c3d65ae4e7fa591d77df13c53d, type: 2}
   m_IsPrefabParent: 0
@@ -1060,7 +1102,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1047022457399156, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}
@@ -1308,26 +1350,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1692123136 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1047022457399156, guid: d3bd2195060de45b0b0ff620494d46cf,
-    type: 2}
-  m_PrefabInternal: {fileID: 329068462}
---- !u!58 &1692123137
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1692123136}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!1 &1719855347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,8 +1425,7 @@ Prefab:
       propertyPath: m_Name
       value: SlimeEnemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 58602966599201778, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
@@ -1478,10 +1499,6 @@ Prefab:
     - target: {fileID: 1047022457399156, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}
       propertyPath: m_Name
       value: SlimeEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1047022457399156, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 90daeddbb246b4ab9baf3f2c8d8c1a2e, type: 2}

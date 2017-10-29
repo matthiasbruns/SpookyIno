@@ -15,6 +15,10 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
     public Vector2 LookAngle => Vector2.right;
     public Animator Animator => anim;
 
+    private AudioSource audioSource;
+
+    public AudioSource Source => audioSource;
+
     // UNITY
     void Awake() {
         if (anim == null) {
@@ -23,6 +27,7 @@ public class EnemyActor : MonoBehaviour, DeathHandler, IActor {
                 anim = GetComponentInChildren<Animator>();
             }
         }
+        audioSource = GetComponent<AudioSource>();
 		healthComponent = gameObject.GetOrCreateComponent<HealthComponent>();
 		aiComponent = gameObject.GetOrCreateComponent<EnemyAI>();
         lerp = gameObject.GetComponent<AILerp>();

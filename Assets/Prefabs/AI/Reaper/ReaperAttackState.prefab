@@ -54,4 +54,5 @@ MonoBehaviour:
   nextState: {fileID: 0}
   previousState: {fileID: 0}
   states:
+  - {fileID: 114172465837618320, guid: a15c11d92e7dd4d5fac754df1a778958, type: 2}
   - {fileID: 114620423015771762, guid: fe6777f0e51a140468a6c995e0cd04ff, type: 2}

@@ -20,7 +20,7 @@ public class NailgunAction : BaseAction {
         var actor = executer.GetComponent<IActor>();
         var bullet = GameObject.Instantiate(bulletPrefab, executer.transform.position, executer.transform.rotation);
 		var rbody = bullet.GetOrCreateComponent<Rigidbody2D>();
-		rbody.velocity = actor.LookAngle * 10f;
+		rbody.velocity = actor.LookAngle * 15f;
         bullet.GetComponent<Bullet>().ignoreTags.Add(executer.gameObject.tag);
 
         audioSource.PlayOneShot(shootClip, 0.5f);
