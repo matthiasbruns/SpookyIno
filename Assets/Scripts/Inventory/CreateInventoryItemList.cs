@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEditor;
 
 public class CreateInventoryItemList {
-    [MenuItem("Assets/Create/Inventory/Item List")]
     public static InventoryItemList Create()
     {
         InventoryItemList asset = ScriptableObject.CreateInstance<InventoryItemList>();

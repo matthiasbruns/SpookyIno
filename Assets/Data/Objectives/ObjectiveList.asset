@@ -13,6 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectivesList:
   - objectiveName: Gozen
-    isCompleted: 0
-    boss: {fileID: 0}
     objectiveItemId: 0

@@ -5,8 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Objective {
     public string objectiveName = null;
-    public bool isCompleted = false;
-    public EnemyActor boss;
     public int objectiveItemId;
 
     public override bool Equals(object obj) {

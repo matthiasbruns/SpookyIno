@@ -39,6 +39,6 @@ public class GameManager : MonoBehaviour {
 
     public InventoryItemList itemDatabase;
     public ObjectiveList objectiveDatabase;
-    public AudioManager audioDatabase;
+    public SoundList audioDatabase;
 
 }
