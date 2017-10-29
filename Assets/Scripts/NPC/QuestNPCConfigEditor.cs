@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
-
 public class QuestNPCEditor : EditorWindow {
     
     public QuestNPCConfig config;
@@ -100,3 +100,4 @@ public class QuestNPCEditor : EditorWindow {
         }
     }
 }
+#endif

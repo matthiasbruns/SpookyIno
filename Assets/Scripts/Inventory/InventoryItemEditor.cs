@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+
 
 public class InventoryItemEditor : EditorWindow {
     
@@ -196,3 +198,5 @@ public class InventoryItemEditor : EditorWindow {
         inventoryItemList.itemList.RemoveAt (index);
     }
 }
+
+#endif

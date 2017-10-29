@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
 public class ObjectiveEditor : EditorWindow {
+    #if UNITY_EDITOR
 
     public ObjectiveList objectiveList;
     private int viewIndex = 1;
@@ -141,4 +143,7 @@ public class ObjectiveEditor : EditorWindow {
     void DeleteObjective(int index) {
         objectiveList.objectivesList.RemoveAt(index);
     }
+
+    #endif
 }
+#endif

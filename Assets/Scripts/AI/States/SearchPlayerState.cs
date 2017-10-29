@@ -1,9 +1,12 @@
 using System.Collections;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class SearchPlayerState : AiState
 {
+    
     public float searchRadius = 10;
     public float wanderRadius = 5f;
     public float wanderMinDistance = 1f;
