@@ -7,10 +7,9 @@ using Random = System.Random;
 public class ChunkTypeData {
     public ChunkType Type;
     public double Value;
-    public ChunkExitFlag ForceExit = ChunkExitFlag.NoForce;
     public ChunkTypeData() {
     }
-    public ChunkTypeData(ChunkType type, double value, System.Action<ChunkData> onAssign = null) {
+    public ChunkTypeData(ChunkType type, double value) {
         Type = type;
         Value = value;
     }
@@ -18,7 +17,5 @@ public class ChunkTypeData {
         if (Type == ChunkType.Unknown)
             return;
         data.Type = this;
-        if (ForceExit == ChunkExitFlag.NoForce)
-            data.CloseFlags = ForceExit;
     }
 }

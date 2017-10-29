@@ -51,9 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a78f1a2366b49ac909c4ed134aea8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InDungeon: 0
+  OutsideAmbientLight: {r: 0.16911763, g: 0.14332119, b: 0.11067256, a: 1}
+  DungeonAmbientLight: {r: 0.03137255, g: 0.02745098, b: 0.02745098, a: 1}
   itemDatabase: {fileID: 11400000, guid: e8bf99a3045124c6b90b566dc9fd0f1e, type: 2}
-  chunkOutsideDatabase: {fileID: 0}
-  chunkDungeonDatabase: {fileID: 0}
   objectiveDatabase: {fileID: 0}
   audioDatabase: {fileID: 0}

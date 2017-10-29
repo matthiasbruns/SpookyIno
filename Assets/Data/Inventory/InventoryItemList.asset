@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - itemName: Nailgun
-    itemIcon: {fileID: 21300000, guid: f048369ba5c764db492c97793ece66b2, type: 3}
+    itemIcon: {fileID: 21300000, guid: c1c76dca10ba4ba4fb7f1a4e5d96da2a, type: 3}
     itemObject: {fileID: 50790729888181304, guid: 8c84b52fa04fd4d11903a06cf8bbc993,
       type: 2}
     isUnique: 0
