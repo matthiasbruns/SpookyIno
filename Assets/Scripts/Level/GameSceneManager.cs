@@ -67,7 +67,7 @@ public class GameSceneManager : MonoBehaviour {
             PrevPlayerPos = Player.transform.position;
 
         if (!string.IsNullOrEmpty(CurrentScene.name))
-            yield return SceneManager.UnloadSceneAsync(CurrentScene.name);
+            yield return SceneManager.UnloadSceneAsync(CurrentScene);
         yield return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
         GameManager.Instance.InDungeon = dungeon;
 
@@ -95,6 +95,9 @@ public class GameSceneManager : MonoBehaviour {
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
+        if (scene.name == "Game")
+            return;
+
         loading = null;
         CurrentScene = scene;
         SceneManager.SetActiveScene(scene);

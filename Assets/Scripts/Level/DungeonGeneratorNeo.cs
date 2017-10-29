@@ -57,7 +57,8 @@ public class DungeonGeneratorNeo : MonoBehaviour {
                 yb ? (y - h + 4) : (y - 4),
                 w + 8, h + 8
             );
-            yield return null;
+            if (i % 3 == 0)
+                yield return null;
             xb = RNG.Next(2) == 1;
             yb = RNG.Next(2) == 1;
             x = xb ? (x - w + 3) : (x + w - 3);
