@@ -51,7 +51,7 @@ public class ChunkData {
         // Fill ground randomly.
         for (int yy = 0; yy < OutsideGeneratorNeo.ChunkHeight; yy += 2) {
             for (int xx = 0; xx < OutsideGeneratorNeo.ChunkWidth; xx += 2) {
-                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Ground, new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 1f), Quaternion.identity, null));
+                Register(Object.Instantiate(OutsideGeneratorNeo.Instance.Ground, new Vector3(X * OutsideGeneratorNeo.ChunkWidth + xx, Y * OutsideGeneratorNeo.ChunkHeight + yy, 0.99f), Quaternion.identity, null));
 
                 if (RNG.NextDouble() < 0.8)
                     continue;
@@ -65,7 +65,16 @@ public class ChunkData {
 
         switch (Type.Type) {
             case ChunkType.DungeonEntrance:
-                Objects.Add(Object.Instantiate(OutsideGeneratorNeo.Instance.DungeonEntrance, new Vector3((X + 0.5f) * OutsideGeneratorNeo.ChunkWidth, (Y + 0.5f) * OutsideGeneratorNeo.ChunkHeight, 0), Quaternion.identity, null));
+                if (-1 < X && X < 1 &&
+                    -1 < Y && Y < 1)
+                    // Don't spawn if too close to world origin.
+                    break;
+                GameObject entrance;
+                Objects.Add(entrance = Object.Instantiate(OutsideGeneratorNeo.Instance.DungeonEntrance, new Vector3((X + 0.5f) * OutsideGeneratorNeo.ChunkWidth, (Y + 0.5f) * OutsideGeneratorNeo.ChunkHeight, 0), Quaternion.identity, null));
+
+                DungeonTransitionComponent transition = entrance.transform.GetComponentInChildren<DungeonTransitionComponent>();
+                transition.Seed = RNG.Next();
+
                 break;
         }
 

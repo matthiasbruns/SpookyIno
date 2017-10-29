@@ -16,7 +16,7 @@ public class OutsideGeneratorNeo : MonoBehaviour {
 
     public ChunkTypeDataList Database;
 
-    public int Seed;
+    public static int Seed;
 
     private Dictionary<ulong, ChunkData> ChunkMap = new Dictionary<ulong, ChunkData>();
 

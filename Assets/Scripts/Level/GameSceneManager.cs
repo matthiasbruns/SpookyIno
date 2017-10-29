@@ -10,12 +10,16 @@ public class GameSceneManager : MonoBehaviour {
         Instance = this;
     }
 
+    public int DungeonSeed { get; private set; }
     public DungeonBoss LoadingBoss { get; private set; }
 
     private Scene GameScene;
     private Scene CurrentScene;
 
     public RectTransform SceneTransition;
+
+    private PlayerActor Player;
+    private Vector3 PrevPlayerPos;
 
     void Awake() {
         if (SceneTransition == null)
@@ -24,6 +28,9 @@ public class GameSceneManager : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneLoad;
         GameManager.Instance.InDungeon = false;
         SwitchToOverworldScene();
+
+        if (Player == null)
+            Player = FindObjectOfType<PlayerActor>();
     }
 
     void Update() {
@@ -33,7 +40,8 @@ public class GameSceneManager : MonoBehaviour {
     public void SwitchToOverworldScene() {
         StartCoroutine(_SwitchToScene("Scenes/GameOutside", false));
     }
-    public void SwitchToDungeonScene(DungeonBoss boss) {
+    public void SwitchToDungeonScene(int seed, DungeonBoss boss) {
+        DungeonSeed = seed;
         LoadingBoss = boss;
         StartCoroutine(_SwitchToScene("Scenes/GameDungeon", true));
     }
@@ -51,11 +59,29 @@ public class GameSceneManager : MonoBehaviour {
             );
             yield return null;
         }
+        SceneTransition.anchoredPosition = new Vector2(0f, -2000f);
+
+        Time.timeScale = 0f;
+
+        if (dungeon)
+            PrevPlayerPos = Player.transform.position;
 
         if (!string.IsNullOrEmpty(CurrentScene.name))
             yield return SceneManager.UnloadSceneAsync(CurrentScene.name);
         yield return SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
         GameManager.Instance.InDungeon = dungeon;
+
+        if (dungeon) {
+            while (DungeonGeneratorNeo.Instance == null || !DungeonGeneratorNeo.Instance.Done)
+                yield return null;
+        }
+
+        if (!dungeon)
+            Player.transform.position = PrevPlayerPos + new Vector3(0f, -4f, 0f);
+        else
+            Player.transform.position = new Vector3(0f, 0f, 0f);
+
+        Time.timeScale = 1f;
 
         for (float t = 0f; t < dur; t += Time.unscaledDeltaTime) {
             float f = t / dur;
@@ -65,11 +91,10 @@ public class GameSceneManager : MonoBehaviour {
             );
             yield return null;
         }
+        SceneTransition.anchoredPosition = new Vector2(0f, -6000f);
     }
 
     private void OnSceneLoad(Scene scene, LoadSceneMode mode) {
-        if (scene.name != loading)
-            return;
         loading = null;
         CurrentScene = scene;
         SceneManager.SetActiveScene(scene);
