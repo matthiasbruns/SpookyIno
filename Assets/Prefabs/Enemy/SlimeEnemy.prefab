@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4007679007264792}
   - component: {fileID: 212308943859402400}
   - component: {fileID: 58602966599201778}
+  - component: {fileID: 95679679895837906}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -146,7 +147,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -170,7 +171,24 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
+--- !u!95 &95679679895837906
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1839884629200278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab2cb1c7ff074564cb81258b339b9991, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114031489668453404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,6 +204,7 @@ MonoBehaviour:
   - chance: 1
     amount: 1
     item: 0
+  anim: {fileID: 95679679895837906}
 --- !u!114 &114049040833385732
 MonoBehaviour:
   m_ObjectHideFlags: 1
